@@ -4,6 +4,26 @@
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/careers", "destination": "/careers.html" }
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/projects", "destination": "/projects.html" },
+    { "source": "/news", "destination": "/news.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/partners", "destination": "/partners.html" },
+    { "source": "/timeline", "destination": "/timeline.html" },
+    { "source": "/apply", "destination": "/apply.html" },
+    { "source": "/application-success", "destination": "/application-success.html" },
+    { "source": "/hr", "destination": "/hr.html" },
+    { "source": "/hr-login", "destination": "/hr-login.html" },
+    { "source": "/admin-login", "destination": "/admin-login.html" },
+    { "source": "/air-handling-units", "destination": "/air-handling-units.html" },
+    { "source": "/cooling-towers", "destination": "/cooling-towers.html" },
+    { "source": "/variable-refrigerant-flow", "destination": "/variable-refrigerant-flow.html" },
+    { "source": "/chillers", "destination": "/chillers.html" },
+    { "source": "/pumps", "destination": "/pumps.html" },
+    { "source": "/fan-coil-units", "destination": "/fan-coil-units.html" },
+    { "source": "/air-outlets-dampers", "destination": "/air-outlets-dampers.html" },
+    { "source": "/(.*)", "destination": "/$1.html" }
   ]
 }
