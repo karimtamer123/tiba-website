@@ -24,6 +24,6 @@
     { "source": "/pumps", "destination": "/pumps.html" },
     { "source": "/fan-coil-units", "destination": "/fan-coil-units.html" },
     { "source": "/air-outlets-dampers", "destination": "/air-outlets-dampers.html" },
-    { "source": "/(.*)", "destination": "/$1.html" }
+    { "source": "/((?!.*\\..*$).*)", "destination": "/$1.html" }
   ]
 }
