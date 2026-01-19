@@ -1,0 +1,3723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiba Manzalawi Group | Leading HVAC Innovation</title>
+  <meta name="description" content="Tiba Manzalawi Group delivers leading HVAC solutions across Egypt and the Middle East since 1978 – Air Handling Units, Cooling Towers, Chillers, Pumps, VRF and more.">
+  <meta property="og:title" content="Tiba Manzalawi Group | Leading HVAC Innovation">
+  <meta property="og:description" content="Engineering HVAC solutions for a cooler future. Explore our products, projects, and partners.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="partners.png">
+  <meta property="og:url" content="https://www.tiba-group.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="Tiba_Logo_Final-removebg-preview.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- Entrance Animation Styles -->
+  <style>
+    /* Entrance Animation Overlay */
+    .entrance-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #0B1D4F 0%, #1E40AF 25%, #004883 50%, #0059A3 75%, #0B1D4F 100%);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.15s ease-out;
+    }
+    
+    .entrance-animation.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .entrance-content {
+      text-align: center;
+      color: white;
+    }
+    
+    .logo-container {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .logo-animation {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto;
+      position: relative;
+      animation: logoFloat 3s ease-in-out infinite;
+      background: white;
+      border-radius: 50%;
+      padding: 25px;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo-animation img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      animation: logoGlow 2s ease-in-out infinite alternate;
+      display: block;
+    }
+    
+    .logo-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: ringPulse 2s ease-in-out infinite;
+    }
+    
+    .logo-ring:nth-child(2) {
+      width: 160px;
+      height: 160px;
+      animation-delay: 0.05s;
+    }
+    
+    .logo-ring:nth-child(3) {
+      width: 180px;
+      height: 180px;
+      animation-delay: 0.1s;
+    }
+    
+    .company-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.15s ease-out 0.05s forwards;
+      letter-spacing: 2px;
+      color: #E0F2FE;
+      text-shadow: 0 0 20px rgba(0, 72, 131, 0.5);
+    }
+    
+    .company-tagline {
+      font-size: 1.3rem;
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeInUp 0.15s ease-out 0.05s forwards;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .loading-bar {
+      width: 200px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin: 2rem auto 0;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeIn 0.15s ease-out 0.05s forwards;
+    }
+    
+    .loading-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #004883, #0059A3);
+      border-radius: 2px;
+      width: 0%;
+      animation: loadingProgress 0.15s ease-out 0.05s forwards;
+    }
+    
+    /* Animations */
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes logoGlow {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.02); }
+    }
+    
+    @keyframes ringPulse {
+      0% { 
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+      }
+      50% { 
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.3;
+      }
+      100% { 
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+      }
+    }
+    
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes loadingProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+    
+    /* Hide main content during animation */
+    body.entrance-loading {
+      overflow: hidden;
+    }
+    
+    body.entrance-loading .page-intro-overlay,
+    body.entrance-loading header,
+    body.entrance-loading main,
+    body.entrance-loading footer {
+      opacity: 0;
+      transition: opacity 0.15s ease-out;
+    }
+    
+    body.entrance-complete .page-intro-overlay,
+    body.entrance-complete header,
+    body.entrance-complete main,
+    body.entrance-complete footer {
+      opacity: 1;
+    }
+    
+
+    
+
+    
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .logo-animation {
+        width: 150px;
+        height: 150px;
+        padding: 20px;
+      }
+      
+      .logo-ring {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .logo-ring:nth-child(2) {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .logo-ring:nth-child(3) {
+        width: 160px;
+        height: 160px;
+      }
+      
+      .company-name {
+        font-size: 2rem;
+      }
+      
+      .company-tagline {
+        font-size: 1.15rem;
+      }
+      
+      .loading-bar {
+        width: 150px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-animation {
+        width: 130px;
+        height: 130px;
+        padding: 18px;
+      }
+      
+      .logo-ring {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .logo-ring:nth-child(2) {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .logo-ring:nth-child(3) {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .company-name {
+        font-size: 1.75rem;
+      }
+      
+      .company-tagline {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  
+  <style>
+    /* Remove hover animations on titles */
+    h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
+    .preview-title:hover, .section-title:hover, .hero-title:hover,
+    .products-main-title:hover, .partners-title-main:hover, .partners-title-accent:hover {
+      background: none !important;
+      background-clip: unset !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      transform: none !important;
+      color: inherit !important;
+    }
+    
+    /* Remove hover effect from leaders heading */
+    .leaders-heading:hover {
+      color: #0B1220 !important;
+      background: none !important;
+      background-clip: unset !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #0B1220 !important;
+      transform: none !important;
+    }
+    
+    /* Enhanced Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+      scroll-padding-top: 80px; /* Account for fixed navbar */
+    }
+    
+    body {
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      overscroll-behavior-y: smooth; /* Smooth momentum scrolling */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    /* Optimize scroll performance */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* GPU acceleration for smooth scrolling */
+    html, body {
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
+    /* Smooth momentum scrolling for better feel */
+    @supports (-webkit-overflow-scrolling: touch) {
+      html {
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+    
+    /* Optimize elements that transform during scroll */
+    [data-parallax-speed],
+    .parallax-image,
+    .parallax-section {
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    
+    /* Section Transitions */
+    section {
+      transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      scroll-margin-top: 80px; /* Smooth scroll offset for sections */
+    }
+    
+    /* Smooth section entry/exit */
+    @media (prefers-reduced-motion: no-preference) {
+      section {
+        will-change: opacity, transform;
+      }
+    }
+    
+    /* Parallax Mobile Compatibility */
+    @media (max-width: 768px) {
+      .parallax-bg {
+        background-attachment: scroll !important;
+        transform: none !important;
+      }
+    }
+    
+    /* Accessibility - Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .parallax-bg {
+        background-attachment: scroll !important;
+        transform: none !important;
+      }
+      
+      .entrance-animation {
+        animation: none !important;
+      }
+      
+      .logo-animation,
+      .logo-ring,
+      .company-name,
+      .company-tagline,
+      .loading-bar {
+        animation: none !important;
+      }
+    }
+    
+    /* Smooth parallax effect for supported browsers */
+    @supports (background-attachment: fixed) {
+      .parallax-bg {
+        will-change: transform;
+      }
+    }
+    
+    /* Fallback for browsers that don't support background-attachment: fixed */
+    @supports not (background-attachment: fixed) {
+      .parallax-bg {
+        background-attachment: scroll !important;
+      }
+    }
+    /* Company Stats diagonal band */
+    .diag-band { background: #ffffff; background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(213, 222, 242, 1) 50%, rgba(248, 249, 250, 1) 100%); color: #0B1220; padding: 6rem 0; margin: 0; }
+    .diag-band .band-inner { }
+    .stats-grid-k { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 1rem; }
+    @media (max-width: 1024px) { .stats-grid-k { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    @media (max-width: 640px) { .stats-grid-k { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    .stat-k { 
+      background: rgba(255, 255, 255, 0.25); 
+      backdrop-filter: blur(10px); 
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3); 
+      border-radius: 14px; 
+      padding: 1.25rem; 
+      text-align: center; 
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    }
+    .stat-k a { color: #0B1220 !important; text-decoration: none; display: grid; gap: .25rem; }
+    .stat-k .num { color: #0B1220 !important; }
+    .stat-k div { color: #0B1220 !important; }
+    .stat-k .num { font-size: 2rem; font-weight: 800; }
+    .stat-k:hover { 
+      transform: translateY(-3px); 
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+      background: rgba(255, 255, 255, 0.35);
+    }
+    
+    /* Slideshow Dark Overlay */
+    .slide-dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    /* Ensure text content appears above the overlay */
+    .slide-simple-layout {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Debug: Ensure Contact link is visible */
+    .nav-links li:last-child {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    .nav-links li:last-child a {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    /* Additional debugging for Contact link */
+    #primary-navigation li:nth-child(6) {
+      display: flex !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    
+    #primary-navigation li:nth-child(6) a {
+      display: inline-block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      color: #0B1220 !important;
+      font-size: 1.1rem !important;
+      font-weight: 500 !important;
+    }
+    
+    /* Slideshow Logo Styling */
+    .slideshow-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+      z-index: 3;
+      position: relative;
+    }
+    
+    .slideshow-logo img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: all 0.15s ease;
+    }
+    
+    .slideshow-logo img:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    
+    /* Centered navigation layout */
+    .unified-navbar {
+      justify-content: center;
+      position: relative;
+    }
+    
+    .nav-logo {
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .nav-logo img {
+      height: 75px;
+      width: auto;
+      object-fit: contain;
+    }
+    
+    .nav-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .nav-toggle {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* ============================================
+       Scroll Reveal Animations
+       ============================================ */
+    
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Enhanced reveal for cards with scale */
+    .reveal-on-scroll.project-card,
+    .reveal-on-scroll.product-category-card,
+    .reveal-on-scroll.news-card {
+      transform: translateY(30px) scale(0.95);
+    }
+    
+    .reveal-on-scroll.project-card.is-visible,
+    .reveal-on-scroll.product-category-card.is-visible,
+    .reveal-on-scroll.news-card.is-visible {
+      transform: translateY(0) scale(1);
+    }
+    
+    /* Introduction & Product Categories Combined Section */
+    .intro-product-section {
+      padding: 6rem 0 2rem 0;
+    }
+    
+    .intro-section {
+      padding: 4rem 0;
+    }
+    
+    /* Fix card overflow issue */
+    .product-categories-carousel {
+      overflow: visible !important;
+      min-height: 550px; /* Fixed height to prevent layout shift */
+      position: relative;
+    }
+    
+    .product-categories-carousel-wrapper {
+      overflow: visible !important;
+      min-height: 550px; /* Fixed height to prevent layout shift */
+      position: relative;
+    }
+    
+    .product-categories-wrapper {
+      overflow: visible !important;
+    }
+    
+    .product-categories-track {
+      align-items: flex-start;
+      overflow: visible !important;
+      position: relative;
+      min-height: 550px; /* Fixed height to prevent layout shift */
+    }
+    
+    .product-category-card {
+      overflow: visible !important;
+      clip-path: none !important;
+    }
+    
+    /* Ensure cards are fully visible - no clipping */
+    .intro-product-section {
+      overflow: visible !important;
+    }
+    
+    /* Intro Section Scroll Animations */
+    .intro-wrapper {
+      position: relative;
+    }
+    
+    /* Initial state - content centered */
+    .intro-content-left {
+      transform: translateX(0);
+      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+    }
+    
+    /* When scrolled into view - slide left */
+    .intro-content-left.animate-slide-left {
+      transform: translateX(-150px);
+    }
+    
+    /* 3D Figure Container */
+    .intro-3d-container {
+      perspective: 1000px;
+      opacity: 0;
+      transform: translateX(100px) scale(0.8);
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .intro-3d-container.animate-pop-in {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+    
+    /* Floating Product Images Container */
+    .intro-3d-figure {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+    
+    .product-images-float {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .product-image-float {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    
+    .intro-3d-container.animate-pop-in .product-image-float {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .product-image-float img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+    }
+    
+    /* Position each product image in a floating arrangement */
+    .product-image-1 {
+      top: 10%;
+      left: 20%;
+      animation: float-1 4s ease-in-out infinite;
+      animation-delay: 0.05s;
+    }
+    
+    .product-image-2 {
+      top: 5%;
+      right: 15%;
+      animation: float-2 5s ease-in-out infinite;
+      animation-delay: 0.05s;
+    }
+    
+    .product-image-3 {
+      top: 50%;
+      left: 0%;
+      transform: translateY(-50%);
+      animation: float-3 2s ease-in-out infinite;
+      animation-delay: 0.05s;
+    }
+    
+    .product-image-4 {
+      bottom: 15%;
+      right: 10%;
+      animation: float-4 2.2s ease-in-out infinite;
+      animation-delay: 0.05s;
+    }
+    
+    .product-image-5 {
+      bottom: 10%;
+      left: 25%;
+      animation: float-5 2.1s ease-in-out infinite;
+      animation-delay: 0.1s;
+    }
+    
+    .product-image-6 {
+      top: 35%;
+      right: 5%;
+      animation: float-6 2.3s ease-in-out infinite;
+      animation-delay: 0.1s;
+    }
+    
+    .product-image-7 {
+      bottom: 5%;
+      right: 30%;
+      animation: float-7 2s ease-in-out infinite;
+      animation-delay: 0.1s;
+    }
+    
+    /* Floating Animations */
+    @keyframes float-1 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(-20px) translateX(10px);
+      }
+    }
+    
+    @keyframes float-2 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(-15px) translateX(-8px);
+      }
+    }
+    
+    @keyframes float-3 {
+      0%, 100% {
+        transform: translateY(-50%) translateX(0px);
+      }
+      50% {
+        transform: translateY(calc(-50% - 25px)) translateX(12px);
+      }
+    }
+    
+    @keyframes float-4 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(20px) translateX(-10px);
+      }
+    }
+    
+    @keyframes float-5 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(15px) translateX(8px);
+      }
+    }
+    
+    @keyframes float-6 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(-18px) translateX(-12px);
+      }
+    }
+    
+    @keyframes float-7 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      50% {
+        transform: translateY(12px) translateX(-8px);
+      }
+    }
+    
+    @keyframes float3d {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    
+    @keyframes float-particle-1 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(30px, -40px) scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes float-particle-2 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-25px, 35px) scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes float-particle-3 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(35px, 25px) scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes float-particle-4 {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(-30px, -30px) scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .intro-wrapper {
+        flex-direction: column;
+        gap: 3rem;
+      }
+      
+      .intro-content-left {
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+      
+      .intro-content-left {
+        transform: translateX(0);
+      }
+      
+      .intro-content-left.animate-slide-left {
+        transform: translateX(-30px);
+      }
+      
+      .intro-3d-container {
+        padding-right: 2rem;
+        flex: 1;
+        justify-content: center;
+      }
+      
+      .intro-3d-figure {
+        width: 300px;
+        height: 300px;
+      }
+      
+      .product-image-float {
+        width: 140px;
+        height: 140px;
+        padding: 1rem;
+      }
+      
+      .product-image-1 {
+        top: 8%;
+        left: 15%;
+      }
+      
+      .product-image-2 {
+        top: 3%;
+        right: 10%;
+      }
+      
+      .product-image-3 {
+        top: 50%;
+        left: -5%;
+      }
+      
+      .product-image-4 {
+        bottom: 12%;
+        right: 5%;
+      }
+      
+      .product-image-5 {
+        bottom: 8%;
+        left: 20%;
+      }
+      
+      .product-image-6 {
+        top: 30%;
+        right: 3%;
+      }
+      
+      .product-image-7 {
+        bottom: 5%;
+        right: 25%;
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      .intro-section .container {
+        padding: 0 3rem !important;
+      }
+      
+      .intro-content {
+        margin-left: 2rem !important;
+        max-width: 800px !important;
+      }
+      
+      .carousel-nav-left {
+        left: -4rem !important;
+      }
+      
+      .carousel-nav-right {
+        right: -4rem !important;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .intro-product-section {
+        padding: 4rem 0 1.5rem 0;
+      }
+      
+      .intro-section {
+        padding: 3rem 0;
+      }
+      
+      .intro-section .container {
+        padding: 0 2rem !important;
+      }
+      
+      .intro-content {
+        margin-left: 1.5rem !important;
+        max-width: 100% !important;
+      }
+      
+      .intro-heading {
+        font-size: 1.75rem !important;
+      }
+      
+      .intro-text {
+        font-size: 0.95rem !important;
+      }
+      
+      .carousel-nav-left {
+        left: -2rem !important;
+      }
+      
+      .carousel-nav-right {
+        right: -2rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .intro-product-section {
+        padding: 3rem 0 1rem 0;
+      }
+      
+      .intro-section {
+        padding: 2rem 0;
+      }
+      
+      .intro-section .container {
+        padding: 0 1.5rem !important;
+      }
+      
+      .intro-content {
+        margin-left: 0 !important;
+      }
+      
+      .intro-heading {
+        font-size: 1.5rem !important;
+      }
+      
+      .intro-pill {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.9rem !important;
+      }
+    }
+    
+    .intro-button:hover {
+      background: #0F172A !important;
+      color: white !important;
+      border-color: #0F172A !important;
+      transform: translateY(-1px);
+      box-shadow: none !important;
+    }
+    
+    /* Product Categories Grid Styles - Hover Animation */
+    .product-category-card:hover {
+      transform: translateY(-10px) perspective(1000px) rotateX(2deg);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2) !important;
+      border-color: #004883 !important;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    /* Remove blue accent line on hover */
+    .product-category-card:hover .card-accent {
+      transform: scaleX(0) !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+    
+    /* Keep accent line hidden at all times */
+    .product-category-card .card-accent {
+      display: none !important;
+    }
+    
+    .product-category-card:hover .product-icon {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+    }
+    
+    .product-category-card:hover .product-img {
+      opacity: 1 !important;
+      transform: translate(-50%, -50%) scale(1) !important;
+    }
+    
+    .carousel-nav:hover {
+      background: #F8F9FA !important;
+      border-color: #CBD5E1 !important;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .carousel-nav:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+    
+    /* Smooth crossfade - both groups stay in flow but fade */
+    .product-category-card {
+      transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+                  visibility 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                  flex 0.15s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    /* Hide Group 1 when Group 2 is shown */
+    .product-categories-track.show-group-2 .card-group-1 {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      flex: 0 0 0 !important;
+      overflow: hidden;
+    }
+    
+    /* Show Group 2 when active */
+    .product-categories-track.show-group-2 .card-group-2 {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      flex: 0 0 calc(33.333% - 1.33rem) !important;
+    }
+    
+    /* Hide Group 2 when Group 1 is shown */
+    .product-categories-track:not(.show-group-2) .card-group-2 {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+      width: 0;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      flex: 0 0 0 !important;
+      overflow: hidden;
+    }
+    
+    /* Show Group 1 when active */
+    .product-categories-track:not(.show-group-2) .card-group-1 {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      flex: 0 0 calc(25% - 1.5rem) !important;
+    }
+    
+    /* When showing group 2, center the 3 cards and make them larger */
+    .product-categories-track.show-group-2 {
+      justify-content: center !important;
+    }
+    
+    .product-categories-track.show-group-2 .card-group-2.show {
+      flex: 0 0 calc(33.333% - 1.33rem) !important;
+    }
+    
+    /* Ensure group 1 cards maintain their size when visible and start from left */
+    .product-categories-track:not(.show-group-2) {
+      justify-content: flex-start !important;
+    }
+    
+    .product-categories-track:not(.show-group-2) .card-group-1 {
+      flex: 0 0 calc(25% - 1.5rem) !important;
+    }
+    
+    /* Ensure smooth transitions for all cards */
+    .product-category-card {
+      transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1), 
+                  visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  flex 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    
+    /* Responsive Carousel - 4 cards visible initially */
+    @media (max-width: 1400px) {
+      .product-category-card {
+        flex: 0 0 calc(25% - 1.5rem) !important;
+      }
+    }
+    
+    @media (max-width: 1200px) {
+      .product-category-card {
+        flex: 0 0 calc(33.333% - 1.33rem) !important;
+      }
+      
+      .product-category-card.hidden-cards,
+      .product-categories-track.show-group-2 .card-group-1 {
+        position: absolute;
+      }
+      
+      .product-category-card .product-image-wrapper {
+        height: 300px !important;
+      }
+      
+      .product-categories-carousel {
+        padding: 0 3.5rem !important;
+      }
+      
+      .carousel-nav-left {
+        left: 0.5rem !important;
+      }
+      
+      .carousel-nav-right {
+        right: 0.5rem !important;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .product-category-card {
+        flex: 0 0 calc(50% - 1rem) !important;
+      }
+      
+      .product-category-card .product-image-wrapper {
+        height: 280px !important;
+      }
+      
+      .product-categories-title {
+        font-size: 2.25rem !important;
+      }
+      
+      .product-categories-carousel {
+        padding: 0 3rem !important;
+      }
+      
+      .carousel-nav {
+        width: 40px !important;
+        height: 40px !important;
+      }
+      
+      .carousel-nav-left {
+        left: 0.5rem !important;
+      }
+      
+      .carousel-nav-right {
+        right: 0.5rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .product-category-card {
+        flex: 0 0 100% !important;
+      }
+      
+      .product-category-card .product-image-wrapper {
+        height: 250px !important;
+      }
+      
+      .product-categories-title {
+        font-size: 2rem !important;
+      }
+      
+      .product-categories-carousel {
+        padding: 0 1rem !important;
+      }
+      
+      .product-category-card .product-icon {
+        width: 100px !important;
+        height: 100px !important;
+      }
+      
+      .product-category-card h3 {
+        font-size: 1.15rem !important;
+      }
+      
+      .carousel-nav {
+        display: none !important;
+      }
+      
+      .product-categories-carousel {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+      }
+      
+      .product-categories-track {
+        scroll-snap-type: x mandatory;
+      }
+      
+      .product-category-card {
+        scroll-snap-align: start;
+      }
+    }
+    
+    /* ============================================
+       Unified Projects & KPIs Layout Styles
+       ============================================ */
+    
+    .featured-projects-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Title + Cards Row */
+    .title-cards-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+
+    .title-section {
+      text-align: center;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .title-section h2.preview-title {
+      text-align: center;
+      margin: 0 0 0.5rem 0;
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: #0B1220;
+    }
+
+    .title-section p.preview-subtitle {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #64748B;
+      max-width: 700px;
+    }
+
+
+    /* Project Cards - Updated for selection */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .project-card {
+      background: #1E3A8A;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .project-card:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+
+    .project-card.selected {
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transform: none;
+    }
+
+    .project-card.hidden {
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .project-card:hover:not(.selected) {
+      transform: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: none;
+    }
+
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      overflow: hidden;
+      background: #F3F4F6;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover .project-image img {
+      transform: none;
+      filter: none;
+    }
+
+    .project-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.95) 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      opacity: 0;
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 0;
+    }
+
+    .equipment-list {
+      text-align: left;
+      color: white;
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    .equipment-list h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #0059A3, #004883, #003D6B);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .equipment-list p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    .project-content {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #ffffff !important;
+      margin-bottom: 0;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .project-location {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #E5E7EB;
+      margin: 0;
+    }
+
+    .project-description {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: #D1D5DB;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .learn-more-btn {
+      display: block;
+      margin: 1rem auto 0;
+      padding: 0.75rem 1.5rem;
+      background: #ffffff;
+      color: #1e293b;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      text-align: center;
+      width: fit-content;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 2px solid #e2e8f0;
+    }
+
+    .learn-more-btn:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      color: #1e293b;
+      border-color: #cbd5e1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .title-cards-row {
+        gap: 2rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .project-image {
+        height: 450px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .title-section h2.preview-title {
+        font-size: 2.25rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .project-image {
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title-section h2.preview-title {
+        font-size: 2rem;
+      }
+
+      .title-section p.preview-subtitle {
+        font-size: 1rem;
+      }
+
+      .project-image {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body class="homepage entrance-complete" id="bodyElement">
+  <!-- Entrance Animation Overlay - Disabled -->
+  <div class="entrance-animation" id="entranceAnimation" style="display: none !important;">
+    <div class="entrance-content">
+      <div class="logo-container">
+        <div class="logo-ring"></div>
+        <div class="logo-ring"></div>
+        <div class="logo-ring"></div>
+        <div class="logo-animation">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo">
+        </div>
+      </div>
+      <h1 class="company-name">TIBA MANZALAWI GROUP</h1>
+      <p class="company-tagline">Engineering Excellence Since 1978</p>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-intro-overlay"></div>
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main" data-intro style="--intro-delay: 0ms;">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section - Full Screen Slideshow -->
+  <section class="hero-section" style="min-height: 100vh; position: relative; overflow: hidden;" data-intro style="--intro-delay: 0ms;">
+    <div class="hero-content-wrapper" style="width: 100%; height: 100vh; position: relative;">
+      <div class="hero-text-content fade-in" style="width: 100%; height: 100vh;" data-intro style="--intro-delay: 0ms;">
+        <!-- Dynamic HVAC Solutions Slideshow -->
+        <div class="hvac-slideshow" id="hvacSlideshow">
+          <!-- Floating elements and particles removed for smooth slideshow -->
+          
+          <div class="slideshow-container">
+            
+            <!-- Slide 1: Company Excellence -->
+            <div class="hvac-slide active" data-slide="0">
+              <!-- Dark overlay for better text visibility -->
+              <div class="slide-dark-overlay"></div>
+              <div class="slide-simple-layout">
+                <h1 class="slide-title">Engineering Excellence Since 1978</h1>
+                <p class="slide-subtitle">Leading the HVAC industry across Egypt and the Middle East with innovative solutions and unwavering commitment to quality.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2: Product Portfolio -->
+            <div class="hvac-slide" data-slide="1">
+              <!-- Dark overlay for better text visibility -->
+              <div class="slide-dark-overlay"></div>
+              <div class="slide-simple-layout">
+                <h1 class="slide-title">Complete HVAC Solutions Portfolio</h1>
+                <p class="slide-subtitle">From air handling units to cooling towers, chillers to VRF systems - we provide comprehensive HVAC solutions for every application.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3: Project Success -->
+            <div class="hvac-slide" data-slide="2">
+              <!-- Dark overlay for better text visibility -->
+              <div class="slide-dark-overlay"></div>
+              <div class="slide-simple-layout">
+                <h1 class="slide-title">Landmark Projects & Achievements</h1>
+                <p class="slide-subtitle">Engineering iconic buildings across the Middle East with over 7,598 projects successfully delivered.</p>
+              </div>
+            </div>
+
+            <!-- Slide 4: Global Partnerships -->
+            <div class="hvac-slide" data-slide="3">
+              <!-- Dark overlay for better text visibility -->
+              <div class="slide-dark-overlay"></div>
+              <div class="slide-simple-layout">
+                <h1 class="slide-title">Trusted Global Partnerships</h1>
+                <p class="slide-subtitle">Collaborating with 30+ industry leaders worldwide including Samsung, Dunham-Bush, Evapco, and Trox.</p>
+              </div>
+            </div>
+
+            <!-- Slide 5: Future Growth -->
+            <div class="hvac-slide" data-slide="4">
+              <!-- Dark overlay for better text visibility -->
+              <div class="slide-dark-overlay"></div>
+              <div class="slide-simple-layout">
+                <h1 class="slide-title">Join Our Growing Success</h1>
+                <p class="slide-subtitle">Building the future of HVAC together with talented professionals and unlimited growth potential.</p>
+              </div>
+            </div>
+
+          </div>
+          
+          <!-- Subtle Progress Indicator -->
+          <div class="slideshow-progress">
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction & Product Categories Combined Section -->
+  <section id="intro-section" class="intro-product-section reveal-on-scroll" style="padding: 6rem 0 1rem 0; background: #ffffff;">
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 0rem;">
+      <!-- Intro Content -->
+      <div class="intro-wrapper" style="margin-bottom: 6rem; padding-top: 2rem; position: relative;">
+        <!-- Intro Content -->
+        <div class="intro-content intro-content-left" style="text-align: left; max-width: 1200px; margin-left: 4rem; position: relative; z-index: 2;">
+          <!-- Small pill at top left -->
+          <div class="intro-pill" style="display: inline-block; background: #E0F2FE; color: #0B1220; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.25rem;">
+            Introduction
+          </div>
+          
+          <!-- Large heading -->
+          <h2 class="intro-heading" style="font-size: 2.25rem; font-weight: 700; color: #0B1220; margin-bottom: 1rem; line-height: 1.2;">
+            Tiba Manzalawi Group is a leading HVAC solutions provider delivering engineered systems for commercial, industrial, and infrastructure projects.
+          </h2>
+          
+          <!-- Short paragraph -->
+          <p class="intro-text" style="font-size: 1rem; line-height: 1.65; color: #64748B; margin-bottom: 1.75rem; max-width: 900px;">
+            Tiba Manzalawi Group has been at the forefront of HVAC innovation since 1979, delivering exceptional heating, ventilation, and air conditioning solutions across the Middle East. As a trusted industry leader, we combine decades of expertise with cutting-edge technology to create comfortable and energy-efficient environments for our clients.
+          </p>
+          
+          <!-- Primary button -->
+          <a href="about.html" class="intro-button" style="display: inline-block; background: transparent; color: #0F172A; padding: 0.625rem 1.25rem; border: 1.5px solid #0F172A; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.01em;">
+            Learn More
+          </a>
+        </div>
+      </div>
+      
+      <!-- Product Categories Carousel -->
+      <div class="product-categories-wrapper" style="padding: 0;">
+        <!-- Products Title -->
+        <div class="products-title-section" style="text-align: left; max-width: 1200px; margin-left: 4rem; margin-bottom: 3rem;">
+          <h2 class="products-heading" style="font-size: 2.25rem; font-weight: 700; color: #0B1220; margin: 0; line-height: 1.2;">
+            Our Products
+          </h2>
+        </div>
+        
+        <!-- Carousel Container -->
+      <div class="product-categories-carousel-wrapper" style="position: relative; margin-left: 0; padding-left: 0; width: 100%;">
+        <!-- Left Navigation Arrow -->
+        <button class="carousel-nav carousel-nav-left" aria-label="Previous products" style="position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); background: white; border: 2px solid #E2E8F0; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.15s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); opacity: 1; pointer-events: auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+          </svg>
+        </button>
+        
+        <!-- Carousel Container -->
+        <div class="product-categories-carousel" style="overflow: visible; position: relative; padding: 0 4rem 0 4rem;">
+          <div class="product-categories-track" style="display: flex; gap: 2rem; transition: transform 0.15s ease; align-items: stretch; overflow: visible; justify-content: flex-start; padding-right: 3rem;">
+            <!-- Air Handling Units -->
+            <a href="air-handling-units.html" class="product-category-card modern-product-card card-group-1" style="flex: 0 0 calc(25% - 1.5rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/ChatGPT_Image_Oct_11__2025__02_39_59_PM-removebg-preview.png" alt="Air Handling Units Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Air Handling Units/Saiver/Saiver Air Handling Units [A1(E) Series].png" alt="Air Handling Units" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Air Handling Units</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Central air treatment systems</p>
+              </div>
+            </a>
+        
+            <!-- Cooling Towers -->
+            <a href="cooling-towers.html" class="product-category-card modern-product-card card-group-1" style="flex: 0 0 calc(25% - 1.5rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/Cooling_tower_icon-removebg-preview.png" alt="Cooling Towers Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AT).png" alt="Cooling Towers" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Cooling Towers</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Industrial cooling solutions</p>
+              </div>
+            </a>
+        
+            <!-- VRF -->
+            <a href="variable-refrigerant-flow.html" class="product-category-card modern-product-card card-group-1" style="flex: 0 0 calc(25% - 1.5rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/Vrf_icon-removebg-preview.png" alt="VRF Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Variable Refrigerant Flow/Samsung/Samsung Variable Refrigerant Flow (VRF) Systems.png" alt="VRF" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">VRF</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">VRF systems for efficiency</p>
+              </div>
+            </a>
+        
+            <!-- Chillers -->
+            <a href="chillers.html" class="product-category-card modern-product-card card-group-1" style="flex: 0 0 calc(25% - 1.5rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/Chiller_icon-removebg-preview.png" alt="Chillers Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Chillers/DB/Dunham-Bush AIR-COOLED Scroll Chillers (ACDS).png" alt="Chillers" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Chillers</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Advanced cooling systems</p>
+              </div>
+            </a>
+            
+            <!-- Pumps -->
+            <a href="pumps.html" class="product-category-card modern-product-card card-group-2" style="flex: 0 0 calc(33.333% - 1.33rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/ChatGPT_Image_Oct_11__2025__02_58_25_PM-removebg-preview.png" alt="Pumps Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Pumps/Xylem/AC Fire [8100 series - Fire Fighting Application].png" alt="Pumps" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Pumps</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Water circulation systems</p>
+              </div>
+            </a>
+            
+            <!-- Fan Coil Units -->
+            <a href="fan-coil-units.html" class="product-category-card modern-product-card card-group-2" style="flex: 0 0 calc(33.333% - 1.33rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/Fan_coil_unit_icon-removebg-preview.png" alt="Fan Coil Units Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Fan Coil Units/Trox/Trox Fan Coil Units (DCU series).png" alt="Fan Coil Units" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Fan Coil Units</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Individual room climate control</p>
+              </div>
+            </a>
+            
+            <!-- Air Curtains & Dampers -->
+            <a href="air-outlets-dampers.html" class="product-category-card modern-product-card card-group-2" style="flex: 0 0 calc(33.333% - 1.33rem); background: #ffffff; border: 2px solid #E5E7EB; border-radius: 0; padding: 0; text-decoration: none; overflow: visible; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; position: relative; min-width: 0; height: 100%;">
+              <div class="card-accent" style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0F172A 0%, #004883 100%); transform: scaleX(0); transform-origin: left; transition: transform 0.15s ease; z-index: 3;"></div>
+              <div class="product-image-wrapper" style="width: 100%; height: 350px; background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: visible; padding: 1rem; flex-shrink: 0;">
+                <img src="project icons/Air_Outlets-removebg-preview.png" alt="Air Outlets & Dampers Icon" class="product-icon" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; object-fit: contain; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); z-index: 2;" />
+                <img src="Products/Air Outlets and Dampers/Trox/Trox Grilles (WG).png" alt="Air Curtains & Dampers" class="product-img" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); max-width: 90%; max-height: 90%; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08)); transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; transform: translate(-50%, -50%) scale(0.8); z-index: 1;" />
+              </div>
+              <div class="card-content" style="padding: 2rem; flex-grow: 1; display: flex; flex-direction: column;">
+                <h3 style="color: #0B1220; font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0; letter-spacing: -0.02em;">Air Curtains & Dampers</h3>
+                <p style="color: #64748B; font-size: 0.95rem; margin: 0; line-height: 1.6;">Air distribution systems</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Right Navigation Arrow -->
+        <button class="carousel-nav carousel-nav-right" aria-label="Next products" style="position: absolute; right: -2.5rem; top: 50%; transform: translateY(-50%); background: white; border: 2px solid #E2E8F0; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: all 0.15s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.1); opacity: 1; pointer-events: auto;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted By Logo Carousel -->
+  <section class="trusted-logos-section" style="padding: 1rem 0 1rem 0; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);" data-no-parallax="true">
+    <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem;">
+      <div class="trusted-logos-header" style="text-align: center; margin-bottom: 2rem;">
+        <p style="color: #475569; font-size: 1.05rem; font-weight: 600; letter-spacing: 0.01em; margin: 0;">Trusted by 7,000+ top startups, freelancers and studios</p>
+      </div>
+
+      <div class="trusted-logos-marquee" aria-label="Trusted partners logos" style="position: relative; overflow: hidden; padding: 1rem 0;">
+        <div class="trusted-logos-track" style="display: flex; align-items: center; gap: 3.5rem; animation: trusted-marquee 24s linear infinite;">
+          <!-- Logo Set 1 -->
+          <div class="trusted-logo"><img src="partnerlogos/db.png" alt="DB" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/samsung.png" alt="Samsung" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/hyundai.png" alt="Hyundai" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/bellandgossett.png" alt="Bell and Gossett" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/puroflux.png" alt="Puroflux" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/trox.png" alt="Trox" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/prima cool.png" alt="Prima Cool" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/evapco.png" alt="Evapco" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/novo tronic.png" alt="Novo Tronic" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/saiver logo.png" alt="Saiver" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Tuv Sud.png" alt="TUV SUD" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Taco.png" alt="Taco" loading="lazy" decoding="async"></div>
+
+          <!-- Logo Set 2 - Duplicated for seamless loop -->
+          <div class="trusted-logo"><img src="partnerlogos/db.png" alt="DB" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/samsung.png" alt="Samsung" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/hyundai.png" alt="Hyundai" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/bellandgossett.png" alt="Bell and Gossett" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/puroflux.png" alt="Puroflux" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/trox.png" alt="Trox" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/prima cool.png" alt="Prima Cool" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/evapco.png" alt="Evapco" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/novo tronic.png" alt="Novo Tronic" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/saiver logo.png" alt="Saiver" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Tuv Sud.png" alt="TUV SUD" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Taco.png" alt="Taco" loading="lazy" decoding="async"></div>
+
+          <!-- Logo Set 3 - Additional duplicate for smoother transition -->
+          <div class="trusted-logo"><img src="partnerlogos/db.png" alt="DB" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/samsung.png" alt="Samsung" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/hyundai.png" alt="Hyundai" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/bellandgossett.png" alt="Bell and Gossett" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/puroflux.png" alt="Puroflux" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/trox.png" alt="Trox" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/prima cool.png" alt="Prima Cool" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/evapco.png" alt="Evapco" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/novo tronic.png" alt="Novo Tronic" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/saiver logo.png" alt="Saiver" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Tuv Sud.png" alt="TUV SUD" loading="lazy" decoding="async"></div>
+          <div class="trusted-logo"><img src="partnerlogos/Taco.png" alt="Taco" loading="lazy" decoding="async"></div>
+        </div>
+
+        <!-- Fade masks -->
+        <div class="trusted-logos-fade trusted-logos-fade-left" aria-hidden="true"></div>
+        <div class="trusted-logos-fade trusted-logos-fade-right" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <style>
+      .trusted-logos-section {
+        position: relative;
+      }
+
+      .trusted-logos-track {
+        width: max-content;
+      }
+
+      .trusted-logo img {
+        height: 70px;
+        width: auto;
+        object-fit: contain;
+        filter: none;
+        opacity: 1;
+        transition: transform 0.3s ease;
+        display: block;
+      }
+
+      .trusted-logo {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .trusted-logo img:hover {
+        transform: scale(1.05);
+      }
+
+      .trusted-logos-marquee {
+        mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      }
+
+      .trusted-logos-fade {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 120px;
+        pointer-events: none;
+        background: linear-gradient(to right, #f8fafc 0%, rgba(248, 250, 252, 0) 100%);
+        z-index: 2;
+      }
+
+      .trusted-logos-fade-right {
+        right: 0;
+        transform: scaleX(-1);
+      }
+
+      .trusted-logos-fade-left {
+        left: 0;
+      }
+
+      @keyframes trusted-marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-33.333%); }
+      }
+
+      @media (max-width: 1024px) {
+        .trusted-logos-track {
+          gap: 2.5rem;
+        }
+
+        .trusted-logo img {
+          height: 60px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .trusted-logos-section {
+          padding: 3.5rem 0 1rem 0;
+        }
+
+        .trusted-logos-track {
+          gap: 1.75rem;
+          animation-duration: 16s;
+        }
+
+        .trusted-logo img {
+          height: 50px;
+        }
+
+        .trusted-logos-fade {
+          width: 80px;
+        }
+      }
+    </style>
+  </section>
+
+  <!-- Company Stats Section -->
+  <section class="company-stats-section reveal-on-scroll" style="position: relative; overflow: hidden; background: #ffffff; padding: 0; min-height: 100vh; display: flex; flex-direction: column;">
+    <!-- Hero Image -->
+    <div class="stats-hero-image" style="width: 100%; height: 50vh; position: relative; overflow: hidden; flex-shrink: 0; background: #000; z-index: 0;">
+      <img src="parallex image background/pexels-ninobur-18906001.jpg" alt="Tiba Manzalawi Group" class="parallax-image" data-parallax-speed="0.7" style="width: 150%; height: 200%; min-width: 150%; min-height: 200%; max-width: none; max-height: none; object-fit: cover; object-position: center; position: absolute; top: -25%; left: -25%; z-index: 0;">
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3); z-index: 1; pointer-events: none;"></div>
+      <!-- Parallax Image Title -->
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; text-align: center; width: 100%; max-width: 1200px; padding: 0 2rem;">
+        <h2 class="leaders-heading" style="font-size: 3.5rem; font-weight: 800; color: #0B1220; margin: 0 0 1rem 0; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); line-height: 1.1; letter-spacing: -0.02em;">Discover the Leaders of This Industry</h2>
+        <p style="font-size: 1.25rem; font-weight: 400; color: #E0F2FE; margin: 0; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); opacity: 0.95;">Pioneering HVAC excellence since 1978</p>
+      </div>
+    </div>
+    
+    <!-- Stats Cards - Vertical Stacked Layout -->
+    <div class="stats-cards-wrapper" style="width: 100%; padding: 4rem 2rem; display: flex; justify-content: center; align-items: stretch; flex-shrink: 0; background: #ffffff; position: relative; overflow: hidden;">
+      <div class="stats-cards-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1600px; width: 100%; align-items: stretch; position: relative; z-index: 2;">
+        <!-- Left: Large Stat Card - Years in Business -->
+        <div class="stats-large-card" style="background: #F8F9FA; padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; border: 1px solid #E5E7EB;">
+          <div class="stat-item" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="stat-number counter" data-target="46" data-suffix="" style="font-size: 5rem; font-weight: 800; color: #0B1220; margin-bottom: 1rem; line-height: 1;">0</div>
+            <div class="stat-label" style="font-size: 1.5rem; color: #0B1220; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.3;">Years in Business</div>
+            <p style="font-size: 1rem; color: #64748B; margin: 0; line-height: 1.6;">Pioneering HVAC excellence since 1978</p>
+          </div>
+        </div>
+        
+        <!-- Right: Stacked Smaller Stat Cards -->
+        <div class="stats-small-cards" style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <!-- Stat Card 1: Projects -->
+          <div class="stat-card" style="background: #ffffff; padding: 3rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #E5E7EB;">
+            <div class="stat-item" style="display: flex; flex-direction: column; flex: 1;">
+              <div class="stat-number counter" data-target="7598" data-suffix="" style="font-size: 3rem; font-weight: 800; color: #0B1220; margin-bottom: 0.5rem; line-height: 1;">0</div>
+              <div class="stat-label" style="font-size: 1.1rem; color: #0B1220; font-weight: 600; line-height: 1.3;">Projects Completed</div>
+            </div>
+          </div>
+          
+          <!-- Stat Card 2: Global Partners -->
+          <div class="stat-card" style="background: #F8F9FA; padding: 3rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #E5E7EB;">
+            <div class="stat-item" style="display: flex; flex-direction: column; flex: 1;">
+              <div class="stat-number counter" data-target="30" data-suffix="+" style="font-size: 3rem; font-weight: 800; color: #0B1220; margin-bottom: 0.5rem; line-height: 1;">0</div>
+              <div class="stat-label" style="font-size: 1.1rem; color: #0B1220; font-weight: 600; line-height: 1.3;">Global Partners</div>
+            </div>
+          </div>
+          
+          <!-- Stat Card 3: Clients & Partners -->
+          <div class="stat-card" style="background: #ffffff; padding: 3rem; display: flex; flex-direction: row; align-items: center; justify-content: space-between; border: 1px solid #E5E7EB;">
+            <div class="stat-item" style="display: flex; flex-direction: column; flex: 1;">
+              <div class="stat-number counter" data-target="200" data-suffix="+" style="font-size: 3rem; font-weight: 800; color: #0B1220; margin-bottom: 0.5rem; line-height: 1;">0</div>
+              <div class="stat-label" style="font-size: 1.1rem; color: #0B1220; font-weight: 600; line-height: 1.3;">Clients & Partners</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Stats Hero Image - Ensure no background shows */
+    .stats-hero-image {
+      overflow: hidden !important;
+      position: relative;
+    }
+    
+    .stats-hero-image .parallax-image {
+      will-change: transform;
+      backface-visibility: hidden;
+      transform-origin: center center;
+    }
+    
+    
+    /* Parallax Image Title Responsive */
+    @media (max-width: 768px) {
+      .stats-hero-image h2 {
+        font-size: 2rem !important;
+        margin-bottom: 0.75rem !important;
+      }
+      
+      .stats-hero-image p {
+        font-size: 1rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-hero-image h2 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      
+      .stats-hero-image p {
+        font-size: 0.9rem !important;
+      }
+    }
+    
+    /* Company Stats Section Responsive Styles */
+    @media (max-width: 768px) {
+      .company-stats-section {
+        min-height: 100vh !important;
+      }
+      
+      .stats-hero-image {
+        height: 50vh !important;
+      }
+      
+      .stats-cards-wrapper {
+        padding: 2rem 1.5rem !important;
+      }
+      
+      .stats-cards-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      
+      .stats-large-card {
+        padding: 3rem 2.5rem !important;
+      }
+      
+      .stats-large-card .stat-number {
+        font-size: 3.5rem !important;
+      }
+      
+      .stats-large-card .stat-label {
+        font-size: 1.25rem !important;
+      }
+      
+      .stat-card {
+        padding: 2.5rem 2rem !important;
+      }
+      
+      .stat-card .stat-number {
+        font-size: 2.5rem !important;
+      }
+      
+      .stat-card .stat-label {
+        font-size: 1rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .company-stats-section {
+        min-height: 100vh !important;
+      }
+      
+      .stats-hero-image {
+        height: 50vh !important;
+      }
+      
+      .stats-cards-wrapper {
+        padding: 1.5rem 1rem !important;
+      }
+      
+      .stats-cards-container {
+        gap: 1.25rem !important;
+      }
+      
+      .stats-large-card {
+        padding: 2.5rem 2rem !important;
+      }
+      
+      .stats-large-card .stat-number {
+        font-size: 3rem !important;
+      }
+      
+      .stats-large-card .stat-label {
+        font-size: 1.1rem !important;
+      }
+      
+      .stats-large-card p {
+        font-size: 0.9rem !important;
+      }
+      
+      .stats-small-cards {
+        gap: 1.25rem !important;
+      }
+      
+      .stat-card {
+        padding: 2rem 1.5rem !important;
+      }
+      
+      .stat-card .stat-number {
+        font-size: 2rem !important;
+      }
+      
+      .stat-card .stat-label {
+        font-size: 0.95rem !important;
+      }
+    }
+  </style>
+
+  <!-- Unified Featured Projects & KPIs Section -->
+  <section id="featured-projects" class="reveal-on-scroll" aria-label="Featured Projects" style="position: relative; overflow: hidden; background: #ffffff; padding: 6rem 0;" data-intro="--intro-delay: 0ms;">
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 0 2rem;">
+      <!-- Featured Projects Header -->
+      <div class="featured-projects-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem;">
+        <h2 class="preview-title" style="font-size: 2.75rem; font-weight: 700; color: #ffffff; margin: 0;">Featured Projects</h2>
+        
+        <!-- Navigation Buttons -->
+        <div class="carousel-nav-buttons" style="display: flex; gap: 0.75rem; align-items: center;">
+          <button class="carousel-nav-btn carousel-nav-prev" aria-label="Previous projects" style="width: 48px; height: 48px; border-radius: 8px; background: #E5E7EB; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <button class="carousel-nav-btn carousel-nav-next" aria-label="Next projects" style="width: 48px; height: 48px; border-radius: 8px; background: #E5E7EB; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.15s ease;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B1220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
+          <a href="projects.html" class="view-all-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #0F172A; padding: 0.625rem 1.25rem; border: 1.5px solid #0F172A; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.01em; margin-left: 2rem;">
+            <span>View All</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17l9.2-9.2M17 8v9m0-9h-9"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Project Carousel - Full Width -->
+    <div class="projects-carousel-wrapper" style="position: relative; overflow: hidden; margin-bottom: 2rem; width: 100%;">
+      <div class="projects-carousel-track" id="unifiedProjectsGrid" style="display: flex; gap: 1.5rem; transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1); will-change: transform; padding: 0;">
+        <!-- Projects will be dynamically loaded here -->
+      </div>
+    </div>
+    
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 0 2rem;">
+      <!-- Pagination Dots -->
+      <div class="carousel-pagination" style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem;">
+        <!-- Dots will be dynamically generated -->
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Featured Projects Carousel Styles */
+    .projects-carousel-wrapper {
+      overflow: hidden;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+    
+    .projects-carousel-track {
+      display: flex !important;
+      gap: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    
+    /* Override old grid styles */
+    #unifiedProjectsGrid {
+      display: flex !important;
+      grid-template-columns: none !important;
+    }
+    
+    .project-card {
+      flex: 0 0 auto;
+      min-width: 0;
+      background: #1E3A8A;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: none;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Calculate card width based on viewport - wider cards, show 3 cards on desktop, 2 on tablet, 1 on mobile */
+    @media (min-width: 1025px) {
+      .project-card {
+        width: calc((100vw - 4rem - 3rem) / 3); /* 100vw - padding (4rem) - gaps (3 * 1.5rem = 3rem) */
+      }
+    }
+    
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .project-card {
+        width: calc((100vw - 4rem - 1.5rem) / 2); /* 100vw - padding (4rem) - gap (1.5rem) */
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .project-card {
+        width: calc(100vw - 4rem); /* 100vw - padding (4rem) */
+      }
+      
+      .project-image {
+        height: 350px;
+      }
+    }
+    
+    .project-card:focus {
+      outline: none;
+      outline-offset: 0;
+    }
+    
+    .project-card.selected {
+      border: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transform: none;
+    }
+    
+    .project-card:hover:not(.selected) {
+      transform: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: none;
+    }
+    
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      overflow: hidden;
+      background: #F3F4F6;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card:hover .project-image img {
+      transform: none;
+      filter: none;
+    }
+    
+    .project-title-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, rgba(11, 18, 32, 0) 0%, rgba(11, 18, 32, 0.85) 100%);
+      padding: 1.5rem;
+      z-index: 2;
+    }
+    
+    .project-title-overlay h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff !important;
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Carousel Navigation Buttons */
+    .carousel-nav-btn:hover {
+      background: #D1D5DB !important;
+      transform: scale(1.05);
+    }
+    
+    .carousel-nav-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .carousel-nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    /* Pagination Dots */
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #D1D5DB;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      padding: 0;
+    }
+    
+    .carousel-dot.active {
+      background: #1F2937;
+      width: 24px;
+      border-radius: 5px;
+    }
+    
+    .carousel-dot:hover {
+      background: #9CA3AF;
+    }
+    
+    /* View All Button */
+    .view-all-btn:hover {
+      background: #0F172A !important;
+      color: white !important;
+      border-color: #0F172A !important;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .project-card {
+        flex: 0 0 calc(50% - 0.75rem);
+      }
+      
+      .featured-projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+      
+      .carousel-nav-buttons {
+        align-self: flex-end;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .project-card {
+        flex: 0 0 calc(50% - 0.75rem);
+      }
+      
+      .project-image {
+        height: 400px;
+      }
+      
+      .preview-title {
+        font-size: 2.25rem !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .project-card {
+        flex: 0 0 85%;
+      }
+      
+      .project-image {
+        height: 350px;
+      }
+      
+      .preview-title {
+        font-size: 2rem !important;
+      }
+    }
+  </style>
+
+  <main>
+
+  <!-- Global Button Styles -->
+  <style>
+    /* Primary Buttons */
+    .btn-primary {
+      background: #1E40AF !important;
+      color: #ffffff !important;
+      border: 2px solid #1E40AF !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #004883, #1E40AF) !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 25px rgba(30, 64, 175, 0.3) !important;
+    }
+    
+    /* HVAC Portfolio Grid - Center last row */
+    .hvac-portfolio-grid {
+      justify-items: center;
+    }
+    
+    .hvac-portfolio-grid .info-card:nth-child(5) {
+      grid-column: 1 / 2;
+    }
+    
+    .hvac-portfolio-grid .info-card:nth-child(6) {
+      grid-column: 2 / 3;
+    }
+    
+    .hvac-portfolio-grid .info-card:nth-child(7) {
+      grid-column: 3 / 4;
+    }
+    
+    /* Center the last row with 3 items */
+    .hvac-portfolio-grid .info-card:nth-child(5),
+    .hvac-portfolio-grid .info-card:nth-child(6),
+    .hvac-portfolio-grid .info-card:nth-child(7) {
+      grid-row: 2;
+    }
+    
+    /* Mobile responsive for portfolio grid */
+    @media (max-width: 768px) {
+      .hvac-portfolio-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .hvac-portfolio-grid .info-card:nth-child(n) {
+        grid-column: auto !important;
+        grid-row: auto !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hvac-portfolio-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    
+    /* Secondary Buttons */
+    .btn-secondary:hover {
+      background: #ffffff !important;
+      color: #1E40AF !important;
+      border-color: #ffffff !important;
+    }
+    
+    /* Navigation Contact Button */
+    .contact-btn {
+      background: #1E40AF !important;
+      color: #ffffff !important;
+      border: 2px solid #1E40AF !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .contact-btn:hover {
+      background: linear-gradient(135deg, #004883, #1E40AF) !important;
+      color: #ffffff !important;
+      transform: translateY(-2px) !important;
+    }
+  </style>
+
+    <!-- News Section -->
+  <section class="news-section reveal-on-scroll" id="news" style="position: relative; overflow: hidden; background: #ffffff; padding: 6rem 0;" data-intro="--intro-delay: 0ms;">
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 0 2rem;">
+      <div class="news-section-header" style="text-align: center; margin-bottom: 4rem;">
+        <h2 class="preview-title" style="font-size: 2.75rem; font-weight: 700; color: #0B1220; margin: 0 0 1rem 0;">Latest News & Updates</h2>
+        <p class="preview-subtitle" style="color: #64748B; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Stay informed about our latest innovations and achievements</p>
+      </div>
+    </div>
+    
+    <style>
+      .news-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 0;
+        height: 300px;
+        width: 100%;
+        background: #F3F4F6;
+        position: relative;
+        flex-shrink: 0;
+      }
+      
+      .news-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        transition: transform 0.3s ease;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        flex-shrink: 0;
+        display: block;
+      }
+      
+      .news-card:hover .news-image img {
+        transform: scale(1.05);
+      }
+      
+      .news-card {
+        background: white;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.15s ease;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border: 1px solid #E5E7EB;
+      }
+      
+      .news-card .news-image {
+        flex: 0 0 300px;
+        height: 300px;
+        width: 100%;
+      }
+      
+      .news-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+      
+      .news-content {
+        padding: 2rem;
+      }
+      
+      .news-date {
+        color: #64748B;
+        font-size: 0.875rem;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+      
+      .news-content h3 {
+        color: #0B1220;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      
+      .news-content p {
+        color: #475569;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+      
+      .news-link {
+        color: #1E3A8A;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .news-link:hover {
+        color: #004883;
+        text-decoration: none;
+      }
+      
+      .news-link svg {
+        width: 16px;
+        height: 16px;
+      }
+      
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      
+      @media (max-width: 1024px) {
+        .news-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        
+        .news-image {
+          height: 250px;
+        }
+        
+        .news-content {
+          padding: 1.5rem;
+        }
+        
+        .news-content h3 {
+          font-size: 1.25rem;
+        }
+      }
+    </style>
+    
+    <div class="container" style="max-width: 1600px; margin: 0 auto; padding: 0 2rem;">
+      <div class="news-grid">
+          <div class="news-card slide-in-left">
+            <div class="news-image">
+              <img src="LatestNewsPictures/Revolutionary HVAC Technology Unveiled.png" alt="Revolutionary HVAC Technology Unveiled" loading="lazy" decoding="async">
+            </div>
+            <div class="news-content">
+              <div class="news-date">December 15, 2024</div>
+              <h3>Revolutionary HVAC Technology Unveiled</h3>
+              <p>Tiba Manzalawi Group introduces next-generation energy-efficient HVAC systems that reduce energy consumption by up to 40% while maintaining optimal performance.</p>
+              <a href="news.html" class="news-link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 8v9m0-9h-9"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="news-card fade-in">
+            <div class="news-image">
+              <img src="LatestNewsPictures/Excellence Award for Sustainable Design.png" alt="Excellence Award for Sustainable Design" loading="lazy" decoding="async">
+            </div>
+            <div class="news-content">
+              <div class="news-date">November 28, 2024</div>
+              <h3>Excellence Award for Sustainable Design</h3>
+              <p>Our innovative approach to sustainable HVAC solutions has earned recognition from the Middle East Green Building Council for outstanding environmental performance.</p>
+              <a href="news.html" class="news-link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 8v9m0-9h-9"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="news-card slide-in-right">
+            <div class="news-image">
+              <img src="LatestNewsPictures/Strategic Partnership Expansion.png" alt="Strategic Partnership Expansion" loading="lazy" decoding="async">
+            </div>
+            <div class="news-content">
+              <div class="news-date">November 10, 2024</div>
+              <h3>Strategic Partnership Expansion</h3>
+              <p>Announcing new partnerships with leading international manufacturers to bring cutting-edge HVAC technologies to the Middle East market.</p>
+              <a href="news.html" class="news-link">Read More
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 8v9m0-9h-9"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Color Divider -->
+  <div style="width: 100%; height: 4px; background: #004883;"></div>
+
+    <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+           <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo" loading="lazy" decoding="async">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="#projects" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  
+  <script src="script.js"></script>
+  
+  <script>
+    // Entrance Animation Control - DISABLED
+    document.addEventListener('DOMContentLoaded', function() {
+      const entranceAnimation = document.getElementById('entranceAnimation');
+      const body = document.body;
+      
+      // Skip animation - show content immediately
+      if (entranceAnimation) {
+        entranceAnimation.style.display = 'none';
+      }
+      body.classList.remove('entrance-loading');
+      body.classList.add('entrance-complete');
+      
+      // Load dynamic content immediately
+      loadFeaturedProjects();
+      loadCompanyStats();
+    });
+    
+    // ============================================
+    // UNIFIED PROJECTS & KPIs SYSTEM
+    // ============================================
+    
+    // Available projects data (expanded from projects.html)
+    const availableProjectsData = [
+      {
+        id: 'opera-house',
+        title: 'New Administrative Capital Opera House',
+        location: 'Egypt',
+        image: 'opera.jfif',
+        description: 'A landmark cultural facility featuring state-of-the-art HVAC systems for optimal acoustics and climate control.',
+        equipment: 'Air Handling Units, Chillers, Cooling Towers, Package Units',
+        categories: ['government']
+      },
+      {
+        id: 'dar-el-fouad',
+        title: 'Dar El-Fouad Hospital',
+        location: 'Cairo, Egypt',
+        image: 'dar el fouad hospital.jpg',
+        description: 'Specialized healthcare project with high-grade filtration and AHU configurations for sterile environments.',
+        equipment: 'Air Handling Units, Fan Coil Units, Air Outlets & Dampers, VRF Systems',
+        categories: ['healthcare']
+      },
+      {
+        id: 'four-seasons',
+        title: 'Four Seasons Resort',
+        location: 'Red Sea, Egypt',
+        image: 'Four Seasons Resort.jpg',
+        description: 'Coastal resort with central chillers and premium pump systems for reliable distribution.',
+        equipment: 'Chillers, Cooling Towers, Pumps, Air Handling Units',
+        categories: ['transport-tourism']
+      },
+      {
+        id: 'park-rotana',
+        title: 'Park Rotana Hotel',
+        location: 'Abu Dhabi, UAE',
+        image: 'rotana.jpg',
+        description: 'VRF and FCU-based hospitality project ensuring guest comfort and energy efficiency.',
+        equipment: 'VRF Systems, Fan Coil Units, Air Handling Units, Pumps',
+        categories: ['transport-tourism']
+      },
+      {
+        id: 'downtown-complex',
+        title: 'Downtown Commercial Complex',
+        location: 'Dubai, UAE',
+        image: 'https://via.placeholder.com/400x250?text=Commercial+Complex',
+        description: 'Large-scale commercial development with advanced air distribution and AHU systems.',
+        equipment: 'Air Handling Units, Air Outlets & Dampers, VRF Systems, Fan Coil Units',
+        categories: ['financial']
+      },
+      {
+        id: 'manufacturing-facility',
+        title: 'Manufacturing Facility',
+        location: 'Alexandria, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Industrial+Facility',
+        description: 'Industrial installation with cooling towers and robust circulation systems.',
+        equipment: 'Cooling Towers, Pumps, Air Handling Units, Chillers',
+        categories: ['industrial', 'power-electricity']
+      },
+      {
+        id: 'intelligence-hq',
+        title: 'Administrative Capital – Central Intelligence HQ',
+        location: 'New Administrative Capital, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Administrative+Capital',
+        description: 'State-of-the-art intelligence headquarters with advanced HVAC systems for secure operations.',
+        equipment: 'Air Handling Units, Chillers, Cooling Towers, VRF Systems',
+        categories: ['government']
+      },
+      {
+        id: 'prosecution-authority',
+        title: 'Administrative Prosecution Authority',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Administrative+Prosecution',
+        description: 'Government building with comprehensive HVAC solutions for optimal working conditions.',
+        equipment: 'Air Handling Units, VRF Systems, Fan Coil Units',
+        categories: ['government']
+      },
+      {
+        id: 'air-defense-house',
+        title: 'Air Defense House',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Air+Defense+House',
+        description: 'Military facility with robust HVAC systems for critical operations.',
+        equipment: 'Air Handling Units, Chillers, Cooling Towers',
+        categories: ['government']
+      },
+      {
+        id: 'ministry-irrigation',
+        title: 'Ministry of Irrigation',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Ministry+of+Irrigation',
+        description: 'Government ministry building with modern HVAC infrastructure.',
+        equipment: 'Air Handling Units, VRF Systems, Air Outlets & Dampers',
+        categories: ['government']
+      },
+      {
+        id: 'british-university',
+        title: 'British University',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=British+University',
+        description: 'International university campus with modern HVAC systems for academic excellence.',
+        equipment: 'Air Handling Units, Fan Coil Units, VRF Systems, Air Outlets & Dampers',
+        categories: ['religion-education']
+      },
+      {
+        id: 'shell-global',
+        title: 'Shell',
+        location: 'International',
+        image: 'https://via.placeholder.com/400x250?text=Shell+Project',
+        description: 'Global energy company facility with industrial-grade HVAC systems for operational excellence.',
+        equipment: 'Air Handling Units, Chillers, Cooling Towers, Package Units',
+        categories: ['global']
+      },
+      {
+        id: 'dream-park',
+        title: 'Dream Park',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Dream+Park',
+        description: 'Entertainment park with comprehensive HVAC systems for visitor comfort and attraction operations.',
+        equipment: 'Air Handling Units, VRF Systems, Fan Coil Units, Air Outlets & Dampers',
+        categories: ['entertainment-sports']
+      },
+      {
+        id: 'cairo-west-power',
+        title: 'Cairo West Power Station',
+        location: 'Cairo, Egypt',
+        image: 'https://via.placeholder.com/400x250?text=Cairo+West+Power+Station',
+        description: 'Major power generation facility with industrial HVAC systems for critical equipment cooling.',
+        equipment: 'Cooling Towers, Chillers, Air Handling Units, Pumps',
+        categories: ['power-electricity']
+      }
+    ];
+    
+    // ============================================
+    // STATE MANAGEMENT
+    // ============================================
+    
+    let currentCategory = 'Overview';
+    let selectedProject = null;
+    
+    // ============================================
+    // UTILITY FUNCTIONS
+    // ============================================
+    
+    // Animated counter
+    function animateCounter(element, target, duration = 1000) {
+      const start = parseInt(element.textContent) || 0;
+      const increment = (target - start) / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if ((increment > 0 && current >= target) || (increment < 0 && current <= target)) {
+          element.textContent = Math.round(target).toLocaleString();
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.round(current).toLocaleString();
+        }
+      }, 16);
+    }
+    
+    // Get filtered projects (limit to 6 for homepage carousel)
+    function getFilteredProjects() {
+      let filtered;
+      if (currentCategory === 'Overview') {
+        filtered = availableProjectsData;
+      } else {
+        filtered = availableProjectsData.filter(p => 
+          p.categories && p.categories.includes(currentCategory)
+        );
+      }
+      // Limit to 6 projects for homepage carousel
+      return filtered.slice(0, 6);
+    }
+    
+    // ============================================
+    // RENDERING FUNCTIONS
+    // ============================================
+    
+    // Carousel state
+    let currentCarouselIndex = 0;
+    let totalProjects = 0;
+    let isTransitioning = false;
+    
+    // Get visible cards count based on screen size
+    function getVisibleCardsCount() {
+      if (window.innerWidth > 1024) return 3;
+      if (window.innerWidth > 768) return 2;
+      return 1;
+    }
+    
+    // Render projects carousel with infinite loop support
+    function renderProjects() {
+      const track = document.getElementById('unifiedProjectsGrid');
+      if (!track) return;
+      
+      const projects = getFilteredProjects();
+      totalProjects = projects.length;
+      
+      // For infinite loop, duplicate projects at the beginning and end
+      const duplicatedProjects = [...projects, ...projects, ...projects];
+      
+      track.innerHTML = duplicatedProjects.map((project, index) => `
+        <div 
+          class="project-card ${selectedProject && selectedProject.id === project.id ? 'selected' : ''}"
+          data-project-id="${project.id}"
+          data-original-index="${index % totalProjects}"
+          tabindex="0"
+          role="button"
+          aria-pressed="${selectedProject && selectedProject.id === project.id ? 'true' : 'false'}">
+          <div class="project-image">
+            <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async" />
+            <div class="project-title-overlay">
+              <h3>${project.title}</h3>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      
+      // Add event listeners
+      track.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => handleProjectClick(card.dataset.projectId));
+        card.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleProjectClick(card.dataset.projectId);
+          }
+        });
+      });
+      
+      // Set initial position to middle set (second set of projects)
+      setTimeout(() => {
+        const cardWidth = calculateCardWidth();
+        currentCarouselIndex = totalProjects; // Start at middle set
+        track.style.transform = `translateX(-${totalProjects * (cardWidth + 24)}px)`;
+        track.style.transition = 'none'; // No transition for initial positioning
+        setTimeout(() => {
+          track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 50);
+      }, 100);
+      
+      // Add transition end listener for infinite loop
+      track.addEventListener('transitionend', () => {
+        handleInfiniteLoop();
+        isTransitioning = false;
+      });
+      
+      // Render pagination dots
+      renderPaginationDots();
+      
+      // Update carousel position after images load
+      const images = track.querySelectorAll('img');
+      let imagesLoaded = 0;
+      const totalImages = images.length;
+      
+      if (totalImages === 0) {
+        setTimeout(() => updateCarouselPosition(), 200);
+      } else {
+        images.forEach(img => {
+          if (img.complete) {
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+              setTimeout(() => updateCarouselPosition(), 200);
+            }
+          } else {
+            img.addEventListener('load', () => {
+              imagesLoaded++;
+              if (imagesLoaded === totalImages) {
+                setTimeout(() => updateCarouselPosition(), 200);
+              }
+            });
+            img.addEventListener('error', () => {
+              imagesLoaded++;
+              if (imagesLoaded === totalImages) {
+                setTimeout(() => updateCarouselPosition(), 200);
+              }
+            });
+          }
+        });
+      }
+    }
+    
+    // Calculate card width based on viewport
+    function calculateCardWidth() {
+      const visibleCards = getVisibleCardsCount();
+      const viewportWidth = window.innerWidth;
+      const padding = 4 * 16; // 4rem = 64px total (2rem each side)
+      const gap = 24; // 1.5rem = 24px
+      const totalGaps = (visibleCards - 1) * gap;
+      return (viewportWidth - padding - totalGaps) / visibleCards;
+    }
+    
+    // Render pagination dots
+    function renderPaginationDots() {
+      const pagination = document.querySelector('.carousel-pagination');
+      if (!pagination || totalProjects === 0) return;
+      
+      // Create dots for each project
+      const logicalIndex = currentCarouselIndex % totalProjects;
+      
+      pagination.innerHTML = Array.from({ length: totalProjects }, (_, i) => `
+        <button 
+          class="carousel-dot ${i === logicalIndex ? 'active' : ''}"
+          data-index="${i}"
+          aria-label="Go to slide ${i + 1}">
+        </button>
+      `).join('');
+      
+      // Add click listeners to dots
+      pagination.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          if (isTransitioning) return;
+          const logicalIndex = currentCarouselIndex % totalProjects;
+          const difference = index - logicalIndex;
+          
+          // Adjust to middle set and add difference
+          currentCarouselIndex = totalProjects + index;
+          updateCarouselPosition();
+          handleInfiniteLoop();
+        });
+      });
+    }
+    
+    // Update carousel position
+    function updateCarouselPosition() {
+      const track = document.getElementById('unifiedProjectsGrid');
+      if (!track) return;
+      
+      const cards = track.querySelectorAll('.project-card');
+      if (cards.length === 0) return;
+      
+      const cardWidth = calculateCardWidth();
+      const gap = 24; // 1.5rem = 24px
+      const cardWidthWithGap = cardWidth + gap;
+      
+      // Calculate translateX - we start at totalProjects (middle set)
+      const translateX = -(currentCarouselIndex * cardWidthWithGap);
+      track.style.transform = `translateX(${translateX}px)`;
+      
+      // Update pagination dots based on logical position
+      const logicalIndex = currentCarouselIndex % totalProjects;
+      updatePaginationDots(logicalIndex);
+    }
+    
+    // Update pagination dots
+    function updatePaginationDots(activeIndex) {
+      const dots = document.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    // Handle infinite loop - reset position if needed
+    function handleInfiniteLoop() {
+      const track = document.getElementById('unifiedProjectsGrid');
+      if (!track) return;
+      
+      // If we've scrolled past the end, jump to the beginning of the middle set
+      if (currentCarouselIndex >= totalProjects * 2) {
+        currentCarouselIndex = totalProjects;
+        track.style.transition = 'none';
+        const cardWidth = calculateCardWidth();
+        const gap = 24;
+        track.style.transform = `translateX(-${currentCarouselIndex * (cardWidth + gap)}px)`;
+        setTimeout(() => {
+          track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 50);
+      }
+      // If we've scrolled before the start, jump to the end of the middle set
+      else if (currentCarouselIndex < totalProjects) {
+        currentCarouselIndex = totalProjects * 2 - 1;
+        track.style.transition = 'none';
+        const cardWidth = calculateCardWidth();
+        const gap = 24;
+        track.style.transform = `translateX(-${currentCarouselIndex * (cardWidth + gap)}px)`;
+        setTimeout(() => {
+          track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        }, 50);
+      }
+    }
+    
+    // Initialize carousel navigation
+    function initCarouselNavigation() {
+      const prevBtn = document.querySelector('.carousel-nav-btn.carousel-nav-prev, .carousel-nav-prev');
+      const nextBtn = document.querySelector('.carousel-nav-btn.carousel-nav-next, .carousel-nav-next');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isTransitioning) return;
+          isTransitioning = true;
+          currentCarouselIndex--;
+          updateCarouselPosition();
+          renderPaginationDots();
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 500);
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (isTransitioning) return;
+          isTransitioning = true;
+          currentCarouselIndex++;
+          updateCarouselPosition();
+          renderPaginationDots();
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 500);
+        });
+      }
+      
+      // Handle window resize
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          updateCarouselPosition();
+          renderPaginationDots();
+        }, 250);
+      });
+    }
+    
+    
+    // ============================================
+    // EVENT HANDLERS
+    // ============================================
+    
+    // Handle project click
+    function handleProjectClick(projectId) {
+      const project = availableProjectsData.find(p => p.id === projectId);
+      if (!project) return;
+      
+      // Toggle selection
+      if (selectedProject && selectedProject.id === projectId) {
+        selectedProject = null;
+      } else {
+        selectedProject = project;
+      }
+      
+      renderProjects();
+    }
+    
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    
+    function initUnifiedProjectsSystem() {
+      // Check if we're on the right page
+      if (!document.getElementById('unifiedProjectsGrid')) return;
+      
+      // Initial render
+      renderProjects();
+      
+      // Initialize carousel navigation
+      initCarouselNavigation();
+      
+      // Initial carousel position update after a short delay to ensure cards are rendered
+      setTimeout(() => {
+        updateCarouselPosition();
+      }, 100);
+    }
+    
+    // Call initialization after entrance animation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for entrance animation
+      setTimeout(() => {
+        initUnifiedProjectsSystem();
+      }, 2000);
+    });
+    
+    // Also try to initialize immediately if DOM is already loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(() => {
+          initUnifiedProjectsSystem();
+        }, 2000);
+      });
+    } else {
+      // DOM is already loaded
+      setTimeout(() => {
+        initUnifiedProjectsSystem();
+      }, 2000);
+    }
+    
+    // Utility function to restart entrance animation (for testing)
+    // Run this in browser console: restartEntranceAnimation()
+    function restartEntranceAnimation() {
+      const entranceAnimation = document.getElementById('entranceAnimation');
+      const body = document.body;
+      
+      // Reset animation state
+      entranceAnimation.style.display = 'flex';
+      entranceAnimation.classList.remove('fade-out');
+      body.classList.add('entrance-loading');
+      body.classList.remove('entrance-complete');
+      
+      // Hide main content
+      document.querySelectorAll('.page-intro-overlay, header, main, footer').forEach(el => {
+        el.style.opacity = '0';
+      });
+      
+      // Restart the animation timer
+      setTimeout(function() {
+        entranceAnimation.classList.add('fade-out');
+        
+        setTimeout(function() {
+          entranceAnimation.style.display = 'none';
+          body.classList.remove('entrance-loading');
+          body.classList.add('entrance-complete');
+          
+          loadFeaturedProjects();
+          loadCompanyStats();
+        }, 800);
+      }, 1750);
+    }
+    
+    // ============================================
+    // SCROLL REVEAL ANIMATIONS
+    // ============================================
+    
+    function initScrollReveal() {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      
+      if (!revealElements.length) return;
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Staggered delay for smooth reveal
+            const delay = (index % 3) * 100; // Stagger by 100ms for every 3 elements
+            
+            setTimeout(() => {
+              entry.target.classList.add('is-visible');
+              
+              // Add scale animation for cards
+              if (entry.target.classList.contains('project-card') || 
+                  entry.target.classList.contains('product-category-card') ||
+                  entry.target.classList.contains('news-card')) {
+                entry.target.style.transform = 'translateY(0) scale(1)';
+              }
+            }, delay);
+            
+            // Unobserve after animation to prevent retriggering
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      revealElements.forEach((element, index) => {
+        // Add data attribute for stagger delay
+        element.setAttribute('data-reveal-index', index);
+        observer.observe(element);
+      });
+    }
+    
+    // ============================================
+    // INTRO SECTION SCROLL ANIMATIONS
+    // ============================================
+    function initIntroSectionAnimations() {
+      const introSection = document.getElementById('intro-section');
+      const introContent = document.querySelector('.intro-content-left');
+      
+      if (!introSection || !introContent) return;
+      
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Trigger slide-left animation for intro content
+            setTimeout(() => {
+              introContent.classList.add('animate-slide-left');
+            }, 200);
+            
+            // Unobserve after animation to prevent retriggering
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      observer.observe(introSection);
+    }
+    
+    // ============================================
+    // PRODUCT CATEGORIES CAROUSEL - 4 cards initially, toggle to show 3 more
+    // ============================================
+    
+    function initProductCategoriesCarousel() {
+      const track = document.querySelector('.product-categories-track');
+      const leftBtn = document.querySelector('.carousel-nav-left');
+      const rightBtn = document.querySelector('.carousel-nav-right');
+      const cards = document.querySelectorAll('.product-category-card');
+      const group1Cards = document.querySelectorAll('.card-group-1');
+      const group2Cards = document.querySelectorAll('.card-group-2');
+      
+      if (!track) return;
+      
+      let showingGroup1 = true; // Initially showing first 4 cards
+      
+      // Keep navigation arrows visible
+      if (leftBtn) {
+        leftBtn.style.opacity = '1';
+        leftBtn.style.pointerEvents = 'auto';
+      }
+      if (rightBtn) {
+        rightBtn.style.opacity = '1';
+        rightBtn.style.pointerEvents = 'auto';
+      }
+      
+      // Function to show group 1 (first 4 cards)
+      function showGroup1() {
+        showingGroup1 = true;
+        track.classList.remove('show-group-2');
+        
+        // Reset track transform
+        track.style.transform = 'translateX(0)';
+        
+        // CSS handles the crossfade automatically via .show-group-2 class
+        // Just clean up any old classes
+        group1Cards.forEach(card => {
+          card.classList.remove('hidden-cards', 'removed', 'show', 'visible');
+        });
+        group2Cards.forEach(card => {
+          card.classList.remove('hidden-cards', 'removed', 'show', 'visible');
+        });
+        
+        // Update arrow states
+        if (leftBtn) {
+          leftBtn.style.opacity = '0.5';
+          leftBtn.style.pointerEvents = 'none';
+        }
+        if (rightBtn) {
+          rightBtn.style.opacity = '1';
+          rightBtn.style.pointerEvents = 'auto';
+        }
+      }
+      
+      // Function to show group 2 (last 3 cards)
+      function showGroup2() {
+        showingGroup1 = false;
+        track.classList.add('show-group-2');
+        
+        // Reset track transform to ensure cards start from beginning
+        track.style.transform = 'translateX(0)';
+        
+        // CSS handles the crossfade automatically via .show-group-2 class
+        // Just clean up any old classes
+        group1Cards.forEach(card => {
+          card.classList.remove('hidden-cards', 'removed', 'show', 'visible');
+        });
+        group2Cards.forEach(card => {
+          card.classList.remove('hidden-cards', 'removed', 'show', 'visible');
+        });
+        
+        // Update arrow states
+        if (leftBtn) {
+          leftBtn.style.opacity = '1';
+          leftBtn.style.pointerEvents = 'auto';
+        }
+        if (rightBtn) {
+          rightBtn.style.opacity = '0.5';
+          rightBtn.style.pointerEvents = 'none';
+        }
+      }
+      
+      // Left arrow - show previous group (group 1)
+      if (leftBtn) {
+        leftBtn.addEventListener('click', () => {
+          if (!showingGroup1) {
+            showGroup1();
+          }
+        });
+      }
+      
+      // Right arrow - show next group (group 2)
+      if (rightBtn) {
+        rightBtn.addEventListener('click', () => {
+          if (showingGroup1) {
+            showGroup2();
+          }
+        });
+      }
+      
+      // Update arrow states based on current group
+      function updateArrowStates() {
+        if (leftBtn) {
+          // Left arrow disabled when showing group 1 (first group)
+          leftBtn.style.opacity = showingGroup1 ? '0.5' : '1';
+          leftBtn.style.pointerEvents = showingGroup1 ? 'none' : 'auto';
+        }
+        if (rightBtn) {
+          // Right arrow disabled when showing group 2 (last group)
+          rightBtn.style.opacity = !showingGroup1 ? '0.5' : '1';
+          rightBtn.style.pointerEvents = !showingGroup1 ? 'none' : 'auto';
+        }
+      }
+      
+      // Initialize - show group 1
+      showGroup1();
+      updateArrowStates();
+    }
+    
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for entrance animation to complete
+      setTimeout(() => {
+        initScrollReveal();
+        initProductCategoriesCarousel();
+        initIntroSectionAnimations();
+      }, 2500);
+    });
+    
+    // ============================================
+    // PROFESSIONAL PARALLAX SYSTEM
+    // ============================================
+    
+    let parallaxRaf = null;
+    let lastScrollY = 0;
+    let ticking = false;
+    
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth < 768;
+    
+    // Parallax function using requestAnimationFrame
+    function updateParallax() {
+      if (prefersReducedMotion || isMobile) return;
+      
+      const scrollY = window.pageYOffset || window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Hero slideshow parallax (0.5x speed)
+      const heroSlides = document.querySelectorAll('.hvac-slide');
+      heroSlides.forEach(slide => {
+        if (slide.classList.contains('active')) {
+          const rect = slide.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < windowHeight) {
+            const offset = (windowHeight - rect.top) * 0.5;
+            slide.style.transform = `translateY(${offset * 0.5}px) scale(1.02)`;
+            slide.style.willChange = 'transform';
+          }
+        }
+      });
+      
+      // Stats section image parallax (0.7x speed) - smoother, prevent grey background
+      const statsImage = document.querySelector('.stats-hero-image .parallax-image');
+      if (statsImage) {
+        const rect = statsImage.getBoundingClientRect();
+        const container = statsImage.parentElement;
+        if (rect.bottom > 0 && rect.top < windowHeight && container) {
+          const containerRect = container.getBoundingClientRect();
+          // Smoother calculation based on viewport center
+          const viewportCenter = scrollY + windowHeight / 2;
+          const containerCenter = containerRect.top + scrollY + containerRect.height / 2;
+          const distance = (viewportCenter - containerCenter) * 0.7;
+          // Limit movement to prevent gaps (max 8% of container height - very conservative)
+          const maxOffset = containerRect.height * 0.08;
+          const limitedOffset = Math.max(-maxOffset, Math.min(maxOffset, distance));
+          statsImage.style.transform = `translateY(${limitedOffset}px)`;
+          statsImage.style.willChange = 'transform';
+        }
+      }
+      
+      // Parallax for all images with data-parallax-speed attribute
+      const parallaxImages = document.querySelectorAll('[data-parallax-speed]');
+      parallaxImages.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const speed = parseFloat(img.getAttribute('data-parallax-speed')) || 0.5;
+        
+        if (rect.bottom > 0 && rect.top < windowHeight) {
+          const elementTop = rect.top + scrollY;
+          const elementCenter = elementTop + rect.height / 2;
+          const viewportCenter = scrollY + windowHeight / 2;
+          const distance = (viewportCenter - elementCenter) * speed;
+          
+          img.style.transform = `translateY(${distance}px)`;
+          img.style.willChange = 'transform';
+        }
+      });
+      
+      // Project card images parallax - REMOVED for featured projects section
+      
+      // News card images parallax - REMOVED
+      
+      // Product category images parallax - REMOVED
+      // Parallax effect removed from product cards as requested
+      
+      // Section headings parallax - REMOVED for featured projects title and intro heading
+      // Only apply to other section titles (not .preview-title or .intro-heading)
+      // Skip sections with data-no-parallax attribute
+      const sectionHeadings = document.querySelectorAll('.section-title');
+      sectionHeadings.forEach(heading => {
+        // Skip if heading has data-no-parallax or is inside a section with data-no-parallax
+        if (heading.hasAttribute('data-no-parallax') || heading.closest('[data-no-parallax]')) return;
+        const rect = heading.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < windowHeight) {
+          const elementTop = rect.top + scrollY;
+          const elementCenter = elementTop + rect.height / 2;
+          const viewportCenter = scrollY + windowHeight / 2;
+          const distance = (viewportCenter - elementCenter) * 0.3;
+          
+          heading.style.transform = `translateY(${distance}px)`;
+          heading.style.willChange = 'transform';
+        }
+      });
+      
+      // Intro content parallax - REMOVED
+      
+      // Section background parallax (0.3x speed) - skip sections with data-no-parallax
+      const parallaxSections = document.querySelectorAll('.parallax-section:not([data-no-parallax])');
+      parallaxSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < windowHeight) {
+          const offset = (windowHeight - rect.top) * 0.3;
+          section.style.backgroundPosition = `center ${offset * 0.3}px`;
+        }
+      });
+      
+      // Card parallax tilt on scroll - REMOVED for featured projects section
+      
+      lastScrollY = scrollY;
+      ticking = false;
+    }
+    
+    // Optimized scroll handler for smooth scrolling
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    
+    // Initialize parallax system
+    function initParallaxSystem() {
+      // Re-check mobile on init
+      const isMobileNow = window.innerWidth < 768;
+      if (prefersReducedMotion || isMobileNow) {
+        // Disable parallax on mobile/reduced motion
+        return;
+      }
+      
+      // Add parallax classes to sections
+      const ctaSection = document.querySelector('.cta.parallax-section');
+      if (ctaSection) {
+        ctaSection.style.backgroundAttachment = 'fixed';
+      }
+      
+      // Listen for scroll events with passive for better performance
+      // Using passive: true ensures scroll isn't blocked and remains smooth
+      window.addEventListener('scroll', onScroll, { passive: true, capture: false });
+      
+      // Initial update
+      updateParallax();
+      
+      // Optimize scroll performance by using will-change strategically
+      const parallaxElements = document.querySelectorAll('[data-parallax-speed], .parallax-image, .parallax-section');
+      parallaxElements.forEach(el => {
+        el.style.willChange = 'transform';
+        el.style.backfaceVisibility = 'hidden';
+        el.style.perspective = '1000px';
+      });
+      
+      // Handle window resize with debouncing
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          // Re-check if mobile after resize
+          if (window.innerWidth < 768) {
+            // Remove parallax transforms on mobile
+            document.querySelectorAll('[style*="transform"]').forEach(el => {
+              if (el.classList.contains('parallax-image') || 
+                  el.classList.contains('hvac-slide') ||
+                  el.classList.contains('project-card')) {
+                el.style.transform = '';
+                el.style.willChange = '';
+              }
+            });
+            return;
+          }
+          updateParallax();
+        }, 250);
+      }, { passive: true });
+    }
+    
+    // ============================================
+    // STATS COUNTER ANIMATION
+    // ============================================
+    
+    function animateCounter(element, target, suffix = '', duration = 2000) {
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+      const isDecimal = target % 1 !== 0;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          if (isDecimal) {
+            element.textContent = target.toFixed(1) + suffix;
+          } else {
+            // Format numbers with commas
+            const formatted = Math.round(target).toLocaleString();
+            element.textContent = formatted + suffix;
+          }
+          clearInterval(timer);
+        } else {
+          if (isDecimal) {
+            element.textContent = current.toFixed(1) + suffix;
+          } else {
+            const formatted = Math.round(current).toLocaleString();
+            element.textContent = formatted + suffix;
+          }
+        }
+      }, 16);
+    }
+    
+    // Initialize counters when stats section is visible
+    function initStatsCounters() {
+      const statsSection = document.querySelector('.company-stats-section');
+      if (!statsSection) return;
+      
+      const counters = document.querySelectorAll('.counter');
+      let hasAnimated = false;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            
+            counters.forEach(counter => {
+              const target = parseFloat(counter.getAttribute('data-target'));
+              const suffix = counter.getAttribute('data-suffix') || '';
+              animateCounter(counter, target, suffix);
+            });
+            
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+      
+      observer.observe(statsSection);
+    }
+    
+    // Initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        initParallaxSystem();
+        initStatsCounters();
+      }, 2500);
+    });
+  </script>
+</body>
+</html> 

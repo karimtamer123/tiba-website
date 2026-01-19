@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Projects - Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <style>
+    .admin-dashboard {
+      min-height: 100vh;
+      background: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .dashboard-header {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem 0.5rem;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(11, 29, 79, 0.15);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dashboard-title {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .dashboard-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .admin-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .admin-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+    
+    .back-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .logout-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .dashboard-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-info {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .page-info h2 {
+      color: #0B1220;
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+    
+    .page-info p {
+      color: #64748B;
+      margin: 0;
+    }
+    
+    /* Projects Management Styles */
+    .projects-management-section {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .projects-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .projects-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .toolbar-btn {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .toolbar-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11,29,79,.3);
+    }
+    
+    .category-filter-btn {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .category-filter-btn:hover {
+      background: #e2e8f0;
+      color: #0B1220;
+    }
+    
+    .category-filter-btn.active {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border-color: #0B1D4F;
+      color: #ffffff;
+    }
+    
+    .project-categories-filter {
+      margin-bottom: 2rem;
+    }
+    
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card-admin {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .project-card-admin:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #0EA5E9;
+    }
+    
+    .project-image-admin {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-image-admin img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card-admin:hover .project-image-admin img {
+      transform: scale(1.05);
+    }
+    
+    .project-content-admin {
+      padding: 1.5rem;
+    }
+    
+    .project-title-admin {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0B1220;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-location-admin {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .project-description-admin {
+      color: #374151;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    
+    .project-equipment-admin {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-equipment-admin h5 {
+      color: #0B1220;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-equipment-admin p {
+      color: #64748b;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+    
+    .project-categories-admin {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .project-category-tag {
+      background: #eff6ff;
+      color: #0B1D4F;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      border: 1px solid #bfdbfe;
+    }
+    
+    .position-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .small-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .small-btn:hover {
+      background: #e5e7eb;
+    }
+    
+    .small-btn.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #dc2626;
+    }
+    
+    .small-btn.danger:hover {
+      background: #fee2e2;
+    }
+    
+    .no-projects {
+      text-align: center;
+      color: #6B7280;
+      font-size: 1.1rem;
+      margin: 3rem 0;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      width: 95%;
+      max-width: 640px;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-card h3 {
+      margin: 0 0 1rem;
+      font-weight: 600;
+      color: #0B1220;
+    }
+    
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    
+    .modal-grid .full {
+      grid-column: 1 / -1;
+    }
+    
+    .modal-card label {
+      font-size: 0.9rem;
+      color: #374151;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    
+    .modal-card input,
+    .modal-card textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-card input:focus,
+    .modal-card textarea:focus {
+      outline: none;
+      border-color: #0EA5E9;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .modal-card textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .modal-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .category-buttons {
+        flex-direction: column;
+      }
+      
+      .category-filter-btn {
+        text-align: center;
+      }
+      
+      .projects-toolbar {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+      
+      .projects-actions {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-dashboard">
+    <div class="dashboard-header">
+      <div class="header-content">
+        <div>
+          <h1 class="dashboard-title">Edit Projects</h1>
+          <p class="dashboard-subtitle">Manage project listings, categories, and project details</p>
+        </div>
+                 <div class="admin-info">
+           <div class="admin-avatar">A</div>
+           <a href="admin-dashboard.html" class="back-btn">← Back to Dashboard</a>
+           <a href="admin-login.html" class="logout-btn" onclick="logout()">Logout</a>
+         </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="page-info">
+        <h2>Projects Management</h2>
+        <p>Add, edit, and manage projects with categories and equipment details. All changes are automatically saved.</p>
+      </div>
+      
+      <div class="projects-management-section">
+        <div class="projects-toolbar">
+          <h3 style="color: #0B1220; font-size: 1.5rem; font-weight: 600; margin: 0;">Project Actions</h3>
+          <div class="projects-actions">
+            <button class="toolbar-btn" onclick="openProjectModal()">+ New Project</button>
+            <button class="toolbar-btn" onclick="resetDemoProjects()">Reset Demo Projects</button>
+            <button class="toolbar-btn" onclick="syncProjectsToMainPage()">Sync to Main Page</button>
+          </div>
+        </div>
+        
+        <!-- Project Categories Filter -->
+        <div class="project-categories-filter">
+          <h4 style="color: #0B1220; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">Filter by Category</h4>
+          <div class="category-buttons">
+            <button class="category-filter-btn active" data-category="all" onclick="filterProjects('all')">All Projects</button>
+            <button class="category-filter-btn" data-category="government" onclick="filterProjects('government')">Government</button>
+            <button class="category-filter-btn" data-category="healthcare" onclick="filterProjects('healthcare')">Healthcare</button>
+            <button class="category-filter-btn" data-category="global" onclick="filterProjects('global')">Global</button>
+            <button class="category-filter-btn" data-category="religion-education" onclick="filterProjects('religion-education')">Religion & Education</button>
+            <button class="category-filter-btn" data-category="entertainment-sports" onclick="filterProjects('entertainment-sports')">Entertainment & Sports</button>
+            <button class="category-filter-btn" data-category="power-electricity" onclick="filterProjects('power-electricity')">Power & Electricity</button>
+            <button class="category-filter-btn" data-category="financial" onclick="filterProjects('financial')">Financial Institutions</button>
+            <button class="category-filter-btn" data-category="transport-tourism" onclick="filterProjects('transport-tourism')">Transportation & Tourism</button>
+            <button class="category-filter-btn" data-category="industrial" onclick="filterProjects('industrial')">Industrial Buildings</button>
+          </div>
+        </div>
+        
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Projects will be dynamically loaded here -->
+        </div>
+        <div class="no-projects" id="noProjects" style="display: none;">
+          No projects found for the selected category.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Modal -->
+  <div class="modal" id="projectModal">
+    <div class="modal-card">
+      <h3 id="projectModalTitle">Create Project</h3>
+      <div class="modal-grid">
+        <div>
+          <label>Project Title</label>
+          <input type="text" id="projectTitleInput" />
+        </div>
+        <div>
+          <label>Location</label>
+          <input type="text" id="projectLocationInput" placeholder="e.g., Cairo, Egypt" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input type="text" id="projectImageInput" placeholder="e.g., project-image.jpg" />
+        </div>
+        <div>
+          <label>Categories (comma separated)</label>
+          <input type="text" id="projectCategoriesInput" placeholder="e.g., government, healthcare" />
+        </div>
+        <div class="full">
+          <label>Description</label>
+          <textarea id="projectDescriptionInput" placeholder="Project description"></textarea>
+        </div>
+        <div class="full">
+          <label>Equipment Used</label>
+          <textarea id="projectEquipmentInput" placeholder="Air Handling Units, Chillers, Cooling Towers"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="small-btn" onclick="closeProjectModal()">Cancel</button>
+        <button class="small-btn" id="projectSaveBtn" onclick="saveProject()">Save</button>
+        <button class="small-btn danger" id="projectDeleteBtn" style="display:none" onclick="confirmDeleteProject()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check if admin is logged in
+    function checkAdminAuth() {
+      // Temporarily bypass authentication for testing
+      return true;
+      
+      const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+      const loginTime = sessionStorage.getItem('loginTime');
+      const currentTime = Date.now();
+      const sessionDuration = 24 * 60 * 60 * 1000; // 24 hours
+      
+      if (isLoggedIn !== 'true' || (currentTime - loginTime > sessionDuration)) {
+        sessionStorage.removeItem('adminLoggedIn');
+        sessionStorage.removeItem('loginTime');
+        window.location.href = 'admin-login.html';
+        return false;
+      }
+      return true;
+    }
+    
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem('adminLoggedIn');
+      sessionStorage.removeItem('loginTime');
+    }
+    
+    // Projects Management Functions
+    let editingProjectId = null;
+    let currentProjectFilter = 'all';
+    
+    // Persistent projects storage (localStorage)
+    function getProjects() {
+      return JSON.parse(localStorage.getItem('projects') || '[]');
+    }
+    
+    function setProjects(projects) {
+      localStorage.setItem('projects', JSON.stringify(projects));
+    }
+    
+    function resetDemoProjects() {
+      const demo = [
+        // Government Projects
+        {
+          id: 'opera-house',
+          title: 'New Administrative Capital Opera House',
+          location: 'Egypt',
+          image: 'opera.jfif',
+          description: 'A landmark cultural facility featuring state-of-the-art HVAC systems for optimal acoustics and climate control.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, Package Units',
+          categories: ['government', 'entertainment-sports']
+        },
+        {
+          id: 'intelligence-hq',
+          title: 'Administrative Capital – Central Intelligence HQ',
+          location: 'New Administrative Capital, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Intelligence+HQ',
+          description: 'State-of-the-art intelligence headquarters with advanced HVAC systems for secure operations.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, VRF Systems',
+          categories: ['government', 'global']
+        },
+        {
+          id: 'prosecution-authority',
+          title: 'Administrative Prosecution Authority',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Prosecution+Authority',
+          description: 'Government building with comprehensive HVAC solutions for optimal working conditions.',
+          equipment: 'Air Handling Units, VRF Systems, Fan Coil Units',
+          categories: ['government']
+        },
+        {
+          id: 'air-defense-house',
+          title: 'Air Defense House',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Air+Defense+House',
+          description: 'Military facility with robust HVAC systems for critical operations.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers',
+          categories: ['government', 'global']
+        },
+        {
+          id: 'ministry-irrigation',
+          title: 'Ministry of Irrigation',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Ministry+of+Irrigation',
+          description: 'Government ministry building with modern HVAC infrastructure.',
+          equipment: 'Air Handling Units, VRF Systems, Air Outlets & Dampers',
+          categories: ['government']
+        },
+        
+        // Healthcare Projects
+        {
+          id: 'dar-el-fouad',
+          title: 'Dar El-Fouad Hospital',
+          location: 'Cairo, Egypt',
+          image: 'dar el fouad hospital.jpg',
+          description: 'Specialized healthcare project with high-grade filtration and AHU configurations for sterile environments.',
+          equipment: 'Air Handling Units, Fan Coil Units, Air Outlets & Dampers, VRF Systems',
+          categories: ['healthcare']
+        },
+        {
+          id: 'medical-center',
+          title: 'International Medical Center',
+          location: 'Jeddah, Saudi Arabia',
+          image: 'https://via.placeholder.com/400x250?text=Medical+Center',
+          description: 'Advanced medical facility with specialized HVAC systems for surgical suites and patient care.',
+          equipment: 'Air Handling Units, Chillers, VRF Systems, Air Filtration Units',
+          categories: ['healthcare', 'global']
+        },
+        {
+          id: 'dental-clinic',
+          title: 'Premium Dental Clinic',
+          location: 'Dubai, UAE',
+          image: 'https://via.placeholder.com/400x250?text=Dental+Clinic',
+          description: 'Modern dental facility with precision climate control for optimal patient comfort.',
+          equipment: 'VRF Systems, Fan Coil Units, Air Handling Units',
+          categories: ['healthcare']
+        },
+        
+        // Religion & Education Projects
+        {
+          id: 'alexandria-university',
+          title: 'Alexandria University',
+          location: 'Alexandria, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Alexandria+University',
+          description: 'Educational institution with comprehensive HVAC solutions for classrooms and research facilities.',
+          equipment: 'Air Handling Units, Chillers, Fan Coil Units, VRF Systems',
+          categories: ['religion-education']
+        },
+        {
+          id: 'grand-mosque',
+          title: 'Grand Mosque Complex',
+          location: 'Mecca, Saudi Arabia',
+          image: 'https://via.placeholder.com/400x250?text=Grand+Mosque',
+          description: 'Religious complex with large-scale HVAC systems for worship areas and visitor facilities.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, VRF Systems',
+          categories: ['religion-education', 'global']
+        },
+        {
+          id: 'islamic-center',
+          title: 'Islamic Cultural Center',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Islamic+Center',
+          description: 'Cultural and educational center with modern HVAC infrastructure.',
+          equipment: 'Air Handling Units, VRF Systems, Fan Coil Units',
+          categories: ['religion-education']
+        },
+        
+        // Entertainment & Sports Projects
+        {
+          id: 'sports-complex',
+          title: 'Olympic Sports Complex',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Sports+Complex',
+          description: 'Multi-purpose sports facility with advanced climate control for various sporting events.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, VRF Systems',
+          categories: ['entertainment-sports']
+        },
+        {
+          id: 'cinema-complex',
+          title: 'Premium Cinema Complex',
+          location: 'Dubai, UAE',
+          image: 'https://via.placeholder.com/400x250?text=Cinema+Complex',
+          description: 'Modern cinema complex with specialized HVAC for optimal viewing experience.',
+          equipment: 'Air Handling Units, VRF Systems, Air Outlets & Dampers',
+          categories: ['entertainment-sports']
+        },
+        
+        // Power & Electricity Projects
+        {
+          id: 'power-plant',
+          title: 'Thermal Power Plant',
+          location: 'Aswan, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Power+Plant',
+          description: 'Industrial power generation facility with robust HVAC systems for control rooms and equipment.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, Industrial Fans',
+          categories: ['power-electricity', 'industrial']
+        },
+        {
+          id: 'electrical-station',
+          title: 'High Voltage Electrical Station',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Electrical+Station',
+          description: 'Electrical distribution facility with specialized cooling systems.',
+          equipment: 'Cooling Towers, Industrial Fans, Air Handling Units',
+          categories: ['power-electricity']
+        },
+        
+        // Financial Institutions Projects
+        {
+          id: 'downtown-complex',
+          title: 'Downtown Commercial Complex',
+          location: 'Dubai, UAE',
+          image: 'https://via.placeholder.com/400x250?text=Commercial+Complex',
+          description: 'Large-scale commercial development with advanced air distribution and AHU systems.',
+          equipment: 'Air Handling Units, Air Outlets & Dampers, VRF Systems, Fan Coil Units',
+          categories: ['financial']
+        },
+        {
+          id: 'bank-headquarters',
+          title: 'International Bank Headquarters',
+          location: 'Riyadh, Saudi Arabia',
+          image: 'https://via.placeholder.com/400x250?text=Bank+Headquarters',
+          description: 'Modern banking headquarters with sophisticated HVAC systems for optimal working environment.',
+          equipment: 'Air Handling Units, VRF Systems, Fan Coil Units, Air Filtration',
+          categories: ['financial', 'global']
+        },
+        {
+          id: 'investment-center',
+          title: 'Investment Center Tower',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Investment+Center',
+          description: 'High-rise investment center with premium HVAC solutions.',
+          equipment: 'Air Handling Units, Chillers, VRF Systems, Fan Coil Units',
+          categories: ['financial']
+        },
+        
+        // Transportation & Tourism Projects
+        {
+          id: 'four-seasons',
+          title: 'Four Seasons Resort',
+          location: 'Red Sea, Egypt',
+          image: 'Four Seasons Resort.jpg',
+          description: 'Coastal resort with central chillers and premium pump systems for reliable distribution.',
+          equipment: 'Chillers, Cooling Towers, Pumps, Air Handling Units',
+          categories: ['transport-tourism']
+        },
+        {
+          id: 'airport-terminal',
+          title: 'International Airport Terminal',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Airport+Terminal',
+          description: 'Modern airport terminal with large-scale HVAC systems for passenger comfort.',
+          equipment: 'Air Handling Units, Chillers, Cooling Towers, VRF Systems',
+          categories: ['transport-tourism', 'global']
+        },
+        {
+          id: 'hotel-chain',
+          title: 'Luxury Hotel Chain',
+          location: 'Multiple Locations',
+          image: 'https://via.placeholder.com/400x250?text=Luxury+Hotels',
+          description: 'International hotel chain with standardized HVAC solutions across properties.',
+          equipment: 'VRF Systems, Fan Coil Units, Air Handling Units, Chillers',
+          categories: ['transport-tourism', 'global']
+        },
+        
+        // Industrial Buildings Projects
+        {
+          id: 'manufacturing-facility',
+          title: 'Manufacturing Facility',
+          location: 'Alexandria, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Industrial+Facility',
+          description: 'Industrial installation with cooling towers and robust circulation systems.',
+          equipment: 'Cooling Towers, Pumps, Air Handling Units, Chillers',
+          categories: ['industrial']
+        },
+        {
+          id: 'warehouse-complex',
+          title: 'Logistics Warehouse Complex',
+          location: 'Jeddah, Saudi Arabia',
+          image: 'https://via.placeholder.com/400x250?text=Warehouse+Complex',
+          description: 'Large-scale warehouse facility with industrial HVAC systems.',
+          equipment: 'Industrial Fans, Air Handling Units, Cooling Systems',
+          categories: ['industrial']
+        },
+        {
+          id: 'factory-complex',
+          title: 'Automotive Factory Complex',
+          location: 'Cairo, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Automotive+Factory',
+          description: 'Automotive manufacturing facility with specialized HVAC for production areas.',
+          equipment: 'Air Handling Units, Industrial Fans, Cooling Towers, VRF Systems',
+          categories: ['industrial']
+        },
+        
+        // Hospitality Projects (Additional)
+        {
+          id: 'park-rotana',
+          title: 'Park Rotana Hotel',
+          location: 'Abu Dhabi, UAE',
+          image: 'rotana.jpg',
+          description: 'VRF and FCU-based hospitality project ensuring guest comfort and energy efficiency.',
+          equipment: 'VRF Systems, Fan Coil Units, Air Handling Units, Pumps',
+          categories: ['transport-tourism']
+        },
+        {
+          id: 'resort-spa',
+          title: 'Luxury Resort & Spa',
+          location: 'Sharm El Sheikh, Egypt',
+          image: 'https://via.placeholder.com/400x250?text=Resort+Spa',
+          description: 'Premium resort and spa with advanced HVAC for guest comfort and wellness facilities.',
+          equipment: 'Air Handling Units, VRF Systems, Fan Coil Units, Air Filtration',
+          categories: ['transport-tourism']
+        }
+      ];
+      setProjects(demo);
+      renderProjects();
+    }
+    
+    function renderProjects() {
+      const grid = document.getElementById('projectsGrid');
+      const noProjects = document.getElementById('noProjects');
+      const projects = getProjects();
+      
+      // Filter projects based on current filter
+      const filteredProjects = currentProjectFilter === 'all' 
+        ? projects 
+        : projects.filter(project => project.categories.includes(currentProjectFilter));
+      
+      noProjects.style.display = filteredProjects.length === 0 ? 'block' : 'none';
+      if (filteredProjects.length === 0) {
+        grid.innerHTML = '';
+        return;
+      }
+      
+      grid.innerHTML = filteredProjects.map(project => {
+        return `
+          <div class="project-card-admin">
+            <div class="project-image-admin">
+              <img src="${project.image}" alt="${project.title}" />
+            </div>
+            <div class="project-content-admin">
+              <h3 class="project-title-admin">${project.title}</h3>
+              <p class="project-location-admin">${project.location}</p>
+              <p class="project-description-admin">${project.description}</p>
+              <div class="project-equipment-admin">
+                <h5>Equipment Provided:</h5>
+                <p>${project.equipment}</p>
+              </div>
+              <div class="project-categories-admin">
+                ${project.categories.map(cat => `<span class="project-category-tag">${cat}</span>`).join('')}
+              </div>
+              <div class="position-actions">
+                <button class="small-btn" onclick="openProjectModal('${project.id}')">Edit</button>
+                <button class="small-btn danger" onclick="deleteProject('${project.id}')">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+    
+    function filterProjects(category) {
+      currentProjectFilter = category;
+      
+      // Update active button
+      document.querySelectorAll('.category-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === category);
+      });
+      
+      renderProjects();
+    }
+    
+    // Set initial active state for "All Projects" button
+    function setInitialFilterState() {
+      document.querySelectorAll('.category-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === 'all');
+      });
+    }
+    
+    // Project Modal controls
+    function openProjectModal(projectId) {
+      const modal = document.getElementById('projectModal');
+      const titleEl = document.getElementById('projectModalTitle');
+      const delBtn = document.getElementById('projectDeleteBtn');
+      modal.classList.add('show');
+      if (projectId) {
+        const project = getProjects().find(p => p.id === projectId);
+        editingProjectId = project?.id || null;
+        titleEl.textContent = 'Edit Project';
+        delBtn.style.display = 'inline-block';
+        document.getElementById('projectTitleInput').value = project?.title || '';
+        document.getElementById('projectLocationInput').value = project?.location || '';
+        document.getElementById('projectImageInput').value = project?.image || '';
+        document.getElementById('projectCategoriesInput').value = (project?.categories || []).join(', ');
+        document.getElementById('projectDescriptionInput').value = project?.description || '';
+        document.getElementById('projectEquipmentInput').value = project?.equipment || '';
+      } else {
+        editingProjectId = null;
+        titleEl.textContent = 'Create Project';
+        delBtn.style.display = 'none';
+        document.getElementById('projectTitleInput').value = '';
+        document.getElementById('projectLocationInput').value = '';
+        document.getElementById('projectImageInput').value = '';
+        document.getElementById('projectCategoriesInput').value = '';
+        document.getElementById('projectDescriptionInput').value = '';
+        document.getElementById('projectEquipmentInput').value = '';
+      }
+    }
+    
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('show');
+    }
+    
+    function slugify(text) {
+      return text.toString().toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    }
+    
+    function saveProject() {
+      const title = document.getElementById('projectTitleInput').value.trim();
+      if (!title) { alert('Title is required'); return; }
+      const location = document.getElementById('projectLocationInput').value.trim();
+      const image = document.getElementById('projectImageInput').value.trim();
+      const categories = document.getElementById('projectCategoriesInput').value.split(',').map(s => s.trim()).filter(Boolean);
+      const description = document.getElementById('projectDescriptionInput').value.trim();
+      const equipment = document.getElementById('projectEquipmentInput').value.trim();
+      
+      const projects = getProjects();
+      if (editingProjectId) {
+        const idx = projects.findIndex(p => p.id === editingProjectId);
+        if (idx !== -1) {
+          projects[idx] = { ...projects[idx], title, location, image, categories, description, equipment };
+        }
+      } else {
+        const id = slugify(title);
+        if (projects.some(p => p.id === id)) { alert('A project with this title already exists. Choose another title.'); return; }
+        projects.push({ id, title, location, image, categories, description, equipment });
+      }
+      setProjects(projects);
+      closeProjectModal();
+      renderProjects();
+    }
+    
+    function deleteProject(id) {
+      if (!confirm('Delete this project?')) return;
+      const projects = getProjects().filter(p => p.id !== id);
+      setProjects(projects);
+      renderProjects();
+    }
+    
+    function confirmDeleteProject() {
+      if (!editingProjectId) return;
+      deleteProject(editingProjectId);
+      closeProjectModal();
+    }
+    
+    // Sync projects with main projects page
+    function syncProjectsToMainPage() {
+      const projects = getProjects();
+      // Store projects in a format that the main projects page can use
+      localStorage.setItem('mainPageProjects', JSON.stringify(projects));
+      alert('Projects synced to main page successfully!');
+    }
+    
+    // Initialize page
+    if (checkAdminAuth()) {
+      // Seed demo projects once if none exist
+      if (getProjects().length === 0) { resetDemoProjects(); }
+      // Set default filter to show all projects
+      currentProjectFilter = 'all';
+      setInitialFilterState();
+      renderProjects();
+    }
+  </script>
+</body>
+</html>

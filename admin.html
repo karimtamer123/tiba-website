@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal - Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="global-design-system.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div id="admin-app">
+    <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #F8F9FA;">
+      <div style="text-align: center;">
+        <div style="width: 40px; height: 40px; border: 4px solid #E2E8F0; border-top-color: #3B82F6; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem;"></div>
+        <p style="color: #64748B;">Checking authentication...</p>
+      </div>
+    </div>
+    <!-- Layout will be loaded by admin-layout.js after auth -->
+  </div>
+  
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+
+  <!-- Supabase - Load as ES module (requires web server, not file://) -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+    const SUPABASE_URL = "https://wneysqwtpbvedmhzcdoj.supabase.co";
+    const SUPABASE_ANON_KEY = "sb_publishable_FCZEfgKzPjY2JNpAQ_5POg_0pT-JTEw";
+    
+    // Create client and make it globally available
+    window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    console.log('Supabase client created');
+    
+    // Load admin.js as regular script (not module)
+    const script = document.createElement('script');
+    script.src = '/js/admin.js';
+    script.onerror = function() {
+      console.error('Failed to load admin.js');
+      const app = document.getElementById('admin-app');
+      if (app) {
+        app.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #F8F9FA;">
+            <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 500px;">
+              <h2 style="color: #dc3545;">Failed to Load admin.js</h2>
+              <p>Check that the file exists at: js/admin.js</p>
+              <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #3B82F6; color: white; border: none; border-radius: 6px; cursor: pointer;">Reload</button>
+            </div>
+          </div>
+        `;
+      }
+    };
+    document.body.appendChild(script);
+  </script>
+  
+  <!-- Error message if modules don't work (file:// protocol) -->
+  <script>
+    // Show error if script tags didn't execute (file:// protocol issue)
+    setTimeout(function() {
+      const app = document.getElementById('admin-app');
+      if (app && app.innerHTML.includes('Checking authentication')) {
+        app.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #F8F9FA;">
+            <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 600px; margin: 1rem;">
+              <h2 style="color: #dc3545; margin-bottom: 1rem;">ES Modules Not Supported (file:// protocol)</h2>
+              <p style="color: #64748B; margin-bottom: 1rem;">This page requires a web server to run. ES modules don't work when opening HTML files directly.</p>
+              <p style="color: #64748B; margin-bottom: 1.5rem;"><strong>Solution:</strong> Use a local web server:</p>
+              <div style="background: #F3F4F6; padding: 1rem; border-radius: 8px; margin-bottom: 1rem; text-align: left;">
+                <p style="margin: 0.5rem 0;"><strong>Option 1:</strong> Run this command in your project folder:</p>
+                <code style="display: block; background: white; padding: 0.5rem; border-radius: 4px; margin-top: 0.5rem;">python -m http.server 8000</code>
+                <p style="margin: 1rem 0 0.5rem 0;"><strong>Option 2:</strong> Double-click <code>start-server.bat</code> (if available)</p>
+                <p style="margin: 1rem 0 0.5rem 0;">Then open: <code>http://localhost:8000/admin.html</code></p>
+              </div>
+              <button onclick="location.reload()" style="background: #3B82F6; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; width: 100%;">Reload Page</button>
+            </div>
+          </div>
+        `;
+      }
+    }, 2000);
+  </script>
+  <!-- Admin Script (will be loaded dynamically) -->
+</body>
+</html>
+

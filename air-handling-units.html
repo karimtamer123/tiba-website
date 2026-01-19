@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Handling Units | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    /* Brand card hover effects */
+    .brand-selection-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(2,6,23,0.15) !important;
+      border-color: #3B82F6 !important;
+    }
+    
+    .brand-selection-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+      .product-horizontal-card {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      .product-horizontal-card .product-image {
+        height: 250px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Brand Selection Section -->
+  <section id="brand-selection" class="category-page" style="padding: 8rem 0; background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFF 100%);">
+    <div class="container">
+      <!-- Back to Products Button -->
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <a href="products.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>Back to Products</span>
+        </a>
+      </div>
+      <div class="brand-selection-header" style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1rem;">Choose Your Brand</h2>
+        <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Select from our premium air handling unit manufacturers</p>
+      </div>
+      
+      <div class="brand-selection-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto;">
+        <!-- Trox Brand Button -->
+        <div class="brand-selection-card" data-brand="trox" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(2,6,23,0.08); transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;">
+          <div style="width: 100%; height: 280px; background: #F8F9FA; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="Products/Air Handling Units/Trox/Trox Air Handling Units (TKM50 series).png" alt="Trox Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.3s ease;" />
+          </div>
+          <div style="padding: 2rem; text-align: center;">
+            <div class="brand-logo" style="width: 60px; height: 60px; margin: 0 auto 1rem; background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <img src="Countryflags/germanyflag.jpg" alt="Germany Flag" style="height: 40px; width: auto; object-fit: contain;">
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 0.5rem;">Trox</h3>
+            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.5;">German engineering excellence</p>
+          </div>
+        </div>
+
+        <!-- Saiver Brand Button -->
+        <div class="brand-selection-card" data-brand="saiver" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(2,6,23,0.08); transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;">
+          <div style="width: 100%; height: 280px; background: #F8F9FA; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="Products/Air Handling Units/Saiver/Saiver Air Handling Units [A1(E) Series].png" alt="Saiver Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.3s ease;" />
+          </div>
+          <div style="padding: 2rem; text-align: center;">
+            <div class="brand-logo" style="width: 60px; height: 60px; margin: 0 auto 1rem; background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <img src="Countryflags/italyflag.png" alt="Italy Flag" style="height: 40px; width: auto; object-fit: contain;">
+            </div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 0.5rem;">Saiver</h3>
+            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.5;">Italian innovation in energy-saving</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Display Section -->
+  <section id="products" class="category-page" style="padding: 8rem 0; background: #FFFFFF; display: none;">
+    <div class="container">
+      <!-- Back to Selection Button -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <button id="back-to-selection" class="btn btn-secondary" style="margin-bottom: 2rem;">← Back to Brand Selection</button>
+      </div>
+
+      <!-- Trox Product (Hidden by default) -->
+      <div id="trox-product" class="brand-section" style="display: none;">
+        <div class="brand-header" style="text-align: center; margin-bottom: 3rem;">
+          <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1rem;">Trox Air Handling Units</h2>
+          <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">German engineering excellence in modular air handling solutions</p>
+        </div>
+        
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <!-- Product Image -->
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Air Handling Units/Trox/Trox Air Handling Units (TKM50 series).png" alt="Trox TKM50 Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">TKM50 Series Modular Air Handling Units</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Air Flow: 500-50,000 m³/h | Pressure: Up to 2,000 Pa</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    German Engineering Excellence
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Modular Design for Commercial and Industrial Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Operating Temperature Range: -20°C to +60°C
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Class A+ Energy Efficiency
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Versatile Configuration Options
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saiver Product (Hidden by default) -->
+      <div id="saiver-product" class="brand-section" style="display: none;">
+        <div class="brand-header" style="text-align: center; margin-bottom: 3rem;">
+          <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1rem;">Saiver Air Handling Units</h2>
+          <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Italian innovation in energy-saving air handling technology</p>
+        </div>
+        
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <!-- Product Image -->
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Air Handling Units/Saiver/Saiver Air Handling Units [A1(E) Series].png" alt="Saiver A1(E) Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">A1(E) Series Energy-Efficient Air Handling Units</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Air Flow: 300-40,000 m³/h | Pressure: Up to 1,800 Pa</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Italian Innovation and Design Excellence
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Energy-Efficient for Sustainable Climate Control Solutions
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Operating Temperature Range: -15°C to +50°C
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    High Energy Saving Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable and Efficient Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CTA Section -->
+  <section class="cta bg-pattern-4" style="min-height: 50vh; display: flex; align-items: center; padding: 4rem 0; position: relative; overflow: hidden; background: #F8FAFF; background: linear-gradient(180deg, rgba(248, 250, 255, 1) 52%, rgba(201, 212, 255, 1) 100%)!important;">
+    <div class="parallax-layer" data-parallax data-speed="0.06" style="background:
+      radial-gradient(60% 60% at 15% 20%, rgba(14,165,233,.06), transparent 60%),
+      radial-gradient(60% 60% at 85% 80%, rgba(99,102,241,.06), transparent 60%)
+    ;"></div>
+    <div class="container fade-in">
+      <h2 style="color: #14213D;">Need a Custom Air Handling Solution?</h2>
+      <p style="color: #808080;">Our experts can help you select the perfect air handling unit for your specific requirements and ensure optimal performance.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary scale-in">Get Quote</a>
+        <a href="products.html" class="btn btn-secondary scale-in" style="background: #ffffff !important; color: var(--primary-dark-blue) !important; border-color: #ffffff !important;">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <script>
+    // Dynamic background loading
+    function loadDynamicBackground() {
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+      const heroSection = document.querySelector('.hero-section');
+      
+      if (heroSection) {
+        // Remove the bg-pattern-2 class to override the gray background
+        heroSection.classList.remove('bg-pattern-2');
+        
+        // Handle special cases for file naming
+        let imageName = currentPage;
+        if (currentPage === 'air-handling-units') {
+          imageName = 'airhandlingunithtml';
+        } else if (currentPage === 'cooling-towers') {
+          imageName = 'coolingunithtml';
+        } else if (currentPage === 'variable-refrigerant-flow') {
+          imageName = 'VRFhtml';
+        } else {
+          imageName = currentPage + 'html';
+        }
+        
+        // Try to load the background image with different extensions
+        const imageExtensions = ['jpg', 'png'];
+        let imageLoaded = false;
+        
+        for (const ext of imageExtensions) {
+          const img = new Image();
+          img.onload = function() {
+            if (!imageLoaded) {
+              imageLoaded = true;
+              heroSection.style.backgroundImage = `url('background/${imageName}.${ext}')`;
+              heroSection.style.backgroundSize = 'cover';
+              heroSection.style.backgroundPosition = 'center';
+              heroSection.style.backgroundRepeat = 'no-repeat';
+              heroSection.style.backgroundColor = 'transparent';
+              
+              // Ensure content is above the overlay
+              const content = heroSection.querySelector('.hero-content-wrapper');
+              if (content) {
+                content.style.position = 'relative';
+                content.style.zIndex = '2';
+              }
+            }
+          };
+          img.onerror = function() {
+            // Image failed to load, try next extension
+          };
+          img.src = `background/${imageName}.${ext}`;
+        }
+      }
+    }
+
+    // Load background when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadDynamicBackground);
+  </script>
+  
+  <style>
+    /* Force product names to be blue */
+    .product-centered-card h3.product-name {
+      color: #1E40AF !important;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #1E40AF !important;
+      background-clip: unset !important;
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const brandCards = document.querySelectorAll('.brand-selection-card');
+      const brandSelectionSection = document.getElementById('brand-selection');
+      const productsSection = document.getElementById('products');
+      const troxProduct = document.getElementById('trox-product');
+      const saiverProduct = document.getElementById('saiver-product');
+      const backButton = document.getElementById('back-to-selection');
+
+      // Brand selection functionality
+      brandCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const selectedBrand = card.getAttribute('data-brand');
+          
+          // Hide brand selection section
+          brandSelectionSection.style.display = 'none';
+          
+          // Show products section
+          productsSection.style.display = 'block';
+          
+          // Show selected brand product
+          if (selectedBrand === 'trox') {
+            troxProduct.style.display = 'block';
+            saiverProduct.style.display = 'none';
+          } else if (selectedBrand === 'saiver') {
+            saiverProduct.style.display = 'block';
+            troxProduct.style.display = 'none';
+          }
+          
+          // Smooth scroll to products section
+          productsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Hover effects for brand cards
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-4px)';
+          card.style.boxShadow = '0 8px 30px rgba(2,6,23,0.12)';
+          card.style.borderColor = '#0EA5E9';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '0 4px 20px rgba(2,6,23,0.08)';
+          card.style.borderColor = 'transparent';
+        });
+      });
+
+      // Back button functionality
+      backButton.addEventListener('click', () => {
+        productsSection.style.display = 'none';
+        brandSelectionSection.style.display = 'block';
+        brandSelectionSection.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Smooth scroll for "SELECT BRAND" button
+      const selectBrandBtn = document.querySelector('a[href="#brand-selection"]');
+      if (selectBrandBtn) {
+        selectBrandBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          brandSelectionSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

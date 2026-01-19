@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F8F9FA;
+      color: #0B1220;
+      line-height: 1.6;
+    }
+    
+    .admin-login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .login-form-container {
+      background: #ffffff;
+      border: 1px solid rgba(14, 165, 233, 0.1);
+      border-radius: 16px;
+      padding: 3rem;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 8px 32px rgba(14, 165, 233, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .login-logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .login-logo img {
+      width: 80px;
+      height: auto;
+      filter: brightness(0) saturate(100%) invert(15%) sepia(15%) saturate(1000%) hue-rotate(200deg) brightness(0.3) contrast(1);
+    }
+    
+    .login-title {
+      color: #0B1220;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .login-subtitle {
+      color: #64748B;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      color: #0B1220;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      background: #F8F9FA;
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      border-radius: 12px;
+      color: #0B1220;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #0EA5E9;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .form-input::placeholder {
+      color: #94A3B8;
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+      border: none;
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+    }
+    
+    .error-message {
+      color: #EF4444;
+      font-size: 0.875rem;
+      margin-top: 0.75rem;
+      text-align: center;
+      display: none;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+    
+    .back-to-site {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(14, 165, 233, 0.1);
+    }
+    
+    .back-to-site a {
+      color: #64748B;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .back-to-site a:hover {
+      color: #0EA5E9;
+    }
+    
+    .back-to-site a::before {
+      content: '←';
+      font-weight: 600;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .login-form-container {
+        margin: 1rem;
+        padding: 2rem;
+      }
+      
+      .login-title {
+        font-size: 1.75rem;
+      }
+      
+      .login-subtitle {
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .login-form-container {
+        padding: 1.5rem;
+      }
+      
+      .login-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-login-container">
+    <div class="login-form-container">
+      <div class="login-logo">
+        <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo">
+      </div>
+      
+      <h1 class="login-title">Admin Portal</h1>
+      <p class="login-subtitle">Access job applications dashboard</p>
+      
+      <form id="adminLoginForm">
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" id="username" name="username" class="form-input" placeholder="Enter admin username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" name="password" class="form-input" placeholder="Enter password" required>
+        </div>
+        
+        <button type="submit" class="login-btn">Login to Dashboard</button>
+        
+        <div id="errorMessage" class="error-message">
+          Invalid username or password. Please try again.
+        </div>
+      </form>
+      
+      <div class="back-to-site">
+        <a href="index.html">Back to main site</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api-client.js"></script>
+  <script>
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('errorMessage');
+      const submitButton = this.querySelector('button[type="submit"]');
+      
+      // Disable button during login
+      submitButton.disabled = true;
+      submitButton.textContent = 'Logging in...';
+      errorMessage.style.display = 'none';
+      
+      try {
+        console.log('=== LOGIN ATTEMPT ===');
+        console.log('Username:', username);
+        console.log('API Client:', apiClient ? 'Available' : 'Missing');
+        console.log('API Base URL:', apiClient?.baseURL);
+        
+        // Login via API
+        const response = await apiClient.login(username, password);
+        console.log('Login API response:', response);
+        
+        // Check if token was received
+        if (!response || !response.token) {
+          console.error('No token in response:', response);
+          throw new Error('Login failed: No token received from server');
+        }
+        
+        // Check if token was stored
+        const token = localStorage.getItem('adminToken');
+        console.log('Token in localStorage:', token ? 'Yes (' + token.substring(0, 20) + '...)' : 'No');
+        
+        if (!token) {
+          throw new Error('Token was not stored in localStorage');
+        }
+        
+        // Verify token format
+        if (token.length < 10) {
+          throw new Error('Invalid token format');
+        }
+        
+        console.log('Login successful! Waiting a moment before redirect...');
+        
+        // Wait a moment to ensure everything is saved
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
+        // Double-check token is still there
+        const finalCheck = localStorage.getItem('adminToken');
+        console.log('Final token check before redirect:', finalCheck ? 'Yes' : 'No');
+        
+        if (!finalCheck) {
+          throw new Error('Token was lost before redirect');
+        }
+        
+        console.log('Redirecting to admin.html...');
+          // Redirect to admin dashboard
+        window.location.replace('admin.html#/dashboard');
+        
+      } catch (error) {
+        console.error('=== LOGIN ERROR ===');
+        console.error('Error:', error);
+        console.error('Error message:', error.message);
+        console.error('Error stack:', error.stack);
+        
+        // Show user-friendly error
+        let errorText = 'Login failed. ';
+        if (error.message.includes('Cannot connect')) {
+          errorText += 'Cannot connect to server. Make sure backend is running on http://localhost:3000';
+        } else if (error.message.includes('Invalid credentials')) {
+          errorText += 'Invalid username or password.';
+        } else if (error.message.includes('No token')) {
+          errorText += 'Server did not return authentication token.';
+        } else {
+          errorText += error.message || 'Please try again.';
+        }
+        
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = errorText;
+        
+        // Clear the error message after 8 seconds
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 8000);
+      } finally {
+        // Re-enable button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Login to Dashboard';
+      }
+    });
+    
+    // Don't auto-redirect from login page - let user login manually
+    // This prevents redirect loops
+  </script>
+</body>
+</html>

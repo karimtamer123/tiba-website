@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Submitted | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #F8F9FA 0%, #ffffff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .success-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .success-card {
+      background: white;
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid #E5E7EB;
+    }
+    
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      animation: scaleIn 0.5s ease-out;
+    }
+    
+    .success-icon svg {
+      width: 45px;
+      height: 45px;
+      stroke: white;
+      stroke-width: 3;
+      fill: none;
+    }
+    
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .success-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.6s ease-out 0.2s both;
+    }
+    
+    .success-message {
+      font-size: 1.1rem;
+      color: #64748B;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease-out 0.3s both;
+    }
+    
+    .success-details {
+      background: #F8F9FA;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+      animation: fadeInUp 0.6s ease-out 0.4s both;
+    }
+    
+    .success-details h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0F172A;
+      margin-bottom: 1rem;
+    }
+    
+    .success-details p {
+      font-size: 0.95rem;
+      color: #64748B;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease-out 0.5s both;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: #3B82F6;
+      border: 2px solid #3B82F6;
+    }
+    
+    .btn-secondary:hover {
+      background: #3B82F6;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+    }
+    
+    @media (max-width: 640px) {
+      .success-card {
+        padding: 3rem 2rem;
+      }
+      
+      .success-title {
+        font-size: 1.75rem;
+      }
+      
+      .success-message {
+        font-size: 1rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      
+      <h1 class="success-title">Application Submitted Successfully!</h1>
+      
+      <p class="success-message">
+        Thank you for your interest in joining Tiba Manzalawi Group. We have received your application and our HR team will review it carefully.
+      </p>
+      
+      <div class="success-details">
+        <h3>What happens next?</h3>
+        <p>
+          Our recruitment team will review your application within the next 5-7 business days. If your qualifications match our requirements, we'll contact you via email or phone to schedule an interview.
+        </p>
+      </div>
+      
+      <div class="button-group">
+        <a href="index.html" class="btn btn-primary">Go to Homepage</a>
+        <a href="careers.html" class="btn btn-secondary">View More Positions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

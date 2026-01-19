@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Products - Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <style>
+    .admin-dashboard {
+      min-height: 100vh;
+      background: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .dashboard-header {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem 0.5rem;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(11, 29, 79, 0.15);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dashboard-title {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .dashboard-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .admin-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .admin-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+    
+    .back-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .logout-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .dashboard-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-info {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .page-info h2 {
+      color: #0B1220;
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+    
+    .page-info p {
+      color: #64748B;
+      margin: 0;
+    }
+    
+    /* Products Management Styles */
+    .products-management-section {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: #64748B;
+    }
+    
+    .breadcrumb-item {
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .breadcrumb-item:hover {
+      color: #0B1D4F;
+    }
+    
+    .breadcrumb-separator {
+      color: #d1d5db;
+    }
+    
+    .products-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .products-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .toolbar-btn {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border: none;
+      color: #fff;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .toolbar-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11,29,79,.3);
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .product-category-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .product-category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #0EA5E9;
+    }
+    
+    .product-category-image {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .product-category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-category-content {
+      padding: 1.5rem;
+    }
+    
+    .product-category-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0B1220;
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-category-description {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .brands-count {
+      background: #eff6ff;
+      color: #0B1D4F;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      border: 1px solid #bfdbfe;
+      display: inline-block;
+    }
+    
+    .no-products {
+      text-align: center;
+      color: #6B7280;
+      font-size: 1.1rem;
+      margin: 3rem 0;
+    }
+    
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    
+    .modal.show {
+      display: flex;
+    }
+    
+    .modal-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      color: #374151;
+      width: 95%;
+      max-width: 640px;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .modal-card h3 {
+      margin: 0 0 1rem;
+      font-weight: 600;
+      color: #0B1220;
+    }
+    
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    
+    .modal-grid .full {
+      grid-column: 1 / -1;
+    }
+    
+    .modal-card label {
+      font-size: 0.9rem;
+      color: #374151;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    
+    .modal-card input,
+    .modal-card textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-card input:focus,
+    .modal-card textarea:focus {
+      outline: none;
+      border-color: #0EA5E9;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .modal-card textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .modal-actions {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    
+    .small-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 0.4rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .small-btn:hover {
+      background: #e5e7eb;
+    }
+    
+    .small-btn.danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #dc2626;
+    }
+    
+    .small-btn.danger:hover {
+      background: #fee2e2;
+    }
+    
+    @media (max-width: 768px) {
+      .products-toolbar {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+      
+      .products-actions {
+        justify-content: center;
+      }
+      
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-dashboard">
+    <div class="dashboard-header">
+      <div class="header-content">
+        <div>
+          <h1 class="dashboard-title">Edit Products</h1>
+          <p class="dashboard-subtitle">Manage product categories, brands, and individual products</p>
+        </div>
+        <div class="admin-info">
+          <div class="admin-avatar">A</div>
+          <a href="admin-dashboard.html" class="back-btn">← Back to Dashboard</a>
+          <a href="admin-login.html" class="logout-btn" onclick="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="page-info">
+        <h2>Products Management</h2>
+        <p>Manage product categories, brands, and individual products. Click on a category to manage its brands and products.</p>
+      </div>
+      
+      <div class="products-management-section">
+        <div class="breadcrumb" id="breadcrumb">
+          <span class="breadcrumb-item active" onclick="showCategories()">Product Categories</span>
+        </div>
+        
+        <div class="products-toolbar">
+          <h3 style="color: #0B1220; font-size: 1.5rem; font-weight: 600; margin: 0;">Product Actions</h3>
+          <div class="products-actions">
+            <button class="toolbar-btn" onclick="openCategoryModal()">+ New Category</button>
+            <button class="toolbar-btn" onclick="resetDemoProducts()">Reset Demo Products</button>
+            <button class="toolbar-btn" onclick="syncProductsToMainPage()">Sync to Main Page</button>
+          </div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+          <!-- Product categories will be dynamically loaded here -->
+        </div>
+        <div class="no-products" id="noProducts" style="display: none;">
+          No product categories found.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Modal -->
+  <div class="modal" id="categoryModal">
+    <div class="modal-card">
+      <h3 id="categoryModalTitle">Create Product Category</h3>
+      <div class="modal-grid">
+        <div>
+          <label>Category Name</label>
+          <input type="text" id="categoryNameInput" />
+        </div>
+        <div>
+          <label>Category ID (URL friendly)</label>
+          <input type="text" id="categoryIdInput" placeholder="e.g., air-handling-units" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input type="text" id="categoryImageInput" placeholder="e.g., category-image.jpg" />
+        </div>
+        <div>
+          <label>Description</label>
+          <input type="text" id="categoryDescriptionInput" placeholder="e.g., Central air treatment systems" />
+        </div>
+        <div class="full">
+          <label>Long Description</label>
+          <textarea id="categoryLongDescriptionInput" placeholder="Detailed description of the category"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="small-btn" onclick="closeCategoryModal()">Cancel</button>
+        <button class="small-btn" id="categorySaveBtn" onclick="saveCategory()">Save</button>
+        <button class="small-btn danger" id="categoryDeleteBtn" style="display:none" onclick="confirmDeleteCategory()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Modal -->
+  <div class="modal" id="brandModal">
+    <div class="modal-card">
+      <h3 id="brandModalTitle">Create Brand</h3>
+      <div class="modal-grid">
+        <div>
+          <label>Brand Name</label>
+          <input type="text" id="brandNameInput" />
+        </div>
+        <div>
+          <label>Brand ID (URL friendly)</label>
+          <input type="text" id="brandIdInput" placeholder="e.g., trox" />
+        </div>
+        <div>
+          <label>Country Flag</label>
+          <input type="text" id="brandFlagInput" placeholder="e.g., Countryflags/germanyflag.jpg" />
+        </div>
+        <div>
+          <label>Description</label>
+          <input type="text" id="brandDescriptionInput" placeholder="e.g., German engineering excellence" />
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="small-btn" onclick="closeBrandModal()">Cancel</button>
+        <button class="small-btn" id="brandSaveBtn" onclick="saveBrand()">Save</button>
+        <button class="small-btn danger" id="brandDeleteBtn" style="display:none" onclick="confirmDeleteBrand()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal" id="productModal">
+    <div class="modal-card">
+      <h3 id="productModalTitle">Create Product</h3>
+      <div class="modal-grid">
+        <div>
+          <label>Product Name</label>
+          <input type="text" id="productNameInput" />
+        </div>
+        <div>
+          <label>Product ID (URL friendly)</label>
+          <input type="text" id="productIdInput" placeholder="e.g., trox-air-handling-units" />
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input type="text" id="productImageInput" placeholder="e.g., Products/Air Handling Units/Trox/product.png" />
+        </div>
+        <div>
+          <label>Model Number</label>
+          <input type="text" id="productModelInput" placeholder="e.g., TKM50 series" />
+        </div>
+        <div class="full">
+          <label>Description</label>
+          <textarea id="productDescriptionInput" placeholder="Product description"></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="small-btn" onclick="closeProductModal()">Cancel</button>
+        <button class="small-btn" id="productSaveBtn" onclick="saveProduct()">Save</button>
+        <button class="small-btn danger" id="productDeleteBtn" style="display:none" onclick="confirmDeleteProduct()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Check if admin is logged in
+    function checkAdminAuth() {
+      // Temporarily bypass authentication for testing
+      return true;
+      
+      const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+      const loginTime = sessionStorage.getItem('loginTime');
+      const currentTime = Date.now();
+      const sessionDuration = 24 * 60 * 60 * 1000; // 24 hours
+      
+      if (isLoggedIn !== 'true' || (currentTime - loginTime > sessionDuration)) {
+        sessionStorage.removeItem('adminLoggedIn');
+        sessionStorage.removeItem('loginTime');
+        window.location.href = 'admin-login.html';
+        return false;
+      }
+      return true;
+    }
+    
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem('adminLoggedIn');
+      sessionStorage.removeItem('loginTime');
+    }
+    
+    // Products Management Functions
+    let currentView = 'categories'; // categories, brands, products
+    let currentCategory = null;
+    let currentBrand = null;
+    let editingCategoryId = null;
+    let editingBrandId = null;
+    let editingProductId = null;
+    
+    // Persistent storage (localStorage)
+    function getProductCategories() {
+      return JSON.parse(localStorage.getItem('productCategories') || '[]');
+    }
+    
+    function setProductCategories(categories) {
+      localStorage.setItem('productCategories', JSON.stringify(categories));
+    }
+    
+    function getBrands(categoryId) {
+      const categories = getProductCategories();
+      const category = categories.find(c => c.id === categoryId);
+      return category ? category.brands || [] : [];
+    }
+    
+    function setBrands(categoryId, brands) {
+      const categories = getProductCategories();
+      const categoryIndex = categories.findIndex(c => c.id === categoryId);
+      if (categoryIndex !== -1) {
+        categories[categoryIndex].brands = brands;
+        setProductCategories(categories);
+      }
+    }
+    
+    function getProducts(categoryId, brandId) {
+      const brands = getBrands(categoryId);
+      const brand = brands.find(b => b.id === brandId);
+      return brand ? brand.products || [] : [];
+    }
+    
+    function setProducts(categoryId, brandId, products) {
+      const brands = getBrands(categoryId);
+      const brandIndex = brands.findIndex(b => b.id === brandId);
+      if (brandIndex !== -1) {
+        brands[brandIndex].products = products;
+        setBrands(categoryId, brands);
+      }
+    }
+    
+    function resetDemoProducts() {
+      const demo = [
+        {
+          id: 'air-handling-units',
+          name: 'Air Handling Units',
+          image: 'Products/Air Handling Units/Saiver/Saiver Air Handling Units [A1(E) Series].png',
+          description: 'Central air treatment systems',
+          longDescription: 'Premium air treatment systems for optimal indoor climate control',
+          brands: [
+            {
+              id: 'trox',
+              name: 'Trox',
+              flag: 'Countryflags/germanyflag.jpg',
+              description: 'German engineering excellence in modular air handling solutions',
+              products: [
+                {
+                  id: 'trox-air-handling-units',
+                  name: 'Trox Air Handling Units',
+                  image: 'Products/Air Handling Units/Trox/Trox Air Handling Units (TKM50 series).png',
+                  model: 'TKM50 series',
+                  description: 'High-performance modular air handling units'
+                }
+              ]
+            },
+            {
+              id: 'saiver',
+              name: 'Saiver',
+              flag: 'Countryflags/italyflag.png',
+              description: 'Italian innovation in energy-saving air handling technology',
+              products: [
+                {
+                  id: 'saiver-air-handling-units',
+                  name: 'Saiver Air Handling Units',
+                  image: 'Products/Air Handling Units/Saiver/Saiver Air Handling Units [A1(E) Series].png',
+                  model: 'A1(E) Series',
+                  description: 'Energy-efficient air handling solutions'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'cooling-towers',
+          name: 'Cooling Towers',
+          image: 'Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AT).png',
+          description: 'Industrial cooling solutions',
+          longDescription: 'Advanced cooling tower systems for industrial applications',
+          brands: [
+            {
+              id: 'evapco',
+              name: 'Evapco',
+              flag: 'Countryflags/usaflag.png',
+              description: 'American cooling tower technology',
+              products: [
+                {
+                  id: 'evapco-cooling-towers',
+                  name: 'Evapco Open Type Cooling Towers',
+                  image: 'Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AT).png',
+                  model: 'AT Series',
+                  description: 'Open type cooling towers for industrial use'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'variable-refrigerant-flow',
+          name: 'Variable Refrigerant Flow',
+          image: 'Products/Variable Refrigerant Flow/Samsung/Samsung Variable Refrigerant Flow (VRF) Systems.png',
+          description: 'VRF systems for efficiency',
+          longDescription: 'Variable refrigerant flow systems for optimal energy efficiency',
+          brands: [
+            {
+              id: 'samsung',
+              name: 'Samsung',
+              flag: 'Countryflags/southkoreaflag.png',
+              description: 'Korean VRF technology',
+              products: [
+                {
+                  id: 'samsung-vrf',
+                  name: 'Samsung Variable Refrigerant Flow Systems',
+                  image: 'Products/Variable Refrigerant Flow/Samsung/Samsung Variable Refrigerant Flow (VRF) Systems.png',
+                  model: 'VRF Series',
+                  description: 'Advanced VRF systems for commercial applications'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'fan-coil-units',
+          name: 'Fan Coil Units',
+          image: 'Products/Fan Coil Units/Trox/Trox Fan Coil Units (DCU series).png',
+          description: 'Individual room climate control',
+          longDescription: 'Fan coil units for precise room temperature control',
+          brands: [
+            {
+              id: 'trox',
+              name: 'Trox',
+              flag: 'Countryflags/germanyflag.jpg',
+              description: 'German fan coil technology',
+              products: [
+                {
+                  id: 'trox-fan-coil-units',
+                  name: 'Trox Fan Coil Units',
+                  image: 'Products/Fan Coil Units/Trox/Trox Fan Coil Units (DCU series).png',
+                  model: 'DCU series',
+                  description: 'High-quality fan coil units'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'chillers',
+          name: 'Chillers',
+          image: 'Products/Chillers/DB/Dunham-Bush AIR-COOLED Scroll Chillers (ACDS).png',
+          description: 'Central cooling systems',
+          longDescription: 'Centralized cooling systems for large facilities',
+          brands: [
+            {
+              id: 'dunham-bush',
+              name: 'Dunham-Bush',
+              flag: 'Countryflags/usaflag.png',
+              description: 'American chiller technology',
+              products: [
+                {
+                  id: 'dunham-bush-chillers',
+                  name: 'Dunham-Bush AIR-COOLED Scroll Chillers',
+                  image: 'Products/Chillers/DB/Dunham-Bush AIR-COOLED Scroll Chillers (ACDS).png',
+                  model: 'ACDS Series',
+                  description: 'Air-cooled scroll chillers for commercial use'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 'pumps',
+          name: 'Pumps',
+          image: 'Products/Pumps/Xylem-Lowara/lowara.png',
+          description: 'Water circulation systems',
+          longDescription: 'High-efficiency pump systems for water circulation',
+          brands: [
+            {
+              id: 'xylem-lowara',
+              name: 'Xylem-Lowara',
+              flag: 'Countryflags/italyflag.png',
+              description: 'Italian pump technology',
+              products: [
+                {
+                  id: 'xylem-lowara-pumps',
+                  name: 'Xylem-Lowara Pumps',
+                  image: 'Products/Pumps/Xylem-Lowara/lowara.png',
+                  model: 'Various Series',
+                  description: 'High-efficiency water circulation pumps'
+                }
+              ]
+            }
+          ]
+        }
+      ];
+      setProductCategories(demo);
+      renderCurrentView();
+    }
+    
+    function renderCurrentView() {
+      const grid = document.getElementById('productsGrid');
+      const noProducts = document.getElementById('noProducts');
+      
+      if (currentView === 'categories') {
+        renderCategories();
+        updateToolbarForCategories();
+      } else if (currentView === 'brands') {
+        renderBrands();
+        updateToolbarForBrands();
+      } else if (currentView === 'products') {
+        renderProducts();
+        updateToolbarForProducts();
+      }
+    }
+    
+    function updateToolbarForCategories() {
+      const actionsDiv = document.querySelector('.products-actions');
+      actionsDiv.innerHTML = `
+        <button class="toolbar-btn" onclick="openCategoryModal()">+ New Category</button>
+        <button class="toolbar-btn" onclick="openBrandModal()">+ New Brand</button>
+        <button class="toolbar-btn" onclick="resetDemoProducts()">Reset Demo Products</button>
+        <button class="toolbar-btn" onclick="syncProductsToMainPage()">Sync to Main Page</button>
+      `;
+    }
+    
+    function updateToolbarForBrands() {
+      const actionsDiv = document.querySelector('.products-actions');
+      actionsDiv.innerHTML = `
+        <button class="toolbar-btn" onclick="openBrandModal()">+ New Brand</button>
+        <button class="toolbar-btn" onclick="resetDemoProducts()">Reset Demo Products</button>
+        <button class="toolbar-btn" onclick="syncProductsToMainPage()">Sync to Main Page</button>
+      `;
+    }
+    
+    function updateToolbarForProducts() {
+      const actionsDiv = document.querySelector('.products-actions');
+      actionsDiv.innerHTML = `
+        <button class="toolbar-btn" onclick="openProductModal()">+ New Product</button>
+        <button class="toolbar-btn" onclick="resetDemoProducts()">Reset Demo Products</button>
+        <button class="toolbar-btn" onclick="syncProductsToMainPage()">Sync to Main Page</button>
+      `;
+    }
+    
+    function renderCategories() {
+      const grid = document.getElementById('productsGrid');
+      const noProducts = document.getElementById('noProducts');
+      const categories = getProductCategories();
+      
+      noProducts.style.display = categories.length === 0 ? 'block' : 'none';
+      if (categories.length === 0) {
+        grid.innerHTML = '';
+        return;
+      }
+      
+      grid.innerHTML = categories.map(category => {
+        const brandsCount = category.brands ? category.brands.length : 0;
+        return `
+          <div class="product-category-card">
+            <div class="product-category-image" onclick="showBrands('${category.id}')" style="cursor: pointer;">
+              <img src="${category.image}" alt="${category.name}" onerror="this.style.display='none'"/>
+            </div>
+            <div class="product-category-content">
+              <h3 class="product-category-title" onclick="showBrands('${category.id}')" style="cursor: pointer;">${category.name}</h3>
+              <p class="product-category-description">${category.description}</p>
+              <span class="brands-count">${brandsCount} brand${brandsCount !== 1 ? 's' : ''}</span>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <button class="small-btn" onclick="openBrandModal(null, '${category.id}')">+ Add Brand</button>
+                <button class="small-btn" onclick="openCategoryModal('${category.id}')">Edit Category</button>
+                <button class="small-btn danger" onclick="deleteCategory('${category.id}')">Delete Category</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      updateBreadcrumb(['Product Categories']);
+    }
+    
+    function renderBrands() {
+      const grid = document.getElementById('productsGrid');
+      const noProducts = document.getElementById('noProducts');
+      const brands = getBrands(currentCategory);
+      
+      noProducts.style.display = brands.length === 0 ? 'block' : 'none';
+      if (brands.length === 0) {
+        grid.innerHTML = '';
+        return;
+      }
+      
+      grid.innerHTML = brands.map(brand => {
+        const productsCount = brand.products ? brand.products.length : 0;
+        return `
+          <div class="product-category-card">
+            <div class="product-category-image" onclick="showProducts('${currentCategory}', '${brand.id}')" style="cursor: pointer;">
+              <img src="${brand.flag}" alt="${brand.name}" onerror="this.style.display='none'"/>
+            </div>
+            <div class="product-category-content">
+              <h3 class="product-category-title" onclick="showProducts('${currentCategory}', '${brand.id}')" style="cursor: pointer;">${brand.name}</h3>
+              <p class="product-category-description">${brand.description}</p>
+              <span class="brands-count">${productsCount} product${productsCount !== 1 ? 's' : ''}</span>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <button class="small-btn" onclick="openProductModal(null, '${currentCategory}', '${brand.id}')">+ Add Product</button>
+                <button class="small-btn" onclick="openBrandModal('${brand.id}')">Edit Brand</button>
+                <button class="small-btn danger" onclick="deleteBrand('${brand.id}')">Delete Brand</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      const category = getProductCategories().find(c => c.id === currentCategory);
+      updateBreadcrumb(['Product Categories', category ? category.name : 'Unknown']);
+    }
+    
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const noProducts = document.getElementById('noProducts');
+      const products = getProducts(currentCategory, currentBrand);
+      
+      noProducts.style.display = products.length === 0 ? 'block' : 'none';
+      if (products.length === 0) {
+        grid.innerHTML = '';
+        return;
+      }
+      
+      grid.innerHTML = products.map(product => {
+        return `
+          <div class="product-category-card">
+            <div class="product-category-image">
+              <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'"/>
+            </div>
+            <div class="product-category-content">
+              <h3 class="product-category-title">${product.name}</h3>
+              <p class="product-category-description">${product.model}</p>
+              <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem;">${product.description}</p>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <button class="small-btn" onclick="openProductModal('${product.id}')">Edit</button>
+                <button class="small-btn danger" onclick="deleteProduct('${product.id}')">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      
+      const category = getProductCategories().find(c => c.id === currentCategory);
+      const brand = getBrands(currentCategory).find(b => b.id === currentBrand);
+      updateBreadcrumb(['Product Categories', category ? category.name : 'Unknown', brand ? brand.name : 'Unknown']);
+    }
+    
+    function updateBreadcrumb(items) {
+      const breadcrumb = document.getElementById('breadcrumb');
+      breadcrumb.innerHTML = items.map((item, index) => {
+        if (index === items.length - 1) {
+          return `<span class="breadcrumb-item active">${item}</span>`;
+        } else {
+          return `<span class="breadcrumb-item" onclick="navigateBreadcrumb(${index})">${item}</span><span class="breadcrumb-separator">/</span>`;
+        }
+      }).join('');
+    }
+    
+    function navigateBreadcrumb(index) {
+      if (index === 0) {
+        showCategories();
+      } else if (index === 1) {
+        showBrands(currentCategory);
+      }
+    }
+    
+    function showCategories() {
+      currentView = 'categories';
+      currentCategory = null;
+      currentBrand = null;
+      renderCurrentView();
+    }
+    
+    function showBrands(categoryId) {
+      currentView = 'brands';
+      currentCategory = categoryId;
+      currentBrand = null;
+      renderCurrentView();
+    }
+    
+    function showProducts(categoryId, brandId) {
+      currentView = 'products';
+      currentCategory = categoryId;
+      currentBrand = brandId;
+      renderCurrentView();
+    }
+    
+    // Category Modal controls
+    function openCategoryModal(categoryId) {
+      const modal = document.getElementById('categoryModal');
+      const titleEl = document.getElementById('categoryModalTitle');
+      const delBtn = document.getElementById('categoryDeleteBtn');
+      modal.classList.add('show');
+      
+      if (categoryId) {
+        const category = getProductCategories().find(c => c.id === categoryId);
+        editingCategoryId = category?.id || null;
+        titleEl.textContent = 'Edit Product Category';
+        delBtn.style.display = 'inline-block';
+        document.getElementById('categoryNameInput').value = category?.name || '';
+        document.getElementById('categoryIdInput').value = category?.id || '';
+        document.getElementById('categoryImageInput').value = category?.image || '';
+        document.getElementById('categoryDescriptionInput').value = category?.description || '';
+        document.getElementById('categoryLongDescriptionInput').value = category?.longDescription || '';
+      } else {
+        editingCategoryId = null;
+        titleEl.textContent = 'Create Product Category';
+        delBtn.style.display = 'none';
+        document.getElementById('categoryNameInput').value = '';
+        document.getElementById('categoryIdInput').value = '';
+        document.getElementById('categoryImageInput').value = '';
+        document.getElementById('categoryDescriptionInput').value = '';
+        document.getElementById('categoryLongDescriptionInput').value = '';
+      }
+    }
+    
+    function closeCategoryModal() {
+      document.getElementById('categoryModal').classList.remove('show');
+    }
+    
+    function saveCategory() {
+      const name = document.getElementById('categoryNameInput').value.trim();
+      if (!name) { alert('Category name is required'); return; }
+      
+      const id = document.getElementById('categoryIdInput').value.trim() || slugify(name);
+      const image = document.getElementById('categoryImageInput').value.trim();
+      const description = document.getElementById('categoryDescriptionInput').value.trim();
+      const longDescription = document.getElementById('categoryLongDescriptionInput').value.trim();
+      
+      const categories = getProductCategories();
+      
+      if (editingCategoryId) {
+        const idx = categories.findIndex(c => c.id === editingCategoryId);
+        if (idx !== -1) {
+          categories[idx] = { ...categories[idx], name, id, image, description, longDescription };
+        }
+      } else {
+        if (categories.some(c => c.id === id)) { alert('A category with this ID already exists.'); return; }
+        categories.push({ id, name, image, description, longDescription, brands: [] });
+      }
+      
+      setProductCategories(categories);
+      closeCategoryModal();
+      renderCurrentView();
+    }
+    
+    function deleteCategory(id) {
+      if (!confirm('Delete this category and all its brands and products?')) return;
+      const categories = getProductCategories().filter(c => c.id !== id);
+      setProductCategories(categories);
+      renderCurrentView();
+    }
+    
+    function confirmDeleteCategory() {
+      if (!editingCategoryId) return;
+      deleteCategory(editingCategoryId);
+      closeCategoryModal();
+    }
+    
+    // Brand Modal controls
+    function openBrandModal(brandId, categoryId) {
+      const modal = document.getElementById('brandModal');
+      const titleEl = document.getElementById('brandModalTitle');
+      const delBtn = document.getElementById('brandDeleteBtn');
+      modal.classList.add('show');
+      
+      // If categoryId is provided, use it instead of current one
+      const targetCategory = categoryId || currentCategory;
+      
+      if (brandId) {
+        const brands = getBrands(targetCategory);
+        const brand = brands.find(b => b.id === brandId);
+        editingBrandId = brand?.id || null;
+        titleEl.textContent = 'Edit Brand';
+        delBtn.style.display = 'inline-block';
+        document.getElementById('brandNameInput').value = brand?.name || '';
+        document.getElementById('brandIdInput').value = brand?.id || '';
+        document.getElementById('brandFlagInput').value = brand?.flag || '';
+        document.getElementById('brandDescriptionInput').value = brand?.description || '';
+      } else {
+        editingBrandId = null;
+        titleEl.textContent = 'Create Brand';
+        delBtn.style.display = 'none';
+        document.getElementById('brandNameInput').value = '';
+        document.getElementById('brandIdInput').value = '';
+        document.getElementById('brandFlagInput').value = '';
+        document.getElementById('brandDescriptionInput').value = '';
+      }
+      
+      // Store the target category for saving
+      window.targetCategoryForBrand = targetCategory;
+    }
+    
+    function closeBrandModal() {
+      document.getElementById('brandModal').classList.remove('show');
+    }
+    
+    function saveBrand() {
+      const name = document.getElementById('brandNameInput').value.trim();
+      if (!name) { alert('Brand name is required'); return; }
+      
+      const id = document.getElementById('brandIdInput').value.trim() || slugify(name);
+      const flag = document.getElementById('brandFlagInput').value.trim();
+      const description = document.getElementById('brandDescriptionInput').value.trim();
+      
+      // Use stored target category, or fall back to current one
+      const targetCategory = window.targetCategoryForBrand || currentCategory;
+      
+      const brands = getBrands(targetCategory);
+      
+      if (editingBrandId) {
+        const idx = brands.findIndex(b => b.id === editingBrandId);
+        if (idx !== -1) {
+          brands[idx] = { ...brands[idx], name, id, flag, description };
+        }
+      } else {
+        if (brands.some(b => b.id === id)) { alert('A brand with this ID already exists.'); return; }
+        brands.push({ id, name, flag, description, products: [] });
+      }
+      
+      setBrands(targetCategory, brands);
+      closeBrandModal();
+      
+      // Clear stored target value
+      window.targetCategoryForBrand = null;
+      
+      renderCurrentView();
+    }
+    
+    function deleteBrand(id) {
+      if (!confirm('Delete this brand and all its products?')) return;
+      const brands = getBrands(currentCategory).filter(b => b.id !== id);
+      setBrands(currentCategory, brands);
+      renderCurrentView();
+    }
+    
+    function confirmDeleteBrand() {
+      if (!editingBrandId) return;
+      deleteBrand(editingBrandId);
+      closeBrandModal();
+    }
+    
+    // Product Modal controls
+    function openProductModal(productId, categoryId, brandId) {
+      const modal = document.getElementById('productModal');
+      const titleEl = document.getElementById('productModalTitle');
+      const delBtn = document.getElementById('productDeleteBtn');
+      modal.classList.add('show');
+      
+      // If categoryId and brandId are provided, use them instead of current ones
+      const targetCategory = categoryId || currentCategory;
+      const targetBrand = brandId || currentBrand;
+      
+      if (productId) {
+        const products = getProducts(targetCategory, targetBrand);
+        const product = products.find(p => p.id === productId);
+        editingProductId = product?.id || null;
+        titleEl.textContent = 'Edit Product';
+        delBtn.style.display = 'inline-block';
+        document.getElementById('productNameInput').value = product?.name || '';
+        document.getElementById('productIdInput').value = product?.id || '';
+        document.getElementById('productImageInput').value = product?.image || '';
+        document.getElementById('productModelInput').value = product?.model || '';
+        document.getElementById('productDescriptionInput').value = product?.description || '';
+      } else {
+        editingProductId = null;
+        titleEl.textContent = 'Create Product';
+        delBtn.style.display = 'none';
+        document.getElementById('productNameInput').value = '';
+        document.getElementById('productIdInput').value = '';
+        document.getElementById('productImageInput').value = '';
+        document.getElementById('productModelInput').value = '';
+        document.getElementById('productDescriptionInput').value = '';
+      }
+      
+      // Store the target category and brand for saving
+      window.targetCategoryForProduct = targetCategory;
+      window.targetBrandForProduct = targetBrand;
+    }
+    
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('show');
+    }
+    
+    function saveProduct() {
+      const name = document.getElementById('productNameInput').value.trim();
+      if (!name) { alert('Product name is required'); return; }
+      
+      const id = document.getElementById('productIdInput').value.trim() || slugify(name);
+      const image = document.getElementById('productImageInput').value.trim();
+      const model = document.getElementById('productModelInput').value.trim();
+      const description = document.getElementById('productDescriptionInput').value.trim();
+      
+      // Use stored target category and brand, or fall back to current ones
+      const targetCategory = window.targetCategoryForProduct || currentCategory;
+      const targetBrand = window.targetBrandForProduct || currentBrand;
+      
+      const products = getProducts(targetCategory, targetBrand);
+      
+      if (editingProductId) {
+        const idx = products.findIndex(p => p.id === editingProductId);
+        if (idx !== -1) {
+          products[idx] = { ...products[idx], name, id, image, model, description };
+        }
+      } else {
+        if (products.some(p => p.id === id)) { alert('A product with this ID already exists.'); return; }
+        products.push({ id, name, image, model, description });
+      }
+      
+      setProducts(targetCategory, targetBrand, products);
+      closeProductModal();
+      
+      // Clear stored target values
+      window.targetCategoryForProduct = null;
+      window.targetBrandForProduct = null;
+      
+      renderCurrentView();
+    }
+    
+    function deleteProduct(id) {
+      if (!confirm('Delete this product?')) return;
+      const products = getProducts(currentCategory, currentBrand).filter(p => p.id !== id);
+      setProducts(currentCategory, currentBrand, products);
+      renderCurrentView();
+    }
+    
+    function confirmDeleteProduct() {
+      if (!editingProductId) return;
+      deleteProduct(editingProductId);
+      closeProductModal();
+    }
+    
+    function slugify(text) {
+      return text.toString().toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+    }
+    
+    // Sync products with main products page
+    function syncProductsToMainPage() {
+      const categories = getProductCategories();
+      localStorage.setItem('mainPageProductCategories', JSON.stringify(categories));
+      alert('Products synced to main page successfully!');
+    }
+    
+    // Initialize page
+    if (checkAdminAuth()) {
+      // Seed demo products once if none exist
+      if (getProductCategories().length === 0) { resetDemoProducts(); }
+      renderCurrentView();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* Timeline Page Specific Styles */
+    :root {
+      --timeline-primary: var(--primary-dark);
+      --timeline-text: var(--text-primary);
+      --timeline-bg: var(--bg-white);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-white);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* Transparent Header on Hero */
+    .timeline-page .unified-navbar {
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-page .unified-navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .timeline-page .unified-navbar .nav-links a {
+      color: var(--text-primary);
+    }
+
+    /* Hero Section */
+    .timeline-hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: var(--bg-white);
+      overflow: hidden;
+    }
+
+    .timeline-hero-content {
+      text-align: center;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .timeline-hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 0.3s forwards;
+    }
+
+    .timeline-hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--text-secondary);
+      margin-bottom: 3rem;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 0.6s forwards;
+    }
+
+    .timeline-hero-cta {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out 0.9s forwards;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 1.2s forwards;
+      z-index: 2;
+    }
+
+    .scroll-cue-text {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-cue-arrow {
+      width: 24px;
+      height: 24px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Timeline Navigation Rail */
+    .timeline-rail {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .timeline-rail-line {
+      width: 2px;
+      height: calc(100vh - 200px);
+      background: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .timeline-rail-dots {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--bg-white);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline-dot:hover {
+      transform: scale(1.3);
+      background: var(--primary-dark);
+    }
+
+    .timeline-dot.active {
+      width: 16px;
+      height: 16px;
+      background: var(--primary-dark);
+      box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.1);
+    }
+
+    .timeline-dot-label {
+      position: absolute;
+      right: 2rem;
+      white-space: nowrap;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .timeline-dot:hover .timeline-dot-label {
+      opacity: 1;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      top: 6rem;
+      right: 2rem;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      background: var(--primary-dark);
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Milestone Sections */
+    .milestone-section {
+      min-height: 100vh;
+      padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 6rem);
+      display: flex;
+      align-items: center;
+      position: relative;
+      scroll-margin-top: 100px;
+    }
+
+    .milestone-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .milestone-text {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .milestone-section.visible .milestone-text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .milestone-year {
+      font-size: clamp(6rem, 12vw, 12rem);
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 0.9;
+      margin-bottom: 1rem;
+      opacity: 0.15;
+    }
+
+    .milestone-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .milestone-description {
+      font-size: clamp(1rem, 1.5vw, 1.25rem);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* Image Collage */
+    .milestone-collage {
+      position: relative;
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .milestone-section.visible .milestone-collage {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .collage-main-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+    }
+
+    .collage-small-images {
+      position: absolute;
+      display: flex;
+      gap: 1rem;
+      top: -40px;
+      right: -40px;
+    }
+
+    .collage-small-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      border: 4px solid white;
+      transform: rotate(-5deg);
+      transition: transform 0.3s ease;
+      background: white;
+    }
+
+    .collage-small-image:nth-child(2) {
+      transform: rotate(8deg) translateY(-20px) translateX(10px);
+    }
+
+    .collage-small-image:nth-child(3) {
+      transform: rotate(-3deg) translateY(20px) translateX(-10px);
+    }
+
+    .collage-small-image:hover {
+      transform: rotate(0deg) scale(1.1);
+      z-index: 10;
+    }
+
+    .milestone-collage {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Progress Indicator */
+    .progress-indicator {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .milestone-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .milestone-collage {
+        order: -1;
+      }
+
+      .timeline-rail {
+        right: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .timeline-rail {
+        position: fixed;
+        bottom: 1rem;
+        top: auto;
+        right: 50%;
+        transform: translateX(50%);
+        flex-direction: row;
+        height: auto;
+        width: auto;
+      }
+
+      .timeline-rail-line {
+        width: calc(100vw - 4rem);
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .timeline-rail-dots {
+        flex-direction: row;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .timeline-dot.active {
+        width: 12px;
+        height: 12px;
+      }
+
+      .milestone-year {
+        font-size: clamp(4rem, 10vw, 8rem);
+      }
+
+      .back-to-top {
+        right: 1rem;
+        top: 5rem;
+      }
+
+      .progress-indicator {
+        bottom: 1rem;
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Focus States for Accessibility */
+    .timeline-dot:focus,
+    .back-to-top:focus,
+    .timeline-hero-cta .btn:focus {
+      outline: 3px solid var(--primary-medium);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+<body class="timeline-page">
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="timeline-hero" id="hero">
+    <div class="timeline-hero-content">
+      <h1 class="timeline-hero-title">TIBA TIMELINE</h1>
+      <p class="timeline-hero-subtitle">A journey of innovation, partnership, and excellence spanning decades</p>
+      <div class="timeline-hero-cta">
+        <a href="#milestone-0" class="btn btn-primary" id="start-journey-btn">START THE JOURNEY</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue-text">Scroll</span>
+      <svg class="scroll-cue-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Timeline Navigation Rail -->
+  <nav class="timeline-rail" aria-label="Timeline navigation">
+    <div class="timeline-rail-line" aria-hidden="true"></div>
+    <div class="timeline-rail-dots" id="timeline-dots" role="list"></div>
+  </nav>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 15l-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <!-- Progress Indicator -->
+  <div class="progress-indicator" id="progress-indicator" aria-live="polite" aria-atomic="true">
+    <span id="current-milestone">1</span> / <span id="total-milestones">9</span>
+  </div>
+
+  <!-- Milestone Sections Container -->
+  <main id="milestones-container">
+    <!-- Milestones will be dynamically inserted here -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Milestone Data
+    const milestones = [
+      {
+        year: 1979,
+        title: "Tiba Manzalawi Group Established",
+        description: "A leading manufacturer and supplier of air conditioning systems in Egypt for more than 40 years. The foundation of our legacy began with a vision to revolutionize HVAC solutions in the Middle East.",
+        mainImage: "About-Timeline-Pics/image1.webp",
+        smallImages: ["image2.png", "image3.jpg"]
+      },
+      {
+        year: 1983,
+        title: "Saiver (Italy) Air Handling Units",
+        description: "First HVAC agency under TMG. First factory established under license from Saiver Italy. Our first international partnership marked a turning point in establishing manufacturing excellence.",
+        mainImage: "About-Timeline-Pics/image2.png",
+        smallImages: ["image1.webp"]
+      },
+      {
+        year: 1990,
+        title: "Evapco (USA) Cooling Towers",
+        description: "First company in the Middle East licensed by Evapco USA. Manufacturing facility in 10th of Ramadan. American engineering excellence met Middle Eastern ambition.",
+        mainImage: "About-Timeline-Pics/image3.jpg",
+        smallImages: ["image4.webp"]
+      },
+      {
+        year: 2010,
+        title: "Hyundai (Korea) Residential Split Systems",
+        description: "Hyundai is a leader in water source and geothermal heat pump industry. Korean innovation joined our portfolio, bringing sustainable heating and cooling solutions to homes across the region.",
+        mainImage: "About-Timeline-Pics/image4.webp",
+        smallImages: ["image5.jpg", "image6.webp"]
+      },
+      {
+        year: 2012,
+        title: "Samsung (Korea) Variable Refrigerant Flow (VRF) Systems",
+        description: "Samsung offers world-class energy efficiency and powerful cooling/heating performance. This partnership enabled us to offer cutting-edge variable refrigerant flow systems.",
+        mainImage: "About-Timeline-Pics/image5.jpg",
+        smallImages: ["image7.webp"]
+      },
+      {
+        year: 2014,
+        title: "Puroflux (USA) Filtration Systems",
+        description: "Industry leader with innovative filtration products for various applications. Clean air became our priority with Puroflux's advanced filtration technology.",
+        mainImage: "About-Timeline-Pics/image6.webp",
+        smallImages: ["image8.jpg"]
+      },
+      {
+        year: 2019,
+        title: "Trox (Germany) Ventilation & Air Distribution Systems",
+        description: "Global leader with operations in over 70 countries. German precision meets Middle Eastern innovation, enhancing our ability to create perfectly balanced environments.",
+        mainImage: "About-Timeline-Pics/image8.jpg",
+        smallImages: ["image9.jpg", "image10.jpg"]
+      },
+      {
+        year: 2022,
+        title: "Dunham-Bush (Malaysia) Chiller Systems",
+        description: "Legacy of over 100 years in heating and air conditioning innovation. A century of excellence joined our portfolio, bringing unmatched reliability and efficiency.",
+        mainImage: "About-Timeline-Pics/image9.jpg",
+        smallImages: ["image11.jpeg"]
+      },
+      {
+        year: 2023,
+        title: "Xylem/Bell & Gossett (USA) Pump Systems",
+        description: "Provides world-class water solutions in more than 150 countries. Water solutions for a sustainable future with cutting-edge pumping technology.",
+        mainImage: "About-Timeline-Pics/image10.jpg",
+        smallImages: ["image1.webp", "image2.png"]
+      }
+    ];
+
+    // Initialize Timeline
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeTimeline();
+      initializeHeaderScroll();
+      initializeMobileNav();
+    });
+
+    function initializeTimeline() {
+      const container = document.getElementById('milestones-container');
+      const dotsContainer = document.getElementById('timeline-dots');
+      const totalMilestones = document.getElementById('total-milestones');
+      
+      totalMilestones.textContent = milestones.length;
+
+      // Create milestone sections
+      milestones.forEach((milestone, index) => {
+        // Create section
+        const section = document.createElement('section');
+        section.className = 'milestone-section';
+        section.id = `milestone-${index}`;
+        section.setAttribute('data-milestone-index', index);
+
+        // Create content
+        const content = document.createElement('div');
+        content.className = 'milestone-content';
+
+        // Text block
+        const textBlock = document.createElement('div');
+        textBlock.className = 'milestone-text';
+        textBlock.innerHTML = `
+          <div class="milestone-year">${milestone.year}</div>
+          <h2 class="milestone-title">${milestone.title}</h2>
+          <p class="milestone-description">${milestone.description}</p>
+        `;
+
+        // Collage block
+        const collageBlock = document.createElement('div');
+        collageBlock.className = 'milestone-collage';
+        
+        const mainImg = document.createElement('img');
+        mainImg.src = milestone.mainImage;
+        mainImg.alt = milestone.title;
+        mainImg.className = 'collage-main-image';
+        mainImg.loading = 'lazy';
+        collageBlock.appendChild(mainImg);
+
+        // Add small images if available
+        if (milestone.smallImages && milestone.smallImages.length > 0) {
+          const smallImagesContainer = document.createElement('div');
+          smallImagesContainer.className = 'collage-small-images';
+          milestone.smallImages.slice(0, 3).forEach((imgPath, imgIndex) => {
+            const smallImg = document.createElement('img');
+            smallImg.src = `About-Timeline-Pics/${imgPath}`;
+            smallImg.alt = '';
+            smallImg.className = 'collage-small-image';
+            smallImg.loading = 'lazy';
+            smallImagesContainer.appendChild(smallImg);
+          });
+          collageBlock.appendChild(smallImagesContainer);
+        }
+
+        content.appendChild(textBlock);
+        content.appendChild(collageBlock);
+        section.appendChild(content);
+        container.appendChild(section);
+
+        // Create dot
+        const dot = document.createElement('button');
+        dot.className = 'timeline-dot';
+        dot.setAttribute('role', 'listitem');
+        dot.setAttribute('aria-label', `Go to ${milestone.year} - ${milestone.title}`);
+        dot.setAttribute('data-milestone-index', index);
+        dot.addEventListener('click', () => {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        dotsContainer.appendChild(dot);
+      });
+
+      // Initialize Intersection Observer
+      const observerOptions = {
+        root: null,
+        rootMargin: '-30% 0px -30% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1]
+      };
+
+      let currentActiveIndex = 0;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+
+        // Find the most visible section
+        const sections = document.querySelectorAll('.milestone-section');
+        let maxVisibility = 0;
+        let mostVisibleIndex = 0;
+
+        sections.forEach((section, index) => {
+          const rect = section.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+          const visibility = visibleHeight / viewportHeight;
+
+          if (visibility > maxVisibility && rect.top < viewportHeight * 0.5) {
+            maxVisibility = visibility;
+            mostVisibleIndex = index;
+          }
+        });
+
+        if (maxVisibility > 0.1) {
+          updateActiveMilestone(mostVisibleIndex);
+          currentActiveIndex = mostVisibleIndex;
+        }
+      }, observerOptions);
+
+      document.querySelectorAll('.milestone-section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Initialize progress indicator
+      updateProgressIndicator(0);
+    }
+
+    function updateActiveMilestone(index) {
+      const dots = document.querySelectorAll('.timeline-dot');
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      updateProgressIndicator(index + 1);
+    }
+
+    function updateProgressIndicator(current) {
+      const indicator = document.getElementById('current-milestone');
+      if (indicator) {
+        indicator.textContent = current;
+      }
+    }
+
+    function initializeHeaderScroll() {
+      const navbar = document.querySelector('.unified-navbar');
+      const hero = document.getElementById('hero');
+      const backToTop = document.getElementById('back-to-top');
+
+      function handleScroll() {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        const scrollY = window.pageYOffset || window.scrollY;
+
+        if (scrollY > heroBottom - 100) {
+          navbar.classList.add('scrolled');
+          backToTop.classList.add('visible');
+        } else {
+          navbar.classList.remove('scrolled');
+          backToTop.classList.remove('visible');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // Back to top functionality
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    function initializeMobileNav() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.getElementById('primary-navigation');
+      
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          const isOpen = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        const activeSection = document.querySelector('.milestone-section.visible');
+        if (activeSection) {
+          const index = parseInt(activeSection.getAttribute('data-milestone-index'));
+          let nextIndex;
+          
+          if (e.key === 'ArrowDown') {
+            nextIndex = Math.min(index + 1, milestones.length - 1);
+          } else {
+            nextIndex = Math.max(index - 1, 0);
+          }
+          
+          const nextSection = document.getElementById(`milestone-${nextIndex}`);
+          if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            e.preventDefault();
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+

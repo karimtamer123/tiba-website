@@ -1,0 +1,398 @@
+/* ========================================
+   TIBA MANZALAWI GROUP - GLOBAL DESIGN SYSTEM
+   ======================================== */
+
+/* Typography */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Color Palette */
+:root {
+  /* Primary Colors */
+  --primary-dark: #0F172A;
+  --primary-medium: #3B82F6;
+  --primary-light: #DBEAFE;
+  
+  /* Text Colors */
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-light: #94A3B8;
+  --text-white: #ffffff;
+  
+  /* Background Colors */
+  --bg-white: #ffffff;
+  --bg-light-gray: #F8F9FA;
+  --bg-medium-gray: #F1F3F4;
+  --bg-dark: #2D3748;
+  
+  /* Accent Colors */
+  --accent-success: #10B981;
+  --accent-warning: #F59E0B;
+  --accent-error: #EF4444;
+}
+
+/* Global Background Classes */
+.bg-pattern-1 { background: var(--bg-white); }
+.bg-pattern-2 { background: var(--bg-light-gray); }
+.bg-pattern-3 { background: var(--bg-medium-gray); }
+.bg-pattern-4 { background: var(--bg-dark); }
+
+/* Remove all blue hues and gradients */
+.hero-section {
+  /* Allow dynamic backgrounds to work */
+}
+
+.section-alt {
+  background: var(--bg-white) !important;
+}
+
+/* Override for featured projects section */
+#featured-projects.section-alt {
+  background: var(--bg-white) !important;
+}
+
+/* Remove parallax layers with blue hues */
+.parallax-layer {
+  display: none !important;
+}
+
+/* Button System */
+.btn {
+  padding: 0.875rem 1.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+/* Primary Buttons - Dark Blue */
+.btn-primary {
+  background: transparent !important;
+  color: var(--primary-dark) !important;
+  border: 1.5px solid var(--primary-dark) !important;
+  border-radius: 6px !important;
+  padding: 0.625rem 1.25rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark) !important;
+  color: var(--text-white) !important;
+  border-color: var(--primary-dark) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: none !important;
+}
+
+/* Secondary Buttons - Outline */
+.btn-secondary {
+  background: #ffffff !important;
+  color: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+
+.btn-secondary:hover {
+  background: #ffffff !important;
+  color: var(--primary-dark) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Secondary buttons on dark backgrounds */
+.btn-secondary-dark {
+  background: transparent !important;
+  color: var(--text-white) !important;
+
+/* Centered Navigation Layout - Applied to All Pages */
+.unified-navbar {
+  justify-content: center !important;
+  position: relative !important;
+}
+
+.unified-navbar .nav-logo {
+  position: absolute !important;
+  left: 2rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.unified-navbar .nav-logo img {
+  height: 50px !important;
+  width: auto !important;
+  object-fit: contain !important;
+}
+
+.unified-navbar .nav-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.unified-navbar .nav-toggle {
+  position: absolute !important;
+  right: clamp(1rem, 3vw, 1.5rem) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.unified-navbar .nav-logo {
+  left: clamp(1rem, 3vw, 2rem) !important;
+}
+
+.btn-secondary-dark:hover {
+  background: var(--text-white) !important;
+  color: var(--primary-dark) !important;
+  border-color: var(--text-white) !important;
+}
+
+/* Navigation Styles */
+.contact-btn {
+  background: var(--primary-dark) !important;
+  color: var(--text-white) !important;
+  border: 2px solid var(--primary-dark) !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.contact-btn:hover {
+  background: linear-gradient(135deg, var(--primary-medium), var(--primary-dark)) !important;
+  color: var(--text-white) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.3) !important;
+}
+
+/* Typography Styles - Landing Pages (permanent dark blue, color mix on hover) */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-dark) !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  background: linear-gradient(135deg, #60A5FA, var(--primary-medium), var(--primary-dark)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.section-title {
+  color: var(--primary-dark) !important;
+  font-size: 2.75rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.section-title:hover {
+  background: linear-gradient(135deg, #60A5FA, var(--primary-medium), var(--primary-dark)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.section-subtitle {
+  color: var(--text-secondary) !important;
+  font-size: 1.1rem !important;
+}
+
+.hero-title {
+  color: var(--primary-dark) !important;
+  font-weight: 800 !important;
+  transition: all 0.3s ease !important;
+}
+
+.hero-title:hover {
+  background: linear-gradient(135deg, #60A5FA, var(--primary-medium), var(--primary-dark)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.hero-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+/* Index.html specific styles - White titles with color mix on hover */
+.homepage .hero-title {
+  color: var(--text-white) !important;
+}
+
+.homepage .hero-title:hover {
+  background: linear-gradient(135deg, #60A5FA, #3B82F6, #1E40AF) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.homepage .section-title {
+  color: var(--text-primary) !important;
+}
+
+.homepage .section-title:hover {
+  background: linear-gradient(135deg, #60A5FA, var(--primary-medium), var(--primary-dark)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Dark sections text colors */
+.bg-pattern-4 .section-title,
+.bg-pattern-4 h1,
+.bg-pattern-4 h2,
+.bg-pattern-4 h3 {
+  background: linear-gradient(90deg, 
+    #4facfe 0%, 
+    #00f2fe 20%, 
+    #667eea 40%, 
+    #764ba2 60%, 
+    #f093fb 80%, 
+    rgba(240, 147, 251, 0.8) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  background-size: 200% 200% !important;
+  animation: gradientFlow 6s ease infinite !important;
+}
+
+.bg-pattern-4 .section-title:hover,
+.bg-pattern-4 h1:hover,
+.bg-pattern-4 h2:hover,
+.bg-pattern-4 h3:hover {
+  background: linear-gradient(90deg, 
+    #4facfe 0%, 
+    #00f2fe 20%, 
+    #667eea 40%, 
+    #764ba2 60%, 
+    #f093fb 80%, 
+    rgba(240, 147, 251, 0.8) 100%
+  ) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  background-size: 200% 200% !important;
+  animation: gradientFlow 6s ease infinite !important;
+}
+
+/* Dark section text colors */
+.text-white {
+  color: var(--text-white) !important;
+}
+
+.text-light {
+  color: #CBD5E1 !important;
+}
+
+/* Cards and Components */
+.card, .category-card, .partner-card, .project-card, .news-card, .job-card {
+  background: var(--bg-white) !important;
+  border: 1px solid rgba(30, 64, 175, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(30, 64, 175, 0.08) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Keep global hover for most cards, but exclude project cards for a calmer projects grid */
+.card:hover, .category-card:hover, .partner-card:hover, .news-card:hover, .job-card:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.15) !important;
+  border-color: rgba(30, 64, 175, 0.2) !important;
+}
+
+/* Icon Colors */
+.icon-circle {
+  background: rgba(30, 64, 175, 0.1) !important;
+}
+
+.icon-circle svg {
+  color: var(--primary-dark) !important;
+}
+
+/* Form Elements */
+input, textarea, select {
+  border: 2px solid #E5E7EB !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  font-family: 'Inter', sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--primary-dark) !important;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1) !important;
+}
+
+/* Links */
+a {
+  color: var(--primary-dark) !important;
+  transition: all 0.3s ease !important;
+}
+
+a:hover {
+  color: var(--primary-medium) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.25rem !important;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.25rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Remove any existing blue gradients and overlays */
+.preview-content, .showcase-header, .section-header {
+  background: none !important;
+}
+
+/* Stats section - Override title styling only, keep original background */
+.diag-band h1, .diag-band h2, .diag-band h3, .diag-band h4, .diag-band h5, .diag-band h6,
+.diag-band .section-title, .diag-band .hero-title,
+.diag-band .num, .diag-band div, .diag-band a {
+  color: #fff !important;
+}
+
+.diag-band h1:hover, .diag-band h2:hover, .diag-band h3:hover, .diag-band h4:hover, .diag-band h5:hover, .diag-band h6:hover,
+.diag-band .section-title:hover, .diag-band .hero-title:hover {
+  color: #fff !important;
+  background: none !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Footer styling */
+.footer-section {
+  background: #ffffff !important;
+}
+
+/* Success messages and alerts */
+.alert-success {
+  background: var(--accent-success) !important;
+  color: var(--text-white) !important;
+}
+
+.alert-warning {
+  background: var(--accent-warning) !important;
+  color: var(--text-white) !important;
+}
+
+.alert-error {
+  background: var(--accent-error) !important;
+  color: var(--text-white) !important;
+}

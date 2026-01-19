@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Company Statistics - Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <style>
+    .admin-dashboard {
+      min-height: 100vh;
+      background: #ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .dashboard-header {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem 0.5rem;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(11, 29, 79, 0.15);
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .dashboard-title {
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .dashboard-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    
+    .admin-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .admin-avatar {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+    }
+    
+    .back-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .logout-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
+    .dashboard-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .page-info {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .page-info h2 {
+      color: #0B1220;
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+    
+    .page-info p {
+      color: #64748B;
+      margin: 0;
+    }
+    
+    .editor-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    .current-stats-section {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      height: fit-content;
+    }
+    
+    .edit-stats-section {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    
+    .section-title {
+      color: #0B1220;
+      font-size: 1.3rem;
+      margin: 0 0 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .section-icon {
+      font-size: 1.5rem;
+    }
+    
+    .current-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .current-stat-item {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    
+    .current-stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #0B1D4F;
+      margin-bottom: 0.25rem;
+    }
+    
+    .current-stat-label {
+      font-size: 0.85rem;
+      color: #64748B;
+      font-weight: 500;
+    }
+    
+    .stats-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .stat-input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .stat-input-group label {
+      color: #374151;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-input-group input {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      color: #374151;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .stat-input-group input:focus {
+      outline: none;
+      border-color: #0EA5E9;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    }
+    
+    .stat-input-group input:hover {
+      border-color: #0EA5E9;
+    }
+    
+    .stat-input-group .input-info {
+      font-size: 0.8rem;
+      color: #64748B;
+      margin-top: 0.25rem;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      grid-column: 1 / -1;
+    }
+    
+    .save-btn {
+      background: linear-gradient(135deg, #0B1D4F 0%, #16357e 100%);
+      border: none;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    
+    .save-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(11,29,79,.3);
+    }
+    
+    .cancel-btn {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      color: #374151;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .cancel-btn:hover {
+      background: #e5e7eb;
+    }
+    
+    .reset-btn {
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .reset-btn:hover {
+      background: #fde68a;
+    }
+    
+    .preview-section {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .preview-section h4 {
+      color: #0B1220;
+      margin: 0 0 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    
+    .preview-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+    
+    .preview-stat-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    
+    .preview-stat-value {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0B1D4F;
+      margin-bottom: 0.25rem;
+    }
+    
+    .preview-stat-label {
+      font-size: 0.75rem;
+      color: #64748B;
+    }
+    
+    @media (max-width: 768px) {
+      .editor-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .current-stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .preview-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-dashboard">
+    <div class="dashboard-header">
+      <div class="header-content">
+        <div>
+          <h1 class="dashboard-title">Edit Company Statistics</h1>
+          <p class="dashboard-subtitle">Update the numbers displayed on the homepage</p>
+        </div>
+        <div class="admin-info">
+          <div class="admin-avatar">A</div>
+          <a href="admin-edit-page.html" class="back-btn">← Back to Page Editor</a>
+          <a href="admin-login.html" class="logout-btn" onclick="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="dashboard-content">
+      <div class="page-info">
+        <h2>Company Statistics Editor</h2>
+        <p>Update the company statistics that are displayed on the homepage. These numbers represent your company's achievements and will be shown to visitors.</p>
+      </div>
+      
+      <div class="editor-container">
+        <div class="current-stats-section">
+          <h3 class="section-title">
+            <span class="section-icon">📊</span>
+            Current Statistics
+          </h3>
+          <div class="current-stats-grid" id="currentStatsGrid">
+            <!-- Current stats will be loaded here -->
+          </div>
+        </div>
+        
+        <div class="edit-stats-section">
+          <h3 class="section-title">
+            <span class="section-icon">✏️</span>
+            Edit Statistics
+          </h3>
+          <form class="stats-form" id="statsForm">
+            <div class="stat-input-group">
+              <label for="yearsExperience">Years of Experience</label>
+              <input type="number" id="yearsExperience" min="0" max="100" required />
+              <div class="input-info">Number of years the company has been operating</div>
+            </div>
+            
+            <div class="stat-input-group">
+              <label for="projectsDelivered">Projects Delivered</label>
+              <input type="number" id="projectsDelivered" min="0" required />
+              <div class="input-info">Total number of completed projects</div>
+            </div>
+            
+            <div class="stat-input-group">
+              <label for="clientsPartners">Clients & Partners</label>
+              <input type="number" id="clientsPartners" min="0" required />
+              <div class="input-info">Number of clients and business partners</div>
+            </div>
+            
+            <div class="stat-input-group">
+              <label for="factories">Factories</label>
+              <input type="number" id="factories" min="0" max="20" required />
+              <div class="input-info">Number of manufacturing facilities</div>
+            </div>
+            
+            <div class="stat-input-group">
+              <label for="unitsSold">Units Sold / Year</label>
+              <input type="number" id="unitsSold" min="0" required />
+              <div class="input-info">Average units sold per year</div>
+            </div>
+            
+            <div class="stat-input-group">
+              <label for="globalPartners">Global Partners</label>
+              <input type="number" id="globalPartners" min="0" required />
+              <div class="input-info">Number of international partners</div>
+            </div>
+            
+            <div class="action-buttons">
+              <button type="button" class="save-btn" onclick="saveCompanyStats()">Save Statistics</button>
+              <button type="button" class="reset-btn" onclick="resetToDefaults()">Reset to Defaults</button>
+              <button type="button" class="cancel-btn" onclick="goBack()">Cancel</button>
+            </div>
+          </form>
+          
+          <div class="preview-section">
+            <h4>Live Preview</h4>
+            <div class="preview-stats-grid" id="previewStatsGrid">
+              <!-- Preview will be updated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api-client.js"></script>
+  <script>
+    // Check if admin is logged in
+    async function checkAdminAuth() {
+      try {
+        await apiClient.verifyToken();
+        return true;
+      } catch (error) {
+        window.location.href = 'admin-login.html';
+        return false;
+      }
+    }
+    
+    // Logout function
+    function logout() {
+      apiClient.logout();
+      window.location.href = 'admin-login.html';
+    }
+    
+    // Default company stats
+    const defaultCompanyStats = {
+      yearsExperience: 46,
+      projectsDelivered: 7598,
+      clientsPartners: 200,
+      factories: 6,
+      unitsSold: 1000,
+      globalPartners: 30
+    };
+    
+    let currentStats = {};
+    let statsIds = {}; // Map to store stat IDs from backend
+    
+    // Load company stats from API
+    async function loadCompanyStats() {
+      try {
+        const stats = await apiClient.getStatistics();
+        
+        // Map backend stats to frontend format
+        stats.forEach(stat => {
+          const label = stat.label.toLowerCase();
+          if (label.includes('years') || label.includes('business')) {
+            currentStats.yearsExperience = parseInt(stat.value) || defaultCompanyStats.yearsExperience;
+            statsIds.yearsExperience = stat.id;
+          } else if (label.includes('projects') || label.includes('completed')) {
+            currentStats.projectsDelivered = parseInt(stat.value.replace(/[^0-9]/g, '')) || defaultCompanyStats.projectsDelivered;
+            statsIds.projectsDelivered = stat.id;
+          } else if (label.includes('clients') || label.includes('partners')) {
+            if (label.includes('clients')) {
+              currentStats.clientsPartners = parseInt(stat.value.replace(/[^0-9]/g, '')) || defaultCompanyStats.clientsPartners;
+              statsIds.clientsPartners = stat.id;
+            } else if (label.includes('global')) {
+              currentStats.globalPartners = parseInt(stat.value.replace(/[^0-9]/g, '')) || defaultCompanyStats.globalPartners;
+              statsIds.globalPartners = stat.id;
+            }
+          }
+        });
+        
+        // If stats not found, use defaults
+        if (Object.keys(currentStats).length === 0) {
+          currentStats = { ...defaultCompanyStats };
+        }
+        
+        renderCurrentStats();
+        populateForm();
+        updatePreview();
+      } catch (error) {
+        console.error('Error loading stats:', error);
+        // Use defaults if API fails
+        currentStats = { ...defaultCompanyStats };
+        renderCurrentStats();
+        populateForm();
+        updatePreview();
+      }
+    }
+    
+    // Render current stats
+    function renderCurrentStats() {
+      const container = document.getElementById('currentStatsGrid');
+      
+      container.innerHTML = `
+        <div class="current-stat-item">
+          <div class="current-stat-value">${currentStats.yearsExperience || 46}</div>
+          <div class="current-stat-label">Years Experience</div>
+        </div>
+        <div class="current-stat-item">
+          <div class="current-stat-value">${(currentStats.projectsDelivered || 7598).toLocaleString()}</div>
+          <div class="current-stat-label">Projects Delivered</div>
+        </div>
+        <div class="current-stat-item">
+          <div class="current-stat-value">${currentStats.clientsPartners || 200}</div>
+          <div class="current-stat-label">Clients & Partners</div>
+        </div>
+        <div class="current-stat-item">
+          <div class="current-stat-value">${currentStats.factories || 6}</div>
+          <div class="current-stat-label">Factories</div>
+        </div>
+        <div class="current-stat-item">
+          <div class="current-stat-value">${(currentStats.unitsSold || 1000).toLocaleString()}</div>
+          <div class="current-stat-label">Units Sold/Year</div>
+        </div>
+        <div class="current-stat-item">
+          <div class="current-stat-value">${currentStats.globalPartners || 30}</div>
+          <div class="current-stat-label">Global Partners</div>
+        </div>
+      `;
+    }
+    
+    // Populate form with current values
+    function populateForm() {
+      document.getElementById('yearsExperience').value = currentStats.yearsExperience || 46;
+      document.getElementById('projectsDelivered').value = currentStats.projectsDelivered || 7598;
+      document.getElementById('clientsPartners').value = currentStats.clientsPartners || 200;
+      document.getElementById('factories').value = currentStats.factories || 6;
+      document.getElementById('unitsSold').value = currentStats.unitsSold || 1000;
+      document.getElementById('globalPartners').value = currentStats.globalPartners || 30;
+    }
+    
+    // Update preview
+    function updatePreview() {
+      const container = document.getElementById('previewStatsGrid');
+      
+      // Get current form values
+      const formData = {
+        yearsExperience: parseInt(document.getElementById('yearsExperience').value) || 0,
+        projectsDelivered: parseInt(document.getElementById('projectsDelivered').value) || 0,
+        clientsPartners: parseInt(document.getElementById('clientsPartners').value) || 0,
+        factories: parseInt(document.getElementById('factories').value) || 0,
+        unitsSold: parseInt(document.getElementById('unitsSold').value) || 0,
+        globalPartners: parseInt(document.getElementById('globalPartners').value) || 0
+      };
+      
+      container.innerHTML = `
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.yearsExperience}</div>
+          <div class="preview-stat-label">Years</div>
+        </div>
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.projectsDelivered.toLocaleString()}</div>
+          <div class="preview-stat-label">Projects</div>
+        </div>
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.clientsPartners}</div>
+          <div class="preview-stat-label">Clients</div>
+        </div>
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.factories}</div>
+          <div class="preview-stat-label">Factories</div>
+        </div>
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.unitsSold.toLocaleString()}</div>
+          <div class="preview-stat-label">Units/Year</div>
+        </div>
+        <div class="preview-stat-item">
+          <div class="preview-stat-value">${formData.globalPartners}</div>
+          <div class="preview-stat-label">Partners</div>
+        </div>
+      `;
+    }
+    
+    // Save company stats to API
+    async function saveCompanyStats() {
+      const newStats = {
+        yearsExperience: parseInt(document.getElementById('yearsExperience').value) || 0,
+        projectsDelivered: parseInt(document.getElementById('projectsDelivered').value) || 0,
+        clientsPartners: parseInt(document.getElementById('clientsPartners').value) || 0,
+        factories: parseInt(document.getElementById('factories').value) || 0,
+        unitsSold: parseInt(document.getElementById('unitsSold').value) || 0,
+        globalPartners: parseInt(document.getElementById('globalPartners').value) || 0
+      };
+      
+      // Validate inputs
+      if (newStats.yearsExperience < 0 || newStats.yearsExperience > 100) {
+        alert('Years of Experience must be between 0 and 100.');
+        return;
+      }
+      
+      if (newStats.factories < 0 || newStats.factories > 20) {
+        alert('Number of Factories must be between 0 and 20.');
+        return;
+      }
+      
+      if (newStats.projectsDelivered < 0 || newStats.clientsPartners < 0 || 
+          newStats.unitsSold < 0 || newStats.globalPartners < 0) {
+        alert('All values must be positive numbers.');
+        return;
+      }
+      
+      try {
+        // Update statistics via API
+        const updates = [
+          { id: statsIds.yearsExperience, value: newStats.yearsExperience.toString(), label: 'Years in Business', description: 'Pioneering HVAC excellence since 1978', suffix: '', display_order: 1 },
+          { id: statsIds.projectsDelivered, value: newStats.projectsDelivered.toString(), label: 'Projects Completed', description: '', suffix: '', display_order: 2 },
+          { id: statsIds.clientsPartners, value: newStats.clientsPartners.toString(), label: 'Clients & Partners', description: '', suffix: '+', display_order: 4 },
+          { id: statsIds.globalPartners, value: newStats.globalPartners.toString(), label: 'Global Partners', description: '', suffix: '+', display_order: 3 }
+        ];
+        
+        // Update each stat
+        for (const stat of updates) {
+          if (stat.id) {
+            await apiClient.updateStatistic(stat.id, stat);
+          } else {
+            // Create new stat if ID doesn't exist
+            await apiClient.createStatistic(stat);
+          }
+        }
+        
+        currentStats = newStats;
+        alert('Company statistics saved successfully!');
+        await loadCompanyStats(); // Reload to get updated IDs
+      } catch (error) {
+        console.error('Error saving stats:', error);
+        alert('Error saving statistics: ' + (error.message || 'Unknown error'));
+      }
+    }
+    
+    // Reset to defaults
+    function resetToDefaults() {
+      if (confirm('Are you sure you want to reset all statistics to their default values?')) {
+        currentStats = { ...defaultCompanyStats };
+        populateForm();
+        updatePreview();
+        renderCurrentStats();
+      }
+    }
+    
+    // Go back function
+    function goBack() {
+      window.location.href = 'admin-edit-page.html';
+    }
+    
+    // Add event listeners for live preview
+    function addFormListeners() {
+      const inputs = document.querySelectorAll('#statsForm input');
+      inputs.forEach(input => {
+        input.addEventListener('input', updatePreview);
+      });
+    }
+    
+    // Initialize page
+    (async function() {
+      const auth = await checkAdminAuth();
+      if (auth) {
+        await loadCompanyStats();
+        addFormListeners();
+      }
+    })();
+  </script>
+</body>
+</html>

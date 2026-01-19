@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Images in Database</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .section h2 {
+            color: #555;
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #e9ecef;
+            font-weight: 600;
+        }
+        img {
+            max-width: 150px;
+            max-height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: 600;
+        }
+        .success {
+            color: #28a745;
+        }
+        .loading {
+            color: #6c757d;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .image-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .image-path {
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Check Images in Database</h1>
+        <p>This tool helps you verify if slideshow images are saved in the database and accessible.</p>
+        
+        <button onclick="checkImages()">Check Images</button>
+        <button onclick="checkBackend()">Test Backend Connection</button>
+        <button onclick="checkFileSystem()">Check File System</button>
+        <button onclick="fixDatabasePaths()" style="background: #28a745;">Fix Database Paths</button>
+        
+        <div id="backend-status" class="section" style="display: none;">
+            <h2>Backend Status</h2>
+            <div id="backend-info"></div>
+        </div>
+        
+        <div id="filesystem-status" class="section" style="display: none;">
+            <h2>File System Check</h2>
+            <div id="filesystem-info"></div>
+        </div>
+        
+        <div id="results" class="section" style="display: none;">
+            <h2>Slideshow Images in Database</h2>
+            <div id="results-content"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:3000/api/v1';
+        
+        async function checkBackend() {
+            const statusDiv = document.getElementById('backend-status');
+            const infoDiv = document.getElementById('backend-info');
+            statusDiv.style.display = 'block';
+            infoDiv.innerHTML = '<p class="loading">Checking backend connection...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/slideshow`);
+                if (response.ok) {
+                    const data = await response.json();
+                    infoDiv.innerHTML = `
+                        <p class="success">✓ Backend is accessible</p>
+                        <p>Found ${data.length} slideshow image(s) in database</p>
+                    `;
+                } else {
+                    infoDiv.innerHTML = `<p class="error">✗ Backend returned error: ${response.status} ${response.statusText}</p>`;
+                }
+            } catch (error) {
+                infoDiv.innerHTML = `
+                    <p class="error">✗ Cannot connect to backend</p>
+                    <p>Error: ${error.message}</p>
+                    <p>Make sure the backend is running on http://localhost:3000</p>
+                `;
+            }
+        }
+        
+        async function checkImages() {
+            const resultsDiv = document.getElementById('results');
+            const contentDiv = document.getElementById('results-content');
+            resultsDiv.style.display = 'block';
+            contentDiv.innerHTML = '<p class="loading">Loading images from database...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/slideshow`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const slides = await response.json();
+                
+                if (slides.length === 0) {
+                    contentDiv.innerHTML = '<p>No slideshow images found in the database.</p>';
+                    return;
+                }
+                
+                let html = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Image Path</th>
+                                <th>Full URL</th>
+                                <th>Image Preview</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                for (const slide of slides) {
+                    // Fix path - ensure it starts with / and handle old paths
+                    let imagePath = slide.image_path || '';
+                    if (imagePath && !imagePath.startsWith('/')) {
+                        imagePath = '/' + imagePath;
+                    }
+                    // If path doesn't start with /uploads, check if it's an old path that needs mapping
+                    // Old paths like "indexbackground/..." should map to "/uploads/slideshow/indexbackground/..."
+                    if (imagePath && !imagePath.startsWith('/uploads/')) {
+                        if (imagePath.startsWith('/indexbackground/')) {
+                            imagePath = '/uploads/slideshow' + imagePath;
+                        } else if (imagePath.startsWith('/')) {
+                            // Try as-is first, then check /uploads/slideshow/
+                            imagePath = imagePath;
+                        }
+                    }
+                    const fullUrl = `http://localhost:3000${imagePath}`;
+                    const imageStatus = await checkImageWithDetails(fullUrl, slide.image_path);
+                    
+                    html += `
+                        <tr>
+                            <td>${slide.id}</td>
+                            <td>${escapeHtml(slide.title || 'Untitled')}</td>
+                            <td class="image-path">${escapeHtml(slide.image_path || 'N/A')}</td>
+                            <td class="image-path"><a href="${fullUrl}" target="_blank">${fullUrl}</a></td>
+                            <td>
+                                ${imageStatus.exists ? `
+                                    <img src="${fullUrl}" alt="${escapeHtml(slide.title || 'Slide')}" 
+                                         onerror="this.parentElement.innerHTML='<span class=\\'error\\'>Failed to load</span>'">
+                                ` : '<span class="error">Image not accessible</span>'}
+                            </td>
+                            <td>
+                                ${imageStatus.exists ? '<span class="success">✓ Accessible</span>' : `<span class="error">✗ Not accessible</span><br><small>${escapeHtml(imageStatus.error || 'Unknown error')}</small>`}
+                            </td>
+                        </tr>
+                    `;
+                }
+                
+                html += `
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 1rem;"><strong>Total:</strong> ${slides.length} image(s) in database</p>
+                `;
+                
+                contentDiv.innerHTML = html;
+                
+            } catch (error) {
+                contentDiv.innerHTML = `
+                    <p class="error">Error loading images: ${error.message}</p>
+                    <p>Make sure:</p>
+                    <ul>
+                        <li>The backend server is running on http://localhost:3000</li>
+                        <li>The API endpoint /api/v1/slideshow is accessible</li>
+                        <li>You have CORS enabled on the backend (if accessing from different origin)</li>
+                    </ul>
+                `;
+            }
+        }
+        
+        async function checkImageWithDetails(url, path) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                if (response.ok) {
+                    return { exists: true, error: null };
+                } else {
+                    return { 
+                        exists: false, 
+                        error: `HTTP ${response.status}: ${response.statusText}` 
+                    };
+                }
+            } catch (error) {
+                // Try GET request to get more details
+                try {
+                    const getResponse = await fetch(url);
+                    if (getResponse.ok) {
+                        return { exists: true, error: null };
+                    } else {
+                        return { 
+                            exists: false, 
+                            error: `HTTP ${getResponse.status}: ${getResponse.statusText}. Check if file exists at: backend${path}` 
+                        };
+                    }
+                } catch (getError) {
+                    if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
+                        return { 
+                            exists: false, 
+                            error: 'Cannot connect. Make sure backend is running on http://localhost:3000' 
+                        };
+                    }
+                    return { 
+                        exists: false, 
+                        error: error.message || 'Connection failed. Check backend server and file path: backend' + path 
+                    };
+                }
+            }
+        }
+        
+        async function checkImageExists(url) {
+            const result = await checkImageWithDetails(url);
+            return result.exists;
+        }
+        
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        async function checkFileSystem() {
+            const statusDiv = document.getElementById('filesystem-status');
+            const infoDiv = document.getElementById('filesystem-info');
+            statusDiv.style.display = 'block';
+            infoDiv.innerHTML = '<p class="loading">Checking file system...</p>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/diagnostics/check-files`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                let html = `
+                    <p><strong>Uploads Directory:</strong> ${escapeHtml(data.uploads_directory)}</p>
+                    <p>${data.uploads_directory_exists ? '<span class="success">✓ Exists</span>' : '<span class="error">✗ Does not exist</span>'}</p>
+                    <p><strong>Slideshow Directory:</strong> ${escapeHtml(data.slideshow_directory)}</p>
+                    <p>${data.slideshow_directory_exists ? '<span class="success">✓ Exists</span>' : '<span class="error">✗ Does not exist</span>'}</p>
+                    <h3>File Details:</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Database Path</th>
+                                <th>File System Path</th>
+                                <th>Exists</th>
+                                <th>Size</th>
+                                <th>HTTP URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                for (const file of data.files) {
+                    html += `
+                        <tr>
+                            <td>${file.id}</td>
+                            <td>${escapeHtml(file.title || 'Untitled')}</td>
+                            <td class="image-path">${escapeHtml(file.db_path)}</td>
+                            <td class="image-path" style="font-size: 0.85em;">${escapeHtml(file.filesystem_path)}</td>
+                            <td>${file.exists ? '<span class="success">✓ Yes</span>' : '<span class="error">✗ No</span>'}</td>
+                            <td>${file.size ? (file.size / 1024).toFixed(2) + ' KB' : 'N/A'}</td>
+                            <td class="image-path"><a href="${file.http_url}" target="_blank">Test</a></td>
+                        </tr>
+                    `;
+                }
+                
+                html += `
+                        </tbody>
+                    </table>
+                `;
+                
+                if (data.files.length === 0) {
+                    html = '<p>No files in database to check.</p>';
+                }
+                
+                infoDiv.innerHTML = html;
+                
+            } catch (error) {
+                infoDiv.innerHTML = `
+                    <p class="error">Error checking file system: ${error.message}</p>
+                    <p>Make sure the backend is running and the diagnostics endpoint is available.</p>
+                `;
+            }
+        }
+        
+        async function fixDatabasePaths() {
+            if (!confirm('This will update image paths in the database to fix the missing leading slash. Continue?')) {
+                return;
+            }
+            
+            try {
+                // Get token from localStorage (same as admin portal uses)
+                const token = localStorage.getItem('adminToken');
+                if (!token) {
+                    alert('Please login to the admin portal first to get authentication token.');
+                    return;
+                }
+                
+                const response = await fetch(`${API_BASE}/fix-paths/fix-slideshow-paths`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.message || `HTTP ${response.status}`);
+                }
+                
+                const result = await response.json();
+                alert(`Success! Updated ${result.updated} out of ${result.total} image path(s).\n\nAfter this, refresh the page and check images again.`);
+                
+                // Reload images
+                setTimeout(() => {
+                    checkImages();
+                    checkFileSystem();
+                }, 1000);
+                
+            } catch (error) {
+                alert('Error fixing paths: ' + error.message + '\n\nMake sure you are logged into the admin portal first.');
+            }
+        }
+        
+        // Auto-check backend on load
+        window.addEventListener('load', () => {
+            checkBackend();
+        });
+    </script>
+</body>
+</html>
+

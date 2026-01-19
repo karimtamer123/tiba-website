@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.0/css/all.css" />
+  <style>
+    /* Ensure Font Awesome icons display properly */
+    .fas, .fab, .far, .fal {
+      font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 6 Pro";
+      font-weight: 900;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .fab {
+      font-weight: 400;
+    }
+    
+    /* Style contact buttons to match Apply Now button style */
+    .contact-phone-btn,
+    .contact-email-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', 'Roboto', Arial, sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #0F172A;
+      background: transparent;
+      padding: 0.625rem 1.25rem;
+      border: 1.5px solid #0F172A;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.01em;
+      cursor: pointer;
+    }
+    
+    .contact-phone-btn:hover,
+    .contact-email-btn:hover {
+      background: #0F172A;
+      color: white;
+      border-color: #0F172A;
+      transform: translateY(-1px);
+    }
+    
+    /* Fallback for icons if Font Awesome fails to load */
+    .fas.fa-map-marker-alt::before { content: "📍"; }
+    .fas.fa-phone::before { content: "📞"; }
+    .fas.fa-mobile-alt::before { content: "📱"; }
+    .fas.fa-envelope::before { content: "✉️"; }
+    .fas.fa-clock::before { content: "🕐"; }
+    .fas.fa-building::before { content: "🏢"; }
+    .fas.fa-industry::before { content: "🏭"; }
+    .fas.fa-tools::before { content: "🔧"; }
+    .fab.fa-facebook-f::before { content: "f"; }
+    .fab.fa-youtube::before { content: "y"; }
+    .fab.fa-instagram::before { content: "i"; }
+  </style>
+</head>
+<body>
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Contact Information Section -->
+  <section class="section-preview bg-pattern-2" id="contact-info" style="padding: clamp(2rem, 4vw, 4rem) 0; min-height: 100vh; display: flex; align-items: center; background: #ffffff;">
+    <div class="container">
+      <div class="preview-content fade-in">
+        <h2 class="preview-title">Get In Touch</h2>
+        <p class="preview-subtitle">Ready to discuss your HVAC needs? Our team of experts is here to help you find the perfect solution.</p>
+        <div class="preview-indicator">
+          <div class="scroll-indicator"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Details and Form Section -->
+  <section class="application-section bg-pattern-1" id="contact-form" style="min-height: 100vh; display: flex; align-items: center; padding: clamp(2rem, 4vw, 4rem) 0;">
+    <div class="container">
+      <div class="careers-grid" style="grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+        
+        <!-- Contact Information Card -->
+        <div class="job-card" style="height: fit-content;">
+          <div class="job-content" style="padding: 3rem;">
+            <h3 style="color: #1e293b; margin-bottom: 2rem; font-size: 1.8rem;">Contact Information</h3>
+            
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <!-- Address -->
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-map-marker-alt" style="color: white; font-size: 16px;"></i>
+                </div>
+                <div>
+                  <h4 style="color: #1e293b; margin-bottom: 0.5rem; font-size: 1.1rem;">Head Office</h4>
+                  <p style="color: #64748b; margin: 0; line-height: 1.6;">5, El Nasr Road Nasr City<br>Cairo, Egypt</p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-phone" style="color: white; font-size: 16px;"></i>
+                </div>
+                <div>
+                  <h4 style="color: #1e293b; margin-bottom: 0.5rem; font-size: 1.1rem;">Phone Numbers</h4>
+                  <p style="color: #64748b; margin: 0; line-height: 1.6;">(+202) 24022866<br>(+202) 24022844</p>
+                </div>
+              </div>
+
+              <!-- Mobile -->
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-mobile-alt" style="color: white; font-size: 16px;"></i>
+                </div>
+                <div>
+                  <h4 style="color: #1e293b; margin-bottom: 0.5rem; font-size: 1.1rem;">Mobile</h4>
+                  <p style="color: #64748b; margin: 0; line-height: 1.6;">+202 40 44 667/8</p>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-envelope" style="color: white; font-size: 16px;"></i>
+                </div>
+                <div>
+                  <h4 style="color: #1e293b; margin-bottom: 0.5rem; font-size: 1.1rem;">Email</h4>
+                  <p style="color: #64748b; margin: 0; line-height: 1.6;">marketing@tiba-group.com</p>
+                </div>
+              </div>
+
+              <!-- Business Hours -->
+              <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <i class="fas fa-clock" style="color: white; font-size: 16px;"></i>
+                </div>
+                <div>
+                  <h4 style="color: #1e293b; margin-bottom: 0.5rem; font-size: 1.1rem;">Business Hours</h4>
+                  <p style="color: #64748b; margin: 0; line-height: 1.6;">Sunday - Thursday: 9:00 AM - 6:00 PM<br>Friday - Saturday: Closed</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+              <h4 style="color: #1e293b; margin-bottom: 1rem; font-size: 1.1rem;">Follow Us</h4>
+              <div style="display: flex; gap: 1rem;">
+                <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: #3b5998; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@tibamanzalawigroup" class="social-icon youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: #ff0000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+                <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer" style="width: 40px; height: 40px; background: #e4405f; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease;">
+                  <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="application-form">
+          <h2 style="text-align: center; color: #1e293b; margin-bottom: 2rem; font-size: 1.8rem;">Send Us a Message</h2>
+          
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" name="fullName" required>
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <input type="text" id="company" name="company">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <select id="subject" name="subject" required style="width: 100%; padding: 0.8rem 1rem; font-size: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; transition: all 0.3s ease; font-family: 'Inter', 'Roboto', Arial, sans-serif; background: white;">
+                <option value="">Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="quote">Request Quote</option>
+                <option value="support">Technical Support</option>
+                <option value="partnership">Partnership Opportunity</option>
+                <option value="careers">Career Opportunities</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.8rem 1rem; font-size: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; transition: all 0.3s ease; font-family: 'Inter', 'Roboto', Arial, sans-serif; resize: vertical; min-height: 120px;"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #64748b;">
+                <input type="checkbox" id="newsletter" name="newsletter" style="margin: 0;">
+                Subscribe to our newsletter for industry updates and company news
+              </label>
+            </div>
+
+            <div class="form-group">
+              <a href="#" class="btn btn-secondary" style="width: 100%; display: block; text-align: center; text-decoration: none;" onclick="document.getElementById('contactForm').submit(); return false;">Send Message</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Locations Section -->
+  <section class="innovative-products bg-pattern-3" style="padding: 1rem 0 0 0 !important; background: #ffffff !important;">
+    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="preview-content fade-in" style="text-align: center; margin-top: 1rem; margin-bottom: 1.5rem;">
+        <h2 class="preview-title">Our Locations</h2>
+        <p class="preview-subtitle">Serving clients across the Middle East with strategic office locations</p>
+      </div>
+      
+      <div class="products-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1000px; margin-bottom: 1rem;">
+        <div class="product-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+          <div style="margin-bottom: 1rem; display: flex; justify-content: center;">
+            <div style="width: 60px; height: 60px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+              <i class="fas fa-building" style="font-size: 2rem; color: white;"></i>
+            </div>
+          </div>
+          <h3 style="color: #1e293b; margin-bottom: 0.75rem; font-size: 1.2rem;">Cairo Headquarters</h3>
+          <p class="model-number" style="color: #64748b; margin-bottom: 0.25rem; font-size: 0.9rem;">5, El Nasr Road Nasr City, Cairo, Egypt</p>
+          <p class="model-number" style="font-size: 0.8rem; color: #94a3b8;">Main operations and administration</p>
+        </div>
+        
+        <div class="product-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+          <div style="margin-bottom: 1rem; display: flex; justify-content: center;">
+            <div style="width: 60px; height: 60px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+              <i class="fas fa-industry" style="font-size: 2rem; color: white;"></i>
+            </div>
+          </div>
+          <h3 style="color: #1e293b; margin-bottom: 0.75rem; font-size: 1.2rem;">Manufacturing Facility</h3>
+          <p class="model-number" style="color: #64748b; margin-bottom: 0.25rem; font-size: 0.9rem;">Industrial Zone, 6th of October City</p>
+          <p class="model-number" style="font-size: 0.8rem; color: #94a3b8;">Production and quality control</p>
+        </div>
+        
+        <div class="product-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+          <div style="margin-bottom: 1rem; display: flex; justify-content: center;">
+            <div style="width: 60px; height: 60px; background: #007AFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+              <i class="fas fa-tools" style="font-size: 2rem; color: white;"></i>
+            </div>
+          </div>
+          <h3 style="color: #1e293b; margin-bottom: 0.75rem; font-size: 1.2rem;">Service Centers</h3>
+          <p class="model-number" style="color: #64748b; margin-bottom: 0.25rem; font-size: 0.9rem;">Multiple locations across Egypt</p>
+          <p class="model-number" style="font-size: 0.8rem; color: #94a3b8;">Maintenance and technical support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Contact Section -->
+  <section class="cta bg-pattern-4" style="padding: clamp(2rem, 4vw, 4rem) 0; min-height: 50vh; display: flex; align-items: center; position: relative; overflow: hidden; background: #ffffff;">
+    <div class="container fade-in">
+      <h2 class="cta-title">Need Immediate Assistance?</h2>
+      <p>Our customer service team is ready to help you with any urgent inquiries or technical support needs.</p>
+      <div class="cta-buttons">
+        <a href="tel:+20224022866" class="contact-phone-btn">Call Now</a>
+        <a href="mailto:marketing@tiba-group.com" class="contact-email-btn">Send Email</a>
+      </div>
+      
+      <!-- Emergency Contact -->
+      <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.95); border-radius: 12px; backdrop-filter: blur(10px); border: 1px solid #E5E7EB; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+        <h3 style="color: #FF9500; margin-bottom: 1rem; font-size: 1.25rem; font-weight: 700;">24/7 Emergency Support</h3>
+        <p style="margin-bottom: 1.5rem; color: #0B1220; font-size: 1rem;">For critical HVAC system failures and emergency maintenance:</p>
+        <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
+          <div style="text-align: center;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #0B1220; font-size: 0.95rem;">Emergency Hotline</p>
+            <a href="tel:+20204466778" style="color: #FF9500; text-decoration: none; font-size: 1.2rem; font-weight: 700; display: block;">+202 40 44 667/8</a>
+          </div>
+          <div style="text-align: center;">
+            <p style="font-weight: 600; margin-bottom: 0.5rem; color: #0B1220; font-size: 0.95rem;">Emergency Email</p>
+            <a href="mailto:emergency@tiba-group.com" style="color: #FF9500; text-decoration: none; font-size: 1.1rem; font-weight: 700; display: block; word-break: break-word;">emergency@tiba-group.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="footer">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Success Message Overlay -->
+  <div class="success-overlay" id="successOverlay">
+    <div class="success-message">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24">
+          <polyline points="20,6 9,17 4,12"></polyline>
+        </svg>
+      </div>
+      <h3>Message Sent Successfully!</h3>
+      <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Contact form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
+      
+      // Save message to localStorage for admin dashboard
+      const contactMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+      const newMessage = {
+        id: Date.now().toString(),
+        fullName: data.fullName,
+        company: data.company || '',
+        email: data.email,
+        phone: data.phone || '',
+        subject: data.subject,
+        message: data.message,
+        newsletter: data.newsletter === 'on',
+        timestamp: new Date().toISOString(),
+        read: false,
+        status: 'new'
+      };
+      contactMessages.unshift(newMessage);
+      localStorage.setItem('contactMessages', JSON.stringify(contactMessages));
+      
+      // Log form submission
+      console.log('Form submitted:', data);
+      
+      // Show success message
+      document.getElementById('successOverlay').classList.add('show');
+      
+      // Reset form
+      this.reset();
+      
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+        document.getElementById('successOverlay').classList.remove('show');
+      }, 3000);
+    });
+
+    // Close success overlay when clicked outside
+    document.getElementById('successOverlay').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('show');
+      }
+    });
+
+    // Focus effects for form inputs
+    document.querySelectorAll('input, textarea, select').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.style.borderColor = '#3b82f6';
+        this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+      });
+      
+      input.addEventListener('blur', function() {
+        this.style.borderColor = '#e2e8f0';
+        this.style.boxShadow = 'none';
+      });
+    });
+
+    // Social media hover effects
+    document.querySelectorAll('.footer-social a, [href^="tel:"], [href^="mailto:"]').forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1)';
+      });
+      
+      link.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>

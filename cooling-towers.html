@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooling Towers | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Force product names to be blue */
+    .product-centered-card h3.product-name,
+    .product-horizontal-card h3.product-name,
+    h3.product-name {
+      color: #1E40AF !important;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #1E40AF !important;
+      background-clip: unset !important;
+    }
+    
+    /* Ensure product names stay blue on hover */
+    .product-centered-card:hover h3.product-name,
+    .product-horizontal-card:hover h3.product-name,
+    .product-centered-card:hover .product-name,
+    .product-horizontal-card:hover .product-name {
+      color: #1E40AF !important;
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #1E40AF !important;
+      background-clip: unset !important;
+    }
+    
+    /* Category card hover effects */
+    .category-selection-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(2,6,23,0.15) !important;
+      border-color: #3B82F6 !important;
+    }
+    
+    .category-selection-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Responsive design for horizontal cards */
+    @media (max-width: 768px) {
+      .product-horizontal-card {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+      .product-horizontal-card .product-image {
+        height: 200px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Category Selection Section -->
+  <section id="category-selection" class="category-page" style="padding: 8rem 0; background: #F8FAFF;">
+    <div class="container">
+      <!-- Back to Products Button -->
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <a href="products.html" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>Back to Products</span>
+        </a>
+      </div>
+      <div class="brand-header" style="text-align: center; margin-bottom: 4rem;">
+        <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1.5rem;">Evapco Cooling Towers</h2>
+        <p style="color: #64748B; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Select from our comprehensive range of cooling tower categories</p>
+      </div>
+      
+      <div class="category-selection-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto;">
+        <!-- Open Type Category -->
+        <div class="category-selection-card" data-category="open-type" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 30px rgba(2,6,23,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;">
+          <div style="width: 100%; height: 280px; background: #F8FAFF; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AT).png" alt="Open Type Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.3s ease;" />
+          </div>
+          <div style="padding: 2rem; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 0.75rem;">Open Type Cooling Towers</h3>
+            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">High-efficiency open circuit cooling towers</p>
+          </div>
+        </div>
+
+        <!-- Closed Type Category -->
+        <div class="category-selection-card" data-category="closed-type" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 30px rgba(2,6,23,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;">
+          <div style="width: 100%; height: 280px; background: #F8FAFF; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="Products/Cooling Towers/Evapco/Evapco Closed Type Cooling Towers (ATWB).png" alt="Closed Type Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.3s ease;" />
+          </div>
+          <div style="padding: 2rem; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 0.75rem;">Closed Type Cooling Towers</h3>
+            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">Closed circuit cooling towers for clean water</p>
+          </div>
+        </div>
+
+        <!-- Evaporative Condensers Category -->
+        <div class="category-selection-card" data-category="evaporative-condensers" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 30px rgba(2,6,23,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid transparent;">
+          <div style="width: 100%; height: 280px; background: #F8FAFF; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            <img src="Products/Cooling Towers/Evapco/Evapco Evaporative Condensers (ATC-E).png" alt="Evaporative Condensers Preview" style="max-width: 90%; max-height: 90%; object-fit: contain; transition: transform 0.3s ease;" />
+          </div>
+          <div style="padding: 2rem; text-align: center;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 0.75rem;">Evaporative Condensers</h3>
+            <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6;">Efficient evaporative condensers for refrigeration</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="category-page" style="padding: 6rem 0; background: #F8FAFF; display: none;">
+    <div class="container">
+      <!-- Back to Selection Button -->
+      <div style="text-align: center; margin-bottom: 3rem;">
+        <button id="back-to-selection" class="btn btn-secondary" style="margin-bottom: 2rem;">← Back to Category Selection</button>
+      </div>
+
+      <!-- Open Type Cooling Towers Section -->
+      <div id="open-type-products" class="category-section" style="display: none; padding: 8rem 0;">
+        <div class="brand-header" style="text-align: center; margin-bottom: 4rem;">
+          <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1.5rem;">Open Type Cooling Towers</h2>
+          <p style="color: #64748B; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">High-efficiency open circuit cooling towers featuring American engineering excellence for industrial heat rejection</p>
+        </div>
+        
+        <div class="products-grid" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+          
+          <!-- AT Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AT).png" alt="Evapco AT Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">AT Series Crossflow Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 25 to 2000 RT (88 to 7034 kW)</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Crossflow Design for Efficient Heat Transfer
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    American Engineering Excellence
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Industrial Grade Construction
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Low Maintenance Requirements
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Energy Efficient Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- AXS Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (AXS).png" alt="Evapco AXS Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">AXS Series Axial Fan Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 100 to 3000 RT (352 to 10550 kW)</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    High-Capacity Axial Fan Technology
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Ideal for Large-Scale Industrial Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Superior Heat Rejection Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Robust Construction for Durability
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Energy Efficient Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LPT Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (LPT).png" alt="Evapco LPT Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">LPT Series Low Profile Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 75 to 800 RT (264 to 2814 kW)</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Low Profile Design for Space-Constrained Installations
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Heat Rejection in Compact Footprint
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Versatile Installation Options
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Easy Access for Maintenance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LSTE Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Open Type Cooling Towers (LSTE).png" alt="Evapco LSTE Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            <div class="product-info">
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">LSTE Series Single Tower Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 50 to 400 RT (176 to 1407 kW)</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Single Tower Configuration
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Ideal for Medium-Scale Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Heat Rejection Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Cost-Effective Solution
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Easy Installation and Maintenance
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Closed Type Cooling Towers Section -->
+      <div id="closed-type-products" class="category-section" style="display: none; padding: 8rem 0;">
+        <div class="brand-header" style="text-align: center; margin-bottom: 4rem;">
+          <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1.5rem;">Closed Type Cooling Towers</h2>
+          <p style="color: #64748B; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Closed circuit cooling towers featuring American engineering excellence for clean water applications</p>
+        </div>
+        
+        <div class="products-grid" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+          
+          <!-- ATWB Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Closed Type Cooling Towers (ATWB).png" alt="Evapco ATWB Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">ATWB Series Closed Circuit Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 50 to 800 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Closed Circuit Design for Clean Water Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    American Engineering Excellence
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Heat Rejection Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Operation in Various Conditions
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Low Maintenance Requirements
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ESW4 Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Closed Type Cooling Towers (ESW4).png" alt="Evapco ESW4 Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">ESW4 Series Evaporative Closed Circuit Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 20 to 150 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Evaporative Closed Circuit Design
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Heat Rejection in Compact Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Space-Saving Design
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Easy Installation and Maintenance
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LRWB Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Closed Type Cooling Towers (LRWB).png" alt="Evapco LRWB Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">LRWB Series Stainless Steel Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 100 to 600 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Stainless Steel Construction for Corrosive Environments
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Superior Durability and Longevity
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Ideal for Harsh Operating Conditions
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Excellent Corrosion Resistance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Performance in Demanding Applications
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LSWE Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Closed Type Cooling Towers (LSWE).png" alt="Evapco LSWE Series" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">LSWE Series Low Sound Cooling Towers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 25 to 250 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Low Sound Design for Noise-Sensitive Environments
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Quiet Operation
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Ideal for Commercial and Residential Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Heat Rejection Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Environmentally Friendly Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Evaporative Condensers Section -->
+      <div id="evaporative-condensers-products" class="category-section" style="display: none; padding: 8rem 0;">
+        <div class="brand-header" style="text-align: center; margin-bottom: 4rem;">
+          <h2 class="brand-title" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-dark-blue); margin-bottom: 1.5rem;">Evaporative Condensers</h2>
+          <p style="color: #64748B; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Efficient evaporative condensers featuring American engineering excellence for refrigeration and air conditioning systems</p>
+        </div>
+        
+        <div class="products-grid" style="display: flex; flex-direction: column; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+          
+          <!-- ATC-E Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Evaporative Condensers (ATC-E).png" alt="Evapco Evaporative Condensers ATC-E" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">ATC-E Series Evaporative Condensers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 100 to 2000 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Heat Rejection in Refrigeration and Air Conditioning Systems
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Evaporative Condenser Technology
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    American Engineering Excellence
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    High Performance and Reliability
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Energy Efficient Operation
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- LSC-E Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Evaporative Condensers (LSC-E).png" alt="Evapco Evaporative Condensers LSC-E" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">LSC-E Series Low Sound Evaporative Condensers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 50 to 500 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Low Sound Design for Noise-Sensitive Environments
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Quiet Operation
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Evaporative Condenser Technology
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Ideal for Commercial and Residential Applications
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Reliable Performance
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHC-E Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Evaporative Condensers (PHC-E).png" alt="Evapco Evaporative Condensers PHC-E" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">PHC-E Series Package Evaporative Condensers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 75 to 600 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Package Design for Complete Refrigeration System Solutions
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Integrated System Components
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Easy Installation and Setup
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Performance
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Cost-Effective Solution
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- PMC-E Series -->
+          <div class="product-horizontal-card" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; align-items: start;">
+            <div class="product-image" style="width: 100%; height: 280px; background: #F8FAFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+              <img src="Products/Cooling Towers/Evapco/Evapco Evaporative Condensers (PMC-E).png" alt="Evapco Evaporative Condensers PMC-E" style="max-width: 90%; max-height: 90%; object-fit: contain;" />
+            </div>
+            
+            <!-- Product Info -->
+            <div class="product-info">
+              <!-- Product Name -->
+              <h3 class="product-name" style="font-size: 1.5rem; font-weight: 600; color: #1E40AF !important; margin-bottom: 0.5rem;">PMC-E Series Modular Evaporative Condensers</h3>
+              <p style="font-size: 0.875rem; color: #6B7280; margin-bottom: 1.25rem; font-weight: 500;">Cooling Capacity: 25 to 200 TR</p>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.875rem; font-weight: 600; color: #1A1A1A; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Key Features</h4>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Modular Design for Flexible Installation
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Easy Maintenance and Service Access
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Scalable Configuration Options
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Efficient Evaporative Condenser Technology
+                  </li>
+                  <li style="font-size: 0.875rem; color: #4B5563; padding-left: 1.25rem; position: relative;">
+                    <span style="position: absolute; left: 0; color: #1E40AF;">•</span>
+                    Versatile Application Options
+                  </li>
+                </ul>
+              </div>
+              
+              <!-- CTA Button -->
+              <div class="product-cta">
+                <a href="contact.html" class="btn btn-primary" style="padding: 0.625rem 1.25rem; font-size: 0.875rem; border-radius: 6px;">Request Quote</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta bg-pattern-4" style="min-height: 50vh; display: flex; align-items: center; padding: 4rem 0; position: relative; overflow: hidden; background: #F8FAFF; background: linear-gradient(180deg, rgba(248, 250, 255, 1) 52%, rgba(201, 212, 255, 1) 100%)!important;">
+    <div class="parallax-layer" data-parallax data-speed="0.06" style="background:
+      radial-gradient(60% 60% at 15% 20%, rgba(14,165,233,.06), transparent 60%),
+      radial-gradient(60% 60% at 85% 80%, rgba(99,102,241,.06), transparent 60%)
+    ;"></div>
+    <div class="container fade-in">
+      <h2 class="cta-title" style="color: #14213D;">Need the Right Cooling Tower Solution?</h2>
+      <p style="color: #808080;">Our heat rejection specialists can help you select the optimal cooling tower system for your specific application and environmental conditions.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary scale-in">Get Quote</a>
+        <a href="products.html" class="btn btn-secondary scale-in" style="background: #ffffff !important; color: var(--primary-dark-blue) !important; border-color: #ffffff !important;">View All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+  <script>
+    // Category Navigation functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const categoryCards = document.querySelectorAll('.category-selection-card');
+      const categorySelectionSection = document.getElementById('category-selection');
+      const productsSection = document.getElementById('products');
+      const openTypeProducts = document.getElementById('open-type-products');
+      const closedTypeProducts = document.getElementById('closed-type-products');
+      const evaporativeCondensersProducts = document.getElementById('evaporative-condensers-products');
+      const backToSelectionButton = document.getElementById('back-to-selection');
+
+      let currentCategory = '';
+
+      // Category selection functionality
+      categoryCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const selectedCategory = card.getAttribute('data-category');
+          currentCategory = selectedCategory;
+          
+          // Hide category selection section
+          categorySelectionSection.style.display = 'none';
+          
+          // Show products section
+          productsSection.style.display = 'block';
+          
+          // Hide all products
+          hideAllProducts();
+          
+          // Show selected category products
+          if (selectedCategory === 'open-type') {
+            openTypeProducts.style.display = 'block';
+          } else if (selectedCategory === 'closed-type') {
+            closedTypeProducts.style.display = 'block';
+          } else if (selectedCategory === 'evaporative-condensers') {
+            evaporativeCondensersProducts.style.display = 'block';
+          }
+          
+          // Smooth scroll to products section
+          productsSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add hover effects
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-5px)';
+          card.style.boxShadow = '0 8px 30px rgba(2,6,23,0.15)';
+          card.style.borderColor = 'rgba(14,165,233,0.3)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '0 6px 30px rgba(2,6,23,0.1)';
+          card.style.borderColor = 'transparent';
+        });
+      });
+
+      // Back to selection button functionality
+      backToSelectionButton.addEventListener('click', () => {
+        productsSection.style.display = 'none';
+        categorySelectionSection.style.display = 'block';
+        categorySelectionSection.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Helper function
+      function hideAllProducts() {
+        openTypeProducts.style.display = 'none';
+        closedTypeProducts.style.display = 'none';
+        evaporativeCondensersProducts.style.display = 'none';
+      }
+    });
+
+    // Dynamic background loading
+    function loadDynamicBackground() {
+      const currentPage = window.location.pathname.split('/').pop().replace('.html', '');
+      const heroSection = document.querySelector('.hero-section');
+      
+      if (heroSection) {
+        // Remove the bg-pattern-2 class to override the gray background
+        heroSection.classList.remove('bg-pattern-2');
+        
+        // Handle special cases for file naming
+        let imageName = currentPage;
+        if (currentPage === 'air-handling-units') {
+          imageName = 'airhandlingunithtml';
+        } else if (currentPage === 'cooling-towers') {
+          imageName = 'coolingunithtml';
+        } else if (currentPage === 'variable-refrigerant-flow') {
+          imageName = 'VRFhtml';
+        } else {
+          imageName = currentPage + 'html';
+        }
+        
+        // Try to load the background image with different extensions
+        const imageExtensions = ['jpg', 'png'];
+        let imageLoaded = false;
+        
+        for (const ext of imageExtensions) {
+          const img = new Image();
+          img.onload = function() {
+            if (!imageLoaded) {
+              imageLoaded = true;
+              heroSection.style.backgroundImage = `url('background/${imageName}.${ext}')`;
+              heroSection.style.backgroundSize = 'cover';
+              heroSection.style.backgroundPosition = 'center';
+              heroSection.style.backgroundRepeat = 'no-repeat';
+              heroSection.style.backgroundColor = 'transparent';
+              
+              // Ensure content is above the overlay
+              const content = heroSection.querySelector('.hero-content-wrapper');
+              if (content) {
+                content.style.position = 'relative';
+                content.style.zIndex = '2';
+              }
+            }
+          };
+          img.onerror = function() {
+            // Image failed to load, try next extension
+          };
+          img.src = `background/${imageName}.${ext}`;
+        }
+      }
+    }
+
+    // Load background when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadDynamicBackground);
+  </script>
+</body>
+</html>

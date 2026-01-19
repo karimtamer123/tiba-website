@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Tiba Manzalawi Group</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="global-design-system.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- PDF.js for PDF preview -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    /* Compact only the Our Story section on about.html */
+    #our-story-cards{
+      padding-block: clamp(24px, 3vw, 56px) !important;
+      margin-block: 0 !important;
+      display: flow-root; /* stops heading margins from collapsing out */
+    }
+    #our-story-cards .preview-content{ margin-bottom: 12px !important; }
+    #our-story-cards .preview-title{ margin-block: 0 12px !important; }
+    #our-story-cards .preview-subtitle{ margin-block: 4px 20px !important; }
+    #our-story-cards .products-grid{ 
+      gap: clamp(12px, 2vw, 24px) !important; 
+      margin-bottom: 0 !important;
+    }
+    #our-story-cards{ scroll-margin-top: 84px; } /* if linked by anchor */
+    
+    /* Hover effects for story cards */
+    .story-card:hover {
+      transform: translateY(-8px) !important;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25) !important;
+      background: rgba(255, 255, 255, 0.35) !important;
+    }
+    
+    .story-card:hover h3 {
+      color: #ffffff !important;
+    }
+    
+    .story-card:hover p {
+      color: #ffffff !important;
+    }
+    
+    .story-card:hover svg {
+      transform: scale(1.1) !important;
+    }
+    
+    .story-card:hover div {
+      transform: scale(1.1) !important;
+    }
+    
+    /* Timeline Section Background with Dark Overlay */
+    .timeline-bg-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.15);
+      z-index: 1;
+    }
+    
+    .timeline-bg-section .container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Ensure text contrast over dark overlay */
+    .timeline-bg-section .preview-title {
+      color: #ffffff !important;
+    }
+    
+    .timeline-bg-section .preview-subtitle {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+    
+    /* Ensure button contrast over dark overlay */
+    .timeline-bg-section .btn-primary {
+      color: #ffffff !important;
+      background: transparent !important;
+      border: 1.5px solid #ffffff !important;
+    }
+    
+    .timeline-bg-section .btn-primary:hover {
+      background: #ffffff !important;
+      color: var(--primary-dark-blue, #0f172a) !important;
+      border-color: #ffffff !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Unified Navigation Bar -->
+  <header>
+    <div class="unified-navbar" role="navigation" aria-label="Main">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="Tiba Manzalawi Group Home">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group Logo" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-center">
+        <ul id="primary-navigation" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Who We Are Section -->
+  <section class="section-preview" id="our-story" style="padding: clamp(2rem, 6vw, 6rem) 0; min-height: 100vh; display: flex; align-items: center; background: #ffffff;">
+    <div class="container">
+      <div class="preview-content fade-in">
+        <h2 class="preview-title">Who We Are</h2>
+        <p class="preview-subtitle">Tiba Manzalawi Group has been at the forefront of HVAC innovation since 1979, delivering exceptional heating, ventilation, and air conditioning solutions across the Middle East. As a trusted industry leader, we combine decades of expertise with cutting-edge technology to create comfortable and energy-efficient environments for our clients.</p>
+        <div class="preview-indicator">
+          <div class="scroll-indicator"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Leadership Section -->
+  <section class="management-section" style="padding: clamp(2rem, 6vw, 6rem) 0; min-height: 100vh; display: flex; align-items: center; background: #ffffff; position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="preview-content fade-in" style="text-align: center; margin-bottom: 3rem;">
+        <h2 class="preview-title">Our Leadership</h2>
+        <p class="preview-subtitle">Meet the Team Behind Our Success</p>
+      </div>
+      
+             <div class="management-grid">
+         <!-- Left Card - Founder 1 (CEO) -->
+         <div class="management-card secondary">
+           <div class="management-image-container">
+             <img src="about pictures/leadership/founder1.png" alt="Eng. Shady ElManzlawi" class="management-image">
+           </div>
+           <div class="management-content">
+             <h3 class="management-name">Eng. Shady ElManzlawi</h3>
+             <p class="management-title">CEO</p>
+             <p class="management-description">Leading our business development and international partnerships.</p>
+           </div>
+         </div>
+
+         <!-- Chairman (Middle, Larger Card) - Founder 3 -->
+         <div class="management-card primary">
+           <div class="management-image-container">
+             <img src="about pictures/leadership/founder3.png" alt="Magd ElDin ElManzlawi" class="management-image">
+           </div>
+           <div class="management-content">
+             <h3 class="management-name">Magd ElDin ElManzlawi</h3>
+             <p class="management-title">Chairman</p>
+             <p class="management-description">Founder and visionary leader with over 40 years of industry experience.</p>
+           </div>
+         </div>
+
+         <!-- Right Card - Founder 2 (Vice Chairman) -->
+         <div class="management-card secondary">
+           <div class="management-image-container">
+             <img src="about pictures/leadership/founder2.png" alt="Mohamed ElManzlawi" class="management-image">
+           </div>
+           <div class="management-content">
+             <h3 class="management-name">Mohamed ElManzlawi</h3>
+             <p class="management-title">Vice Chairman</p>
+             <p class="management-description">Overseeing operations and technological innovation.</p>
+           </div>
+         </div>
+       </div>
+    </div>
+  </section>
+
+
+
+  <!-- Timeline Section -->
+  <section id="our-journey" class="section-preview timeline-bg-section" style="padding: clamp(2rem, 6vw, 6rem) 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background-image: url('About-Timeline-Pics/Timeline background.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
+    <div class="container">
+      <div class="preview-content fade-in" style="text-align: center;">
+        <h2 class="preview-title">Timeline</h2>
+        <p class="preview-subtitle">Explore our journey of innovation, partnership, and excellence spanning decades</p>
+        <div style="margin-top: 2rem;">
+          <a href="timeline.html" class="btn btn-primary">Check it out</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-main">
+        <!-- Logo and Brand -->
+        <div class="footer-brand">
+          <img src="Tiba_Logo_Final-removebg-preview.png" alt="Tiba Manzalawi Group" class="footer-logo">
+          <p class="footer-tagline">Engineering Excellence Since 1979</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-section">
+          <h4 class="footer-title">Quick Links</h4>
+          <div class="footer-links-grid">
+            <a href="index.html" class="footer-link">Home</a>
+            <a href="about.html" class="footer-link">About Us</a>
+            <a href="products.html" class="footer-link">Products</a>
+            <a href="projects.html" class="footer-link">Projects</a>
+            <a href="news.html" class="footer-link">News</a>
+            <a href="careers.html" class="footer-link">Careers</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="footer-title">Get In Touch</h4>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-label">Address:</span>
+              <span class="contact-value">5, El Nasr Road Nasr City, Cairo, Egypt</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Phone:</span>
+              <span class="contact-value">(+202) 24022866 / 24022844</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Mobile:</span>
+              <span class="contact-value">+202 40 44 667/8</span>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-label">Email:</span>
+              <span class="contact-value">marketing@tiba-group.com</span>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="footer-social">
+            <h5 class="social-title">Follow Us</h5>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/share/1BDQcfgZ6P/?mibextid=wwXIfr" class="social-icon facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/tiba-manzalawi-group/" class="social-icon linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/tiba.manzalawi.group?igsh=YXpycXFnM3o0ODRp" class="social-icon instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tiba Manzalawi Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // PDF.js configuration
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let currentPDF = null;
+    let currentPage = 1;
+    let totalPages = 0;
+    let currentScale = 1.5;
+    let currentPdfUrl = '';
+
+    // Generate PDF thumbnails for all certificate cards
+    document.addEventListener('DOMContentLoaded', function() {
+      generateAllThumbnails();
+    });
+
+    async function generateAllThumbnails() {
+      const certificateItems = document.querySelectorAll('.certificate-item[data-type="pdf"]');
+      
+      for (const item of certificateItems) {
+        const pdfUrl = item.getAttribute('data-src');
+        const imageContainer = item.querySelector('.certificate-image');
+        
+        if (pdfUrl && imageContainer) {
+          try {
+            await generateThumbnail(pdfUrl, imageContainer);
+          } catch (error) {
+            console.error('Failed to generate thumbnail for:', pdfUrl, error);
+            // Fallback to the current preview design
+            showFallbackPreview(imageContainer, item);
+          }
+        }
+      }
+    }
+
+    async function generateThumbnail(pdfUrl, container) {
+      // Show loading state
+      container.classList.add('loading');
+      container.innerHTML = '<div class="pdf-loading">Loading preview...</div>';
+      
+      try {
+        // Load PDF with PDF.js
+        const loadingTask = pdfjsLib.getDocument({
+          url: pdfUrl,
+          cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+          cMapPacked: true
+        });
+        
+        const pdf = await loadingTask.promise;
+        const page = await pdf.getPage(1); // Get first page
+        
+        // Create canvas for thumbnail
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        
+        // Calculate scale to fit container
+        const viewport = page.getViewport({ scale: 1 });
+        const containerWidth = container.offsetWidth - 20; // Account for padding
+        const scale = containerWidth / viewport.width;
+        const scaledViewport = page.getViewport({ scale: scale });
+        
+        // Set canvas dimensions
+        canvas.width = scaledViewport.width;
+        canvas.height = scaledViewport.height;
+        
+        // Render PDF page to canvas
+        const renderContext = {
+          canvasContext: context,
+          viewport: scaledViewport
+        };
+        
+        await page.render(renderContext).promise;
+        
+        // Create image from canvas
+        const img = document.createElement('img');
+        img.src = canvas.toDataURL('image/jpeg', 0.8);
+        img.className = 'pdf-thumbnail';
+        img.alt = 'Certificate Preview';
+        
+        // Clear container and add thumbnail
+        container.classList.remove('loading');
+        container.innerHTML = '';
+        container.appendChild(img);
+        
+        // Add overlay with certificate info
+        const overlay = document.createElement('div');
+        overlay.className = 'certificate-thumbnail-overlay';
+        overlay.innerHTML = `
+          <div class="certificate-thumbnail-badge">PDF Certificate</div>
+          <div class="certificate-thumbnail-actions">
+            <button class="thumbnail-btn view" onclick="event.stopPropagation(); openCertificatePreview(this.closest('.certificate-item'))">
+              <i class="fas fa-eye"></i>
+            </button>
+            <button class="thumbnail-btn download" onclick="event.stopPropagation(); downloadCertificate('${pdfUrl}')">
+              <i class="fas fa-download"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(overlay);
+        
+      } catch (error) {
+        console.error('Error generating thumbnail:', error);
+        container.classList.remove('loading');
+        showFallbackPreview(container, container.closest('.certificate-item'));
+      }
+    }
+
+    function showFallbackPreview(container, certificateItem) {
+      // Show the current preview design as fallback
+      const certificateType = certificateItem.querySelector('.certificate-title').textContent;
+      const certificateYear = certificateItem.querySelector('.certificate-year').textContent;
+      
+      // Get appropriate icon based on certificate type
+      let icon = '📄';
+      if (certificateType.includes('ISO 9001')) icon = '🏆';
+      else if (certificateType.includes('ISO 14001')) icon = '🌱';
+      else if (certificateType.includes('OHSAS')) icon = '🛡️';
+      else if (certificateType.includes('AHRI')) icon = '❄️';
+      else if (certificateType.includes('Eurovent')) icon = '🇪🇺';
+      else if (certificateType.includes('Product Range')) icon = '📋';
+      
+      container.innerHTML = `
+        <div class="certificate-preview">
+          <div class="certificate-header">
+            <div class="certificate-icon">${icon}</div>
+            <div class="certificate-badge">${certificateType.split(' ')[0]}</div>
+          </div>
+          <div class="certificate-content">
+            <div class="certificate-logo">Tiba Engineering</div>
+            <div class="certificate-seal">✓ CERTIFIED</div>
+            <div class="certificate-details">
+              <span>${certificateType}</span>
+              <span>${certificateYear}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    async function generateThumbnail(pdfUrl, container) {
+      // Show loading state
+      container.classList.add('loading');
+      container.innerHTML = '';
+      
+      try {
+        // For local files, we'll create a placeholder that looks like a document
+        // since browsers block loading local PDFs via JavaScript
+        
+        // Create a document-like preview
+        const previewDiv = document.createElement('div');
+        previewDiv.style.cssText = `
+          width: 100%;
+          height: 100%;
+          background: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          box-sizing: border-box;
+          border: 1px solid #e9ecef;
+        `;
+        
+        // Get certificate name from the overlay
+        const title = container.parentElement.querySelector('.certificate-title').textContent;
+        
+        previewDiv.innerHTML = `
+          <div style="background: #f8f9fa; width: 80%; height: 60%; border: 2px solid #dee2e6; border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; box-sizing: border-box;">
+            <div style="width: 40px; height: 40px; background: #dc3545; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+              <span style="color: white; font-weight: bold; font-size: 14px;">PDF</span>
+            </div>
+            <div style="font-size: 10px; color: #6c757d; text-align: center; line-height: 1.3;">
+              ${title}
+            </div>
+          </div>
+          <div style="margin-top: 10px; font-size: 10px; color: #6c757d;">Click to view certificate</div>
+        `;
+        
+        container.classList.remove('loading');
+        container.appendChild(previewDiv);
+        
+      } catch (error) {
+        console.error('Error generating thumbnail:', error);
+        container.classList.remove('loading');
+        container.classList.add('pdf-fallback');
+      }
+    }
+
+    function openCertificatePreview(element) {
+      const pdfSrc = element.getAttribute('data-src');
+      const title = element.querySelector('.certificate-title').textContent;
+      
+      if (pdfSrc) {
+        currentPdfUrl = pdfSrc;
+        openPDFModal(pdfSrc, title);
+      }
+    }
+
+    async function openPDFModal(pdfUrl, title) {
+      const modal = document.getElementById('certificateModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const loader = document.getElementById('pdfLoader');
+      const canvas = document.getElementById('pdfCanvas');
+      const controls = document.getElementById('pdfControls');
+      const modalImage = document.getElementById('modalImage');
+
+      // Set title and show modal
+      modalTitle.textContent = title;
+      modal.classList.add('active');
+      
+      // Show loader, hide other elements
+      loader.style.display = 'flex';
+      canvas.style.display = 'none';
+      controls.style.display = 'none';
+      modalImage.style.display = 'none';
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+
+      try {
+        // Try to load PDF with PDF.js first
+        const loadingTask = pdfjsLib.getDocument({
+          url: pdfUrl,
+          cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+          cMapPacked: true
+        });
+        
+        currentPDF = await loadingTask.promise;
+        totalPages = currentPDF.numPages;
+        currentPage = 1;
+
+        // Hide loader, show PDF
+        loader.style.display = 'none';
+        canvas.style.display = 'block';
+        controls.style.display = 'flex';
+
+        // Render first page
+        await renderPage(currentPage);
+        updatePageInfo();
+        updateNavigationButtons();
+
+      } catch (error) {
+        console.error('Error loading PDF with PDF.js:', error);
+        // Fallback: Show PDF in iframe or provide download link
+        showPDFIframe(pdfUrl, title);
+      }
+    }
+
+    function showPDFIframe(pdfUrl, title) {
+      const loader = document.getElementById('pdfLoader');
+      const canvas = document.getElementById('pdfCanvas');
+      const controls = document.getElementById('pdfControls');
+      
+      loader.style.display = 'none';
+      canvas.style.display = 'none';
+      controls.style.display = 'none';
+      
+      // Create iframe container
+      const modalBody = document.querySelector('.modal-body');
+      let iframeContainer = document.getElementById('pdfIframe');
+      
+      if (!iframeContainer) {
+        iframeContainer = document.createElement('div');
+        iframeContainer.id = 'pdfIframe';
+        iframeContainer.style.cssText = `
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          background: white;
+        `;
+        modalBody.appendChild(iframeContainer);
+      }
+      
+      iframeContainer.style.display = 'flex';
+      
+      // Try to show iframe first, with fallback
+      const iframeHTML = `
+        <div style="padding: 15px; text-align: center; background: #f8f9fa; border-bottom: 1px solid #dee2e6;">
+          <div style="display: flex; gap: 10px; justify-content: center; align-items: center;">
+            <button onclick="openPDFInNewTab('${pdfUrl}')" class="pdf-btn">
+              <i class="fas fa-external-link-alt"></i> Open in New Tab
+            </button>
+            <button onclick="downloadPDF()" class="pdf-btn download-btn">
+              <i class="fas fa-download"></i> Download PDF
+            </button>
+          </div>
+        </div>
+        <iframe 
+          src="${pdfUrl}" 
+          style="flex: 1; border: none; min-height: 500px; background: white;"
+          onload="this.style.display='block'"
+          onerror="showPDFError(this)"
+        ></iframe>
+        <div id="pdf-error" style="flex: 1; min-height: 400px; display: none; align-items: center; justify-content: center; background: #f8f9fa;">
+          <div style="text-align: center; color: #6c757d;">
+            <i class="fas fa-file-pdf" style="font-size: 4rem; margin-bottom: 1rem; color: #dc3545;"></i>
+            <h4>Certificate Document</h4>
+            <p>Your browser cannot display PDFs inline.<br/>Please use the buttons above to view or download the certificate.</p>
+          </div>
+        </div>
+      `;
+      
+      iframeContainer.innerHTML = iframeHTML;
+    }
+
+    function showPDFError(iframe) {
+      iframe.style.display = 'none';
+      document.getElementById('pdf-error').style.display = 'flex';
+    }
+
+    async function renderPage(pageNum) {
+      if (!currentPDF) return;
+
+      try {
+        const page = await currentPDF.getPage(pageNum);
+        const canvas = document.getElementById('pdfCanvas');
+        const context = canvas.getContext('2d');
+
+        // Calculate scale to fit modal width
+        const modalContent = document.querySelector('.modal-content');
+        const maxWidth = modalContent.offsetWidth - 50; // Account for padding
+        const viewport = page.getViewport({ scale: 1 });
+        const scale = Math.min(currentScale, maxWidth / viewport.width);
+        
+        const scaledViewport = page.getViewport({ scale: scale });
+
+        // Set canvas dimensions
+        canvas.height = scaledViewport.height;
+        canvas.width = scaledViewport.width;
+
+        // Render PDF page into canvas context
+        const renderContext = {
+          canvasContext: context,
+          viewport: scaledViewport
+        };
+        
+        await page.render(renderContext).promise;
+      } catch (error) {
+        console.error('Error rendering page:', error);
+      }
+    }
+
+    function updatePageInfo() {
+      const pageInfo = document.getElementById('pageInfo');
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    }
+
+    function updateNavigationButtons() {
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      prevBtn.disabled = currentPage <= 1;
+      nextBtn.disabled = currentPage >= totalPages;
+    }
+
+    async function prevPage() {
+      if (currentPage <= 1) return;
+      currentPage--;
+      await renderPage(currentPage);
+      updatePageInfo();
+      updateNavigationButtons();
+    }
+
+    async function nextPage() {
+      if (currentPage >= totalPages) return;
+      currentPage++;
+      await renderPage(currentPage);
+      updatePageInfo();
+      updateNavigationButtons();
+    }
+
+    function downloadPDF() {
+      if (currentPdfUrl) {
+        const link = document.createElement('a');
+        link.href = currentPdfUrl;
+        link.download = currentPdfUrl.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    function downloadCertificate(pdfUrl) {
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = pdfUrl.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function openPDFInNewTab(pdfUrl) {
+      window.open(pdfUrl, '_blank');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('certificateModal');
+      modal.classList.remove('active');
+      
+      // Reset PDF state
+      currentPDF = null;
+      currentPage = 1;
+      totalPages = 0;
+      currentPdfUrl = '';
+      
+      // Hide all modal elements
+      const iframe = document.getElementById('pdfIframe');
+      if (iframe) {
+        iframe.style.display = 'none';
+      }
+      document.getElementById('pdfLoader').style.display = 'none';
+      document.getElementById('pdfCanvas').style.display = 'none';
+      document.getElementById('pdfControls').style.display = 'none';
+      document.getElementById('modalImage').style.display = 'none';
+      
+      // Restore body scrolling
+      document.body.style.overflow = '';
+    }
+
+    // Legacy function for image modals (if needed)
+    function openModal(element) {
+      const modal = document.getElementById('certificateModal');
+      const modalImg = document.getElementById('modalImage');
+      const img = element.querySelector('.certificate-image');
+      
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalImg.style.display = 'block';
+      modal.classList.add('active');
+      
+      // Hide PDF elements
+      document.getElementById('pdfLoader').style.display = 'none';
+      document.getElementById('pdfCanvas').style.display = 'none';
+      document.getElementById('pdfControls').style.display = 'none';
+      
+      // Prevent body scrolling when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('certificateModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Close modal on escape key press
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      if (currentPDF && currentPage) {
+        renderPage(currentPage);
+      }
+    });
+
+    // Background images removed - using clean white background
+    function loadDynamicBackground() {
+      // No background images needed
+    }
+
+    // Load background when DOM is ready
+    document.addEventListener('DOMContentLoaded', loadDynamicBackground);
+    // Also try loading immediately
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadDynamicBackground);
+    } else {
+      loadDynamicBackground();
+    }
+  </script>
+
+</body>
+</html>
